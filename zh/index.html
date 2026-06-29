@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FitMyPic - 在线图片尺寸调整与压缩工具</title>
+    <meta name="description" content="免费在线调整图片尺寸、压缩图片并转换 JPG、PNG、WebP 格式。图片在浏览器本地处理，不上传服务器。" />
+    <link rel="canonical" href="https://www.fitmypic.com/zh/index.html" />
+    <link rel="alternate" hreflang="en" href="https://www.fitmypic.com/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://www.fitmypic.com/zh/index.html" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="./index.html"><span class="brand-mark">F</span><span>FitMyPic</span></a><nav><a href="#tool">工具</a><a href="#presets">预设</a><a href="#guides">教程</a><a href="./privacy.html">隐私</a></nav></header>
+    <main>
+      <section class="hero"><div class="hero-copy"><p class="eyebrow">免费在线图片工具</p><h1>调整图片尺寸并压缩文件，无需上传</h1><p>FitMyPic 可以调整 JPG、PNG、WebP 图片尺寸，压缩文件大小，并导出需要的格式。所有处理都在浏览器本地完成。</p></div><div class="hero-panel"><div><strong>本地</strong><span>不上传</span></div><div><strong>JPG PNG WebP</strong><span>常用格式</span></div><div><strong>预设</strong><span>社媒尺寸</span></div></div></section>
+      <section id="tool" class="tool-shell"><div class="section-head"><p class="eyebrow">主工具</p><h2>图片尺寸调整与压缩</h2><p>上传图片，设置目标宽高，选择输出格式，然后下载优化后的图片。</p></div>
+        <div class="tool-grid"><div><div id="dropzone" class="dropzone" tabindex="0" role="button"><input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" /><div class="drop-icon">+</div><p>拖入图片，或点击选择</p><span>支持 JPG、PNG、WebP，文件在本地处理。</span></div>
+        <div class="settings-grid"><label>宽度<input id="widthInput" type="number" min="1" placeholder="宽度" disabled /></label><label>高度<input id="heightInput" type="number" min="1" placeholder="高度" disabled /></label><label class="check-row"><input id="lockRatioInput" type="checkbox" checked disabled />保持比例</label><label>输出格式<select id="formatSelect" disabled><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></label><label>质量<input id="qualityInput" type="range" min="0.35" max="1" step="0.05" value="0.82" disabled /><output id="qualityOutput">82%</output></label></div>
+        <div id="presets" class="preset-grid"><button type="button" class="preset" data-width="1080" data-height="1080" disabled>Instagram 方图</button><button type="button" class="preset" data-width="1080" data-height="1920" disabled>Story / Reels</button><button type="button" class="preset" data-width="1280" data-height="720" disabled>YouTube 缩略图</button><button type="button" class="preset" data-width="1024" data-height="1024" disabled>1024 x 1024</button><button type="button" class="preset" data-width="1200" data-height="628" disabled>社交分享图</button><button type="button" class="preset" data-width="1920" data-height="1080" disabled>HD 16:9</button></div>
+        <div class="actions"><button id="downloadBtn" type="button" disabled>下载优化图片</button><button id="resetBtn" type="button" class="secondary" disabled>重置</button></div><div id="status" class="status" role="status">请选择图片开始。</div></div>
+        <div class="preview-panel"><canvas id="previewCanvas" width="800" height="520"></canvas><dl class="meta-grid"><div><dt>原图</dt><dd id="originalMeta">-</dd></div><div><dt>输出</dt><dd id="outputMeta">-</dd></div></dl></div></div>
+      </section>
+      <section id="guides" class="content-grid"><div class="section-head"><p class="eyebrow">教程</p><h2>图片尺寸教程</h2></div><article><h3><a href="./image-resizer.html">如何在线调整图片尺寸</a></h3><p>了解宽度、高度、比例和输出格式。</p></article><article><h3><a href="./compress-image.html">图片压缩原理</a></h3><p>理解质量、文件大小和图片格式之间的关系。</p></article><article><h3><a href="./resize-image-for-instagram.html">Instagram 图片尺寸</a></h3><p>准备方图、竖图和 Story/Reels 图片。</p></article><article><h3><a href="./resize-image-for-youtube.html">YouTube 缩略图尺寸</a></h3><p>调整到 1280 x 720 并保持文字清晰。</p></article><article><h3><a href="./resize-image-to-1024x1024.html">调整图片到 1024 x 1024</a></h3><p>适合头像、产品图、应用图标和方形上传。</p></article></section>
+    </main><footer><span>© 2026 FitMyPic</span><a href="./privacy.html">隐私政策</a><a href="./terms.html">使用条款</a><a href="mailto:5202013@gmail.com">联系</a></footer><script src="../script.js"></script><script src="../translate.js"></script>
+  </body>
+</html>

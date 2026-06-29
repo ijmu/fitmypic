@@ -2,17 +2,17 @@
   const nav = document.querySelector("nav");
   if (!nav) return;
 
+  const isChinesePage = window.location.pathname.startsWith("/zh/");
   const button = document.createElement("button");
   button.className = "language-button";
   button.type = "button";
-  button.textContent = "中文";
-  button.title = "Translate this page to Chinese";
+  button.textContent = isChinesePage ? "English" : "中文";
+  button.title = isChinesePage ? "Switch to English" : "切换到中文";
+
   button.addEventListener("click", () => {
-    const translateUrl = new URL("https://translate.google.com/translate");
-    translateUrl.searchParams.set("sl", "en");
-    translateUrl.searchParams.set("tl", "zh-CN");
-    translateUrl.searchParams.set("u", window.location.href);
-    window.location.href = translateUrl.toString();
+    const currentPath = window.location.pathname;
+    const targetPath = isChinesePage ? currentPath.replace(/^\/zh\//, "/") : `/zh${currentPath === "/" ? "/index.html" : currentPath}`;
+    window.location.href = `${targetPath}${window.location.search}${window.location.hash}`;
   });
 
   nav.append(button);

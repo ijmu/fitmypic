@@ -11,7 +11,7 @@
 
   button.addEventListener("click", () => {
     const currentPath = window.location.pathname;
-    const targetPath = isChinesePage ? currentPath.replace(/^\/zh\//, "/") : `/zh${currentPath === "/" ? "/index.html" : currentPath}`;
+    const targetPath = isChinesePage ? currentPath.replace(/^\/zh\//, "/").replace(/\/index\.html$/, "/") : `/zh${currentPath === "/" ? "/" : currentPath.replace(/\/index\.html$/, "/")}`;
     window.location.href = `${targetPath}${window.location.search}${window.location.hash}`;
   });
 

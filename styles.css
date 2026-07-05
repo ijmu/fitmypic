@@ -58,6 +58,14 @@ a {
   width: 34px;
 }
 
+.brand-icon {
+  border-radius: 8px;
+  display: block;
+  flex: 0 0 auto;
+  height: 34px;
+  width: 34px;
+}
+
 nav {
   align-items: center;
   display: flex;

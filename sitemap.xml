@@ -25,6 +25,12 @@
     <loc>https://www.fitmypic.com/terms.html</loc>
   </url>
   <url>
+    <loc>https://www.fitmypic.com/about.html</loc>
+  </url>
+  <url>
+    <loc>https://www.fitmypic.com/contact.html</loc>
+  </url>
+  <url>
     <loc>https://www.fitmypic.com/zh/</loc>
   </url>
   <url>
@@ -47,5 +53,11 @@
   </url>
   <url>
     <loc>https://www.fitmypic.com/zh/terms.html</loc>
+  </url>
+  <url>
+    <loc>https://www.fitmypic.com/zh/about.html</loc>
+  </url>
+  <url>
+    <loc>https://www.fitmypic.com/zh/contact.html</loc>
   </url>
 </urlset>

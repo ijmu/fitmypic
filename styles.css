@@ -504,6 +504,25 @@ footer span {
   padding-left: 22px;
 }
 
+.page table {
+  border-collapse: collapse;
+  margin: 14px 0 4px;
+  width: 100%;
+}
+
+.page th,
+.page td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.page th {
+  background: #f8fafc;
+  color: var(--ink);
+}
+
 @media (max-width: 860px) {
   .topbar {
     align-items: flex-start;

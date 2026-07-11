@@ -37,31 +37,41 @@
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Free browser-based image tools</p>
-          <h1>Resize and compress images without uploading them</h1>
+          <p class="eyebrow">Precise image resizing, right in your browser</p>
+          <h1>Make every image fit, without giving it away.</h1>
           <p>
-            FitMyPic helps you resize JPG, PNG, and WebP images, compress file size, and export the format you need. Everything runs locally in your browser, so your images stay on your device.
+            Resize JPG, PNG, and WebP files, use ready-made social presets, or compress toward a target file size. Processing stays on this device for normal use.
           </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#tool">Resize an image</a>
+            <span>Free &middot; No signup &middot; Browser-local</span>
+          </div>
         </div>
-        <div class="hero-panel" aria-label="Tool highlights">
-          <div>
-            <strong>Local</strong>
-            <span>No upload</span>
+        <div class="hero-visual" aria-label="Image resizing preview">
+          <p class="visual-label">One image, ready for anywhere</p>
+          <div class="file-flow">
+            <div class="file-tile">
+              <span class="file-type">JPG</span>
+              <strong>4032 x 3024</strong>
+              <small>4.8 MB original</small>
+            </div>
+            <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+            <div class="file-tile file-tile-output">
+              <span class="file-type">WEBP</span>
+              <strong>1080 x 1080</strong>
+              <small>Upload-ready</small>
+            </div>
           </div>
-          <div>
-            <strong>JPG PNG WebP</strong>
-            <span>Common formats</span>
-          </div>
-          <div>
-            <strong>Presets</strong>
-            <span>Social sizes</span>
-          </div>
+          <p class="visual-note"><span aria-hidden="true"></span>Processed on your device</p>
         </div>
       </section>
 
       <section id="tool" class="tool-shell" aria-labelledby="tool-title">
         <div class="section-head">
-          <p class="eyebrow">Main tool</p>
+          <div class="section-kicker-row">
+            <p class="eyebrow">Main tool</p>
+            <span class="feature-badge">New: target file size</span>
+          </div>
           <h2 id="tool-title">Image Resizer and Compressor</h2>
           <p>Upload an image, set the target size, choose an output format, and download the optimized result.</p>
         </div>
@@ -101,8 +111,14 @@
                 <input id="qualityInput" type="range" min="0.35" max="1" step="0.05" value="0.82" disabled />
                 <output id="qualityOutput">82%</output>
               </label>
+              <label>
+                Target size (KB)
+                <input id="targetSizeInput" type="number" min="10" step="10" placeholder="Optional" disabled />
+                <span class="field-help">Available for JPG and WebP output</span>
+              </label>
             </div>
 
+            <p class="control-label">Quick sizes</p>
             <div id="presets" class="preset-grid" aria-label="Size presets">
               <button type="button" class="preset" data-width="1080" data-height="1080" disabled>Instagram Square</button>
               <button type="button" class="preset" data-width="1080" data-height="1920" disabled>Story / Reels</button>
@@ -114,6 +130,7 @@
 
             <div class="actions">
               <button id="downloadBtn" type="button" disabled>Download optimized image</button>
+              <button id="targetDownloadBtn" type="button" class="secondary" disabled>Download near target</button>
               <button id="resetBtn" type="button" class="secondary" disabled>Reset</button>
             </div>
             <div id="status" class="status" role="status">Choose an image to start.</div>
@@ -167,6 +184,7 @@
           <div><dt>Best uses</dt><dd>Profile images, thumbnails, product previews, blog images, and upload-ready square graphics.</dd></div>
           <div><dt>Privacy model</dt><dd>Normal processing happens in your browser, without sending selected image files to a conversion server.</dd></div>
           <div><dt>File size guidance</dt><dd>Large camera photos may use more memory. For smoother browser performance, resize very large files in smaller batches.</dd></div>
+          <div><dt>Target size</dt><dd>For JPG and WebP exports, FitMyPic can try several quality levels to download a file close to a target KB size.</dd></div>
         </dl>
       </section>
 

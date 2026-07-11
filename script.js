@@ -6,7 +6,9 @@ const lockRatioInput = document.querySelector("#lockRatioInput");
 const formatSelect = document.querySelector("#formatSelect");
 const qualityInput = document.querySelector("#qualityInput");
 const qualityOutput = document.querySelector("#qualityOutput");
+const targetSizeInput = document.querySelector("#targetSizeInput");
 const downloadBtn = document.querySelector("#downloadBtn");
+const targetDownloadBtn = document.querySelector("#targetDownloadBtn");
 const resetBtn = document.querySelector("#resetBtn");
 const statusBox = document.querySelector("#status");
 const previewCanvas = document.querySelector("#previewCanvas");
@@ -43,13 +45,19 @@ function extensionFor(mimeType) {
 }
 
 function enableControls(enabled) {
-  [widthInput, heightInput, lockRatioInput, formatSelect, qualityInput, downloadBtn, resetBtn].forEach((control) => {
+  [widthInput, heightInput, lockRatioInput, formatSelect, qualityInput, targetSizeInput, downloadBtn, targetDownloadBtn, resetBtn].forEach((control) => {
     control.disabled = !enabled;
   });
 
   presetButtons.forEach((button) => {
     button.disabled = !enabled;
   });
+}
+
+function syncTargetControls() {
+  const targetAvailable = sourceImage && formatSelect.value !== "image/png";
+  targetSizeInput.disabled = !targetAvailable;
+  targetDownloadBtn.disabled = !targetAvailable;
 }
 
 function fileToImage(file) {
@@ -93,6 +101,69 @@ async function updatePreview() {
   drawPreview();
 }
 
+function exportCanvas(mimeType, quality) {
+  return new Promise((resolve, reject) => {
+    previewCanvas.toBlob(
+      (blob) => {
+        if (!blob) {
+          reject(new Error("The browser could not export this image."));
+          return;
+        }
+        resolve(blob);
+      },
+      mimeType,
+      quality,
+    );
+  });
+}
+
+function downloadBlob(blob, mimeType, label = "") {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  const width = previewCanvas.width;
+  const height = previewCanvas.height;
+  const suffix = label ? `-${label}` : "";
+
+  link.href = url;
+  link.download = `${baseName(sourceFile.name)}-${width}x${height}${suffix}.${extensionFor(mimeType)}`;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+async function exportNearTarget(mimeType, targetBytes) {
+  if (mimeType === "image/png") {
+    throw new Error("Target size is available for JPG and WebP. PNG export is usually lossless in the browser.");
+  }
+
+  let low = 0.35;
+  let high = 1;
+  let bestBlob = null;
+  let bestQuality = Number(qualityInput.value);
+  let bestDistance = Number.POSITIVE_INFINITY;
+
+  for (let step = 0; step < 8; step += 1) {
+    const quality = (low + high) / 2;
+    const blob = await exportCanvas(mimeType, quality);
+    const distance = Math.abs(blob.size - targetBytes);
+
+    if (distance < bestDistance) {
+      bestBlob = blob;
+      bestQuality = quality;
+      bestDistance = distance;
+    }
+
+    if (blob.size > targetBytes) {
+      high = quality;
+    } else {
+      low = quality;
+    }
+  }
+
+  return { blob: bestBlob, quality: bestQuality };
+}
+
 async function loadFile(file) {
   if (!file || !file.type.startsWith("image/")) {
     setStatus("Please choose a JPG, PNG, or WebP image.");
@@ -110,6 +181,7 @@ async function loadFile(file) {
   const preferredFormat = file.type === "image/png" || file.type === "image/webp" ? file.type : "image/jpeg";
   formatSelect.value = preferredFormat;
   enableControls(true);
+  syncTargetControls();
   setStatus(`Loaded ${file.name}. Adjust the size or choose a preset.`);
   await updatePreview();
 }
@@ -169,6 +241,7 @@ heightInput.addEventListener("input", () => {
 [formatSelect, qualityInput].forEach((control) => {
   control.addEventListener("input", () => {
     qualityOutput.textContent = `${Math.round(Number(qualityInput.value) * 100)}%`;
+    syncTargetControls();
     updatePreview();
   });
 });
@@ -189,28 +262,38 @@ downloadBtn.addEventListener("click", () => {
   const mimeType = formatSelect.value;
   const quality = Number(qualityInput.value);
 
-  previewCanvas.toBlob(
-    (blob) => {
-      if (!blob) {
-        setStatus("The browser could not export this image.");
-        return;
-      }
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      const width = previewCanvas.width;
-      const height = previewCanvas.height;
-
-      link.href = url;
-      link.download = `${baseName(sourceFile.name)}-${width}x${height}.${extensionFor(mimeType)}`;
-      document.body.append(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(url);
+  exportCanvas(mimeType, quality)
+    .then((blob) => {
+      downloadBlob(blob, mimeType);
       setStatus(`Downloaded ${formatBytes(blob.size)} image.`);
-    },
-    mimeType,
-    quality,
-  );
+    })
+    .catch((error) => setStatus(error.message));
+});
+
+targetDownloadBtn.addEventListener("click", async () => {
+  if (!sourceImage || !sourceFile) return;
+
+  const targetKb = Number(targetSizeInput.value);
+  if (!targetKb || targetKb < 10) {
+    setStatus("Enter a target size of at least 10 KB.");
+    return;
+  }
+
+  drawPreview();
+  const mimeType = formatSelect.value;
+  targetDownloadBtn.disabled = true;
+
+  try {
+    const { blob, quality } = await exportNearTarget(mimeType, targetKb * 1024);
+    qualityInput.value = quality.toFixed(2);
+    qualityOutput.textContent = `${Math.round(quality * 100)}%`;
+    downloadBlob(blob, mimeType, `target-${targetKb}kb`);
+    setStatus(`Downloaded a ${formatBytes(blob.size)} image, the closest available result to your ${targetKb} KB target.`);
+  } catch (error) {
+    setStatus(error.message);
+  } finally {
+    syncTargetControls();
+  }
 });
 
 resetBtn.addEventListener("click", () => {
@@ -220,7 +303,9 @@ resetBtn.addEventListener("click", () => {
   heightInput.value = sourceImage.naturalHeight;
   lockRatioInput.checked = true;
   qualityInput.value = "0.82";
+  targetSizeInput.value = "";
   qualityOutput.textContent = "82%";
+  syncTargetControls();
   updatePreview();
   setStatus("Reset to original dimensions.");
 });

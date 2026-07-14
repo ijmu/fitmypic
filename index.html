@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FitMyPic - Free Online Image Resizer and Compressor</title>
+    <title>Free Image Resizer &amp; Compressor Online | FitMyPic</title>
     <meta
       name="description"
-      content="Resize, compress, and convert JPG, PNG, and WebP images in your browser. FitMyPic is a free online image resizer with social media presets and local file processing."
+      content="Resize, compress, and convert JPG, PNG, or WebP images free online. Use exact dimensions, social presets, or a target file size in your browser."
     />
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href="https://www.fitmypic.com/" />
@@ -18,6 +18,19 @@
     ></script>
     <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "FitMyPic",
+        "url": "https://www.fitmypic.com/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any modern web browser",
+        "description": "A free browser-based image resizer, compressor, and format converter.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": ["Image resizing", "Image compression", "JPG, PNG, and WebP conversion", "Social media size presets", "Target file size export", "Local browser processing"]
+      }
+    </script>
   </head>
   <body>
     <header class="topbar">
@@ -38,10 +51,15 @@
       <section class="hero">
         <div class="hero-copy">
           <p class="eyebrow">RESIZE &middot; COMPRESS &middot; CONVERT</p>
-          <h1>Resize and compress images online</h1>
+          <h1>Free image resizer and compressor</h1>
           <p>
             Set exact dimensions, use a ready-made preset, or compress toward a target file size. JPG, PNG, and WebP processing stays on this device during normal use.
           </p>
+          <div class="task-links" aria-label="Choose an image task">
+            <a href="#tool">Resize an image</a>
+            <a href="#tool">Compress to target KB</a>
+            <a href="#presets">Use social presets</a>
+          </div>
           <ul class="hero-facts" aria-label="Tool benefits">
             <li>Browser-local</li>
             <li>No account</li>
@@ -62,11 +80,11 @@
 
         <div class="tool-grid">
           <div>
-            <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose or drop an image">
+            <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose, drop, or paste an image">
               <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" />
               <div class="drop-icon">+</div>
               <p>Choose an image</p>
-              <span>or drop it here &middot; JPG, PNG, or WebP &middot; Processed locally</span>
+              <span>JPG, PNG, or WebP &middot; Drop here or paste with Ctrl+V</span>
             </div>
 
             <div class="settings-grid" aria-label="Image settings">

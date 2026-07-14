@@ -225,6 +225,30 @@ dd {
   padding-left: 0;
 }
 
+.task-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.task-links a {
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  color: var(--accent-dark);
+  font-size: 0.9rem;
+  font-weight: 800;
+  padding: 10px 14px;
+  text-decoration: none;
+}
+
+.task-links a:hover,
+.task-links a:focus-visible {
+  background: var(--soft);
+  border-color: var(--accent);
+}
+
 .tool-shell,
 .content-grid {
   margin-top: 28px;

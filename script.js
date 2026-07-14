@@ -214,6 +214,14 @@ function bindDropzone() {
   });
 }
 
+window.addEventListener("paste", (event) => {
+  const imageItem = Array.from(event.clipboardData?.items || []).find((item) => item.type.startsWith("image/"));
+  const file = imageItem?.getAsFile();
+  if (!file) return;
+  event.preventDefault();
+  loadFile(file).catch((error) => setStatus(`Pasted image loading failed: ${error.message}`));
+});
+
 widthInput.addEventListener("input", () => {
   if (!sourceImage) return;
 

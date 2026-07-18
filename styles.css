@@ -65,6 +65,15 @@ summary:focus-visible,
   text-decoration: none;
 }
 
+.brand small {
+  border-left: 1px solid var(--line-strong);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 650;
+  margin-left: 2px;
+  padding-left: 12px;
+}
+
 .brand-mark {
   align-items: center;
   background: var(--accent);
@@ -147,8 +156,8 @@ main {
 }
 
 .hero {
-  max-width: 900px;
-  padding: 42px 0 18px;
+  max-width: 980px;
+  padding: 48px 0 22px;
 }
 
 .hero-copy {
@@ -171,11 +180,59 @@ p {
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: 3.35rem;
   letter-spacing: 0;
   line-height: 1.05;
   margin-bottom: 14px;
   max-width: 900px;
+}
+
+.process-rail {
+  background: #17243a;
+  border: 1px solid #17243a;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 8px 0 30px;
+  padding: 0;
+}
+
+.process-rail li {
+  align-items: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+  display: grid;
+  gap: 2px 12px;
+  grid-template-columns: 34px minmax(0, 1fr);
+  padding: 16px 20px;
+}
+
+.process-rail li:first-child {
+  border-left: 0;
+}
+
+.process-rail span {
+  align-items: center;
+  background: #70d7e7;
+  border-radius: 50%;
+  color: #17243a;
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 850;
+  grid-row: 1 / 3;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
+}
+
+.process-rail strong {
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.process-rail small {
+  color: #bdcadb;
+  font-size: 0.76rem;
 }
 
 h2 {
@@ -258,9 +315,13 @@ dd {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 20px 50px rgba(20, 32, 51, 0.08);
   padding: 32px;
   position: relative;
+}
+
+#tool {
+  border-top: 4px solid var(--accent);
 }
 
 #tool {
@@ -323,13 +384,21 @@ dd {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 190px;
+  min-height: 210px;
   padding: 24px;
   text-align: center;
   transition:
     background 160ms ease,
     border-color 160ms ease,
     box-shadow 160ms ease;
+}
+
+.dropzone::after {
+  color: var(--accent-dark);
+  content: "Private browser processing";
+  font-size: 0.72rem;
+  font-weight: 750;
+  margin-top: 12px;
 }
 
 .dropzone.dragover,
@@ -349,7 +418,7 @@ dd {
   align-items: center;
   background: var(--soft);
   border: 1px solid #b8d5de;
-  border-radius: 8px;
+  border-radius: 50%;
   color: var(--accent-dark);
   display: inline-flex;
   font-size: 1.7rem;
@@ -486,6 +555,14 @@ button:disabled {
   min-width: 0;
 }
 
+.preview-stage {
+  background: #e9eef4;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
 .preview-panel canvas {
   aspect-ratio: 4 / 3;
   background:
@@ -500,13 +577,54 @@ button:disabled {
     10px -10px,
     -10px 0;
   background-size: 20px 20px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  border: 0;
+  border-radius: 0;
   display: block;
   max-height: 620px;
   max-width: 100%;
   object-fit: contain;
   width: 100%;
+}
+
+.preview-empty {
+  align-items: center;
+  background: rgba(248, 250, 252, 0.92);
+  display: flex;
+  flex-direction: column;
+  inset: 18px;
+  justify-content: center;
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+}
+
+.preview-empty[hidden] {
+  display: none;
+}
+
+.preview-empty strong {
+  color: var(--ink);
+  font-size: 0.95rem;
+  margin-top: 12px;
+}
+
+.preview-empty small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-top: 5px;
+}
+
+.preview-symbol {
+  align-items: center;
+  background: #17243a;
+  border-radius: 6px;
+  color: #70d7e7;
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 900;
+  height: 44px;
+  justify-content: center;
+  width: 52px;
 }
 
 .meta-grid {
@@ -700,6 +818,19 @@ footer span {
     grid-template-columns: 1fr;
   }
 
+  .process-rail {
+    grid-template-columns: 1fr;
+  }
+
+  .process-rail li {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .process-rail li:first-child {
+    border-top: 0;
+  }
+
   .detail-list div {
     grid-template-columns: 1fr;
   }
@@ -737,6 +868,14 @@ footer span {
 
   h1 {
     font-size: 2.35rem;
+  }
+
+  .brand small {
+    display: none;
+  }
+
+  .process-rail li {
+    padding: 13px 16px;
   }
 
   .hero-facts li {

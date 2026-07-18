@@ -14,6 +14,7 @@ const statusBox = document.querySelector("#status");
 const previewCanvas = document.querySelector("#previewCanvas");
 const originalMeta = document.querySelector("#originalMeta");
 const outputMeta = document.querySelector("#outputMeta");
+const previewEmpty = document.querySelector("#previewEmpty");
 const presetButtons = document.querySelectorAll(".preset");
 
 const ctx = previewCanvas.getContext("2d");
@@ -177,6 +178,7 @@ async function loadFile(file) {
   widthInput.value = sourceImage.naturalWidth;
   heightInput.value = sourceImage.naturalHeight;
   originalMeta.textContent = `${sourceImage.naturalWidth} x ${sourceImage.naturalHeight}, ${formatBytes(file.size)}`;
+  previewEmpty.hidden = true;
 
   const preferredFormat = file.type === "image/png" || file.type === "image/webp" ? file.type : "image/jpeg";
   formatSelect.value = preferredFormat;

@@ -37,6 +37,7 @@
       <a class="brand" href="./" aria-label="FitMyPic home">
         <img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" />
         <span>FitMyPic</span>
+        <small>Image workspace</small>
       </a>
       <nav aria-label="Primary navigation">
         <a href="#tool">Tool</a>
@@ -67,6 +68,12 @@
           </ul>
         </div>
       </section>
+
+      <ol class="process-rail" aria-label="How the image tool works">
+        <li><span>1</span><strong>Upload</strong><small>JPG, PNG, or WebP</small></li>
+        <li><span>2</span><strong>Fine-tune</strong><small>Dimensions, quality, format</small></li>
+        <li><span>3</span><strong>Export</strong><small>Download your image</small></li>
+      </ol>
 
       <section id="tool" class="tool-shell" aria-labelledby="tool-title">
         <div class="section-head">
@@ -139,7 +146,14 @@
           </div>
 
           <div class="preview-panel">
-            <canvas id="previewCanvas" width="800" height="520" aria-label="Image preview"></canvas>
+            <div class="preview-stage">
+              <canvas id="previewCanvas" width="800" height="520" aria-label="Image preview"></canvas>
+              <div id="previewEmpty" class="preview-empty" aria-hidden="true">
+                <span class="preview-symbol">PX</span>
+                <strong>Your image preview appears here</strong>
+                <small>Original and output details update automatically</small>
+              </div>
+            </div>
             <dl class="meta-grid">
               <div>
                 <dt>Original</dt>

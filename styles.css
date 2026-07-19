@@ -1392,3 +1392,92 @@ output { color: #475467; display: inline-block; font-size: 0.82rem; text-align: 
 
 @media (hover: none) { .dropzone:hover { background: #f8fafc; border-color: #aab5c5; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; } }
+
+/* 2026 Pro Workspace: the application is the homepage. */
+body { background: #f5f5f7; }
+.workspace-page { max-width: 1280px; padding: 28px 24px 88px; }
+.app-workspace { border-color: #d7d7dc; box-shadow: 0 18px 48px rgba(22, 29, 38, 0.08); }
+.app-workspace > .workspace-head {
+  align-items: center;
+  background: #f5f5f7;
+  border-bottom: 1px solid #d7d7dc;
+  display: flex;
+  justify-content: space-between;
+  max-width: none;
+  min-height: 92px;
+  padding: 20px 24px;
+}
+.workspace-title { min-width: 0; }
+.workspace-title h1 {
+  color: #1d1d1f;
+  font-size: 1.85rem;
+  line-height: 1.12;
+  margin: 0;
+  text-align: left;
+}
+.workspace-title p { color: #6e6e73; font-size: 0.86rem; line-height: 1.45; margin: 6px 0 0; }
+.workspace-facts { display: flex; flex: 0 0 auto; list-style: none; margin: 0 0 0 24px; padding: 0; }
+.workspace-facts li { color: #6e6e73; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+.workspace-facts li + li::before { background: #c7c7cc; content: ""; display: inline-block; height: 11px; margin: 0 10px -1px; width: 1px; }
+.app-workspace .tool-grid { grid-template-columns: 360px minmax(0, 1fr); min-height: 690px; }
+.app-workspace .app-sidebar {
+  background: rgba(242, 242, 247, 0.92);
+  border-right-color: #d7d7dc;
+  padding: 20px 18px;
+}
+.app-workspace .app-canvas { background: #ececef; padding: 18px; }
+.app-workspace .dropzone {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: #b8b8bf;
+  min-height: 126px;
+}
+.app-workspace .dropzone:hover,
+.app-workspace .dropzone:focus-visible,
+.app-workspace .dropzone.dragover { background: #fff; }
+.app-workspace .control-section { border-top-color: #d7d7dc; margin-top: 16px; padding-top: 15px; }
+.app-workspace .settings-grid { gap: 10px; }
+.app-workspace input[type="number"],
+.app-workspace select,
+.app-workspace .check-row { background-color: rgba(255, 255, 255, 0.82); }
+.app-workspace .preset-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.app-workspace .preset { background: rgba(255, 255, 255, 0.72); }
+.app-workspace .status { background: rgba(255, 255, 255, 0.72); border-color: #d7d7dc; }
+.app-workspace .preview-toolbar {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid #d5d5da;
+  border-radius: 8px 8px 0 0;
+  margin: 0;
+  min-height: 44px;
+  padding: 0 12px;
+}
+.app-workspace .preview-stage {
+  background-color: #fff;
+  border-color: #d5d5da;
+  border-radius: 0;
+  border-top: 0;
+  min-height: 510px;
+}
+.app-workspace .preview-empty { inset: 18px; position: absolute; }
+.app-workspace .meta-grid { background: #fff; border: 1px solid #d5d5da; border-radius: 0 0 8px 8px; border-top: 0; gap: 0; margin: 0; }
+.app-workspace .meta-grid div { border: 0; border-left: 1px solid #e5e5e7; border-radius: 0; padding: 13px; }
+.app-workspace .meta-grid div:first-child { border-left: 0; }
+.app-workspace button { transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 120ms cubic-bezier(0.23, 1, 0.32, 1); }
+.app-workspace button:not(:disabled):active { transform: scale(0.98); }
+
+@media (max-width: 900px) {
+  .workspace-page { padding-top: 20px; }
+  .app-workspace > .workspace-head { align-items: flex-start; flex-direction: column; }
+  .workspace-facts { margin: 14px 0 0; }
+  .app-workspace .tool-grid { grid-template-columns: 1fr; }
+  .app-workspace .app-sidebar { border-bottom: 1px solid #d7d7dc; border-right: 0; }
+}
+@media (max-width: 640px) {
+  .workspace-page { padding: 14px 12px 64px; }
+  .app-workspace > .workspace-head { min-height: 0; padding: 18px 16px; }
+  .workspace-title h1 { font-size: 1.55rem; }
+  .workspace-facts { overflow-x: auto; width: 100%; }
+  .workspace-facts li { font-size: 0.7rem; }
+  .app-workspace .app-sidebar,
+  .app-workspace .app-canvas { padding: 16px; }
+  .app-workspace .preview-stage { min-height: 300px; }
+}

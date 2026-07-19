@@ -47,27 +47,16 @@
       </nav>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-copy">
-          <h1>Resize and compress images</h1>
-          <p>Set exact dimensions, crop the frame, rotate or flip the image, and export JPG, PNG, or WebP. The result and real file size appear before download.</p>
-          <ul class="hero-facts" aria-label="Tool benefits">
-            <li>Free to use</li>
-            <li>No sign-up</li>
-            <li>Files stay local</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="tool" class="tool-shell" aria-labelledby="tool-title">
-        <div class="section-head">
-          <h2 id="tool-title">Image Resizer and Compressor</h2>
-          <p>Choose an image, adjust it on the left, and inspect the generated result on the right.</p>
+    <main class="workspace-page">
+      <section id="tool" class="tool-shell app-workspace" aria-labelledby="tool-title">
+        <div class="section-head workspace-head">
+          <div class="workspace-title"><h1 id="tool-title">Image workspace</h1>
+          <p>Resize, crop, compress, and verify the real output dimensions and file size before downloading.</p></div>
+          <ul class="workspace-facts" aria-label="Tool benefits"><li>Free</li><li>No account</li><li>Local processing</li></ul>
         </div>
 
         <div class="tool-grid">
-          <div class="control-panel">
+          <div class="control-panel app-sidebar">
             <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose, drop, or paste an image">
               <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" />
               <div class="drop-icon">+</div>
@@ -124,7 +113,7 @@
             <div id="status" class="status" role="status">Choose an image to start.</div>
           </div>
 
-          <div class="preview-panel">
+          <div class="preview-panel app-canvas">
             <div class="preview-toolbar">
               <div class="segmented-control" role="group" aria-label="Preview image">
                 <button id="resultPreviewBtn" type="button" class="segment is-active" aria-pressed="true">Result</button>

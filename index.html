@@ -28,7 +28,7 @@
         "operatingSystem": "Any modern web browser",
         "description": "A free browser-based image resizer, compressor, and format converter.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "featureList": ["Image resizing", "Image compression", "JPG, PNG, and WebP conversion", "Original and result comparison", "Measured output file size", "Social media size presets", "Target file size export", "Local browser processing"]
+        "featureList": ["High-quality image resizing", "Image compression", "Centered crop ratios", "Rotate and flip controls", "JPG, PNG, and WebP conversion", "Original and result comparison", "Measured output file size", "Social media size presets", "Target file size export", "Local browser processing"]
       }
     </script>
   </head>
@@ -37,7 +37,6 @@
       <a class="brand" href="./" aria-label="FitMyPic home">
         <img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" />
         <span>FitMyPic</span>
-        <small>Private image tools</small>
       </a>
       <nav aria-label="Primary navigation">
         <a href="#tool">Tool</a>
@@ -51,18 +50,11 @@
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Private, browser-based image tools</p>
-          <h1>Make the image fit. See exactly what changed.</h1>
-          <p>
-            Resize, compress, and convert JPG, PNG, or WebP files. Compare the original with the result and check the measured output size before downloading.
-          </p>
-          <div class="task-links" aria-label="Choose an image task">
-            <a href="#tool">Open image tool</a>
-            <a href="#presets">Browse size presets</a>
-          </div>
+          <h1>Resize and compress images</h1>
+          <p>Set exact dimensions, crop the frame, rotate or flip the image, and export JPG, PNG, or WebP. The result and real file size appear before download.</p>
           <ul class="hero-facts" aria-label="Tool benefits">
-            <li>Measured output size</li>
-            <li>No account</li>
+            <li>Free to use</li>
+            <li>No sign-up</li>
             <li>Files stay local</li>
           </ul>
         </div>
@@ -70,16 +62,12 @@
 
       <section id="tool" class="tool-shell" aria-labelledby="tool-title">
         <div class="section-head">
-          <div class="section-kicker-row">
-            <p class="eyebrow">IMAGE TOOL</p>
-            <span class="feature-badge">Target KB available</span>
-          </div>
           <h2 id="tool-title">Image Resizer and Compressor</h2>
-          <p>Upload one image, choose the dimensions and format, then inspect the real browser-generated result before downloading.</p>
+          <p>Choose an image, adjust it on the left, and inspect the generated result on the right.</p>
         </div>
 
         <div class="tool-grid">
-          <div>
+          <div class="control-panel">
             <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose, drop, or paste an image">
               <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" />
               <div class="drop-icon">+</div>
@@ -87,37 +75,33 @@
               <span>JPG, PNG, or WebP &middot; Drop here or paste with Ctrl+V</span>
             </div>
 
-            <div class="settings-grid" aria-label="Image settings">
-              <label>
-                Width
-                <input id="widthInput" type="number" min="1" placeholder="Width" disabled />
-              </label>
-              <label>
-                Height
-                <input id="heightInput" type="number" min="1" placeholder="Height" disabled />
-              </label>
-              <label class="check-row">
-                <input id="lockRatioInput" type="checkbox" checked disabled />
-                Keep aspect ratio
-              </label>
-              <label>
-                Output format
-                <select id="formatSelect" disabled>
-                  <option value="image/jpeg">JPG</option>
-                  <option value="image/png">PNG</option>
-                  <option value="image/webp">WebP</option>
-                </select>
-              </label>
-              <label>
-                Quality
-                <input id="qualityInput" type="range" min="0.35" max="1" step="0.05" value="0.82" disabled />
-                <output id="qualityOutput">82%</output>
-              </label>
-              <label>
-                Target size (KB)
-                <input id="targetSizeInput" type="number" min="10" step="10" placeholder="Optional" disabled />
-                <span class="field-help">Available for JPG and WebP output</span>
-              </label>
+            <div class="control-section">
+              <div class="control-section-head">
+                <strong>Size and crop</strong>
+                <button id="resetTransformBtn" type="button" class="text-action" disabled>Reset edits</button>
+              </div>
+              <div class="settings-grid" aria-label="Image settings">
+                <label>Width<input id="widthInput" type="number" min="1" placeholder="Width" disabled /></label>
+                <label>Height<input id="heightInput" type="number" min="1" placeholder="Height" disabled /></label>
+                <label class="check-row"><input id="lockRatioInput" type="checkbox" checked disabled />Keep aspect ratio</label>
+                <label>Crop ratio<select id="cropRatioSelect" disabled><option value="original">Original</option><option value="1:1">Square 1:1</option><option value="4:5">Portrait 4:5</option><option value="16:9">Landscape 16:9</option></select></label>
+                <label>Image fit<select id="fitModeSelect" disabled><option value="cover">Fill frame</option><option value="contain">Fit inside</option><option value="stretch">Stretch</option></select></label>
+              </div>
+              <div class="transform-actions" aria-label="Transform image">
+                <button id="rotateLeftBtn" type="button" class="icon-action" title="Rotate left" disabled aria-label="Rotate left">&#8634;</button>
+                <button id="rotateRightBtn" type="button" class="icon-action" title="Rotate right" disabled aria-label="Rotate right">&#8635;</button>
+                <button id="flipHorizontalBtn" type="button" class="icon-action" title="Flip horizontally" disabled aria-label="Flip horizontally">&#8596;</button>
+                <button id="flipVerticalBtn" type="button" class="icon-action" title="Flip vertically" disabled aria-label="Flip vertically">&#8597;</button>
+              </div>
+            </div>
+
+            <div class="control-section">
+              <strong class="control-section-title">Export</strong>
+              <div class="settings-grid export-settings" aria-label="Export settings">
+                <label>Output format<select id="formatSelect" disabled><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></label>
+                <label>Quality<input id="qualityInput" type="range" min="0.35" max="1" step="0.05" value="0.82" disabled /><output id="qualityOutput">82%</output></label>
+                <label class="target-field">Target size (KB)<input id="targetSizeInput" type="number" min="10" step="10" placeholder="Optional" disabled /><span class="field-help">For JPG and WebP output</span></label>
+              </div>
             </div>
 
             <p class="control-label">Quick sizes</p>
@@ -131,10 +115,12 @@
             </div>
 
             <div class="actions">
-              <button id="downloadBtn" type="button" disabled>Download optimized image</button>
-              <button id="targetDownloadBtn" type="button" class="secondary" disabled>Download near target</button>
-              <button id="resetBtn" type="button" class="secondary" disabled>Reset</button>
+              <button id="downloadBtn" type="button" disabled>Download image</button>
+              <button id="targetDownloadBtn" type="button" class="secondary target-action" hidden disabled>Download near target</button>
+              <button id="cancelBtn" type="button" class="secondary" hidden>Cancel processing</button>
+              <button id="resetBtn" type="button" class="secondary" disabled>Start over</button>
             </div>
+            <progress id="progressBar" class="progress-bar" max="100" value="0" hidden>0%</progress>
             <div id="status" class="status" role="status">Choose an image to start.</div>
           </div>
 
@@ -149,21 +135,11 @@
             <div class="preview-stage">
               <canvas id="previewCanvas" width="800" height="520" aria-label="Image preview"></canvas>
               <canvas id="originalCanvas" class="is-hidden" width="800" height="520" aria-label="Original image preview"></canvas>
-              <div id="previewEmpty" class="preview-empty" aria-hidden="true">
-                <span class="preview-symbol">PX</span>
-                <strong>Your image preview appears here</strong>
-                <small>Original and result can be compared after selection</small>
-              </div>
+              <div id="previewEmpty" class="preview-empty" aria-hidden="true"><span class="preview-symbol">PX</span><strong>Your image preview appears here</strong><small>Original and result can be compared after selection</small></div>
             </div>
             <dl class="meta-grid">
-              <div>
-                <dt>Original</dt>
-                <dd id="originalMeta">-</dd>
-              </div>
-              <div>
-                <dt>Output</dt>
-                <dd id="outputMeta">-</dd>
-              </div>
+              <div><dt>Original</dt><dd id="originalMeta">-</dd></div>
+              <div><dt>Output</dt><dd id="outputMeta">-</dd></div>
             </dl>
           </div>
         </div>
@@ -319,7 +295,7 @@
       <a href="./terms.html">Terms</a>
     </footer>
 
-    <script src="./script.js"></script>
+    <script type="module" src="./src/main.ts"></script>
 </body>
 </html>
 

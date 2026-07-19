@@ -218,13 +218,13 @@ function setPreviewMode(mode: "result" | "original"): void {
 function baseName(name: string): string { return name.replace(/\.[^.]+$/, "") || "image"; }
 function extensionFor(type: string): string { return type === "image/png" ? "png" : type === "image/webp" ? "webp" : "jpg"; }
 
-function downloadBlob(blob: Blob, label = ""): void {
+function downloadBlob(blob: Blob, label = "", width = previewCanvas.width, height = previewCanvas.height): void {
   if (!sourceFile) return;
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   const suffix = label ? `-${label}` : "";
   link.href = url;
-  link.download = `${baseName(sourceFile.name)}-${previewCanvas.width}x${previewCanvas.height}${suffix}.${extensionFor(formatSelect.value)}`;
+  link.download = `${baseName(sourceFile.name)}-${width}x${height}${suffix}.${extensionFor(formatSelect.value)}`;
   document.body.append(link);
   link.click();
   link.remove();
@@ -353,6 +353,7 @@ presetButtons.forEach((button) => button.addEventListener("click", () => {
 
 downloadBtn.addEventListener("click", async () => {
   if (!sourceImage) return;
+  window.clearTimeout(scheduledUpdate);
   const token = ++renderToken;
   setBusy(true, 15);
   setStatus("Preparing your image...");
@@ -362,7 +363,7 @@ downloadBtn.addEventListener("click", async () => {
     const blob = await canvasBlob(canvas, formatSelect.value, Number(qualityInput.value));
     if (token !== renderToken) return;
     progressBar.value = 100;
-    downloadBlob(blob);
+    downloadBlob(blob, "", canvas.width, canvas.height);
     setStatus(`Downloaded ${formatBytes(blob.size)} image.`);
   } catch (error) {
     if (!(error instanceof DOMException && error.name === "AbortError")) setStatus(error instanceof Error ? error.message : "Export failed.");
@@ -372,6 +373,7 @@ downloadBtn.addEventListener("click", async () => {
 targetDownloadBtn.addEventListener("click", async () => {
   if (!sourceImage) return;
   const targetKb = Number(targetSizeInput.value);
+  window.clearTimeout(scheduledUpdate);
   const token = ++renderToken;
   setBusy(true, 10);
   setStatus(`Finding the closest result to ${targetKb} KB...`);
@@ -381,7 +383,7 @@ targetDownloadBtn.addEventListener("click", async () => {
     const result = await exportNearTarget(canvas, targetKb * 1024, token);
     qualityInput.value = result.quality.toFixed(2);
     qualityOutput.textContent = `${Math.round(result.quality * 100)}%`;
-    downloadBlob(result.blob, `target-${targetKb}kb`);
+    downloadBlob(result.blob, `target-${targetKb}kb`, canvas.width, canvas.height);
     setStatus(`Downloaded ${formatBytes(result.blob.size)}, the closest browser result to ${targetKb} KB.`);
   } catch (error) {
     if (!(error instanceof DOMException && error.name === "AbortError")) setStatus(error instanceof Error ? error.message : "Target export failed.");

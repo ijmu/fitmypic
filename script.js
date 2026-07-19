@@ -12,17 +12,23 @@ const targetDownloadBtn = document.querySelector("#targetDownloadBtn");
 const resetBtn = document.querySelector("#resetBtn");
 const statusBox = document.querySelector("#status");
 const previewCanvas = document.querySelector("#previewCanvas");
+const originalCanvas = document.querySelector("#originalCanvas");
+const resultPreviewBtn = document.querySelector("#resultPreviewBtn");
+const originalPreviewBtn = document.querySelector("#originalPreviewBtn");
+const previewMeasure = document.querySelector("#previewMeasure");
 const originalMeta = document.querySelector("#originalMeta");
 const outputMeta = document.querySelector("#outputMeta");
 const previewEmpty = document.querySelector("#previewEmpty");
 const presetButtons = document.querySelectorAll(".preset");
 
 const ctx = previewCanvas.getContext("2d");
+const originalCtx = originalCanvas.getContext("2d");
 
 let sourceImage = null;
 let sourceFile = null;
 let sourceRatio = 1;
 let activeDimension = null;
+let previewSequence = 0;
 
 function formatBytes(bytes) {
   if (!bytes) return "-";
@@ -46,7 +52,7 @@ function extensionFor(mimeType) {
 }
 
 function enableControls(enabled) {
-  [widthInput, heightInput, lockRatioInput, formatSelect, qualityInput, targetSizeInput, downloadBtn, targetDownloadBtn, resetBtn].forEach((control) => {
+  [widthInput, heightInput, lockRatioInput, formatSelect, qualityInput, targetSizeInput, downloadBtn, targetDownloadBtn, resetBtn, resultPreviewBtn, originalPreviewBtn].forEach((control) => {
     control.disabled = !enabled;
   });
 
@@ -95,11 +101,35 @@ function drawPreview() {
   }
 
   ctx.drawImage(sourceImage, 0, 0, width, height);
-  outputMeta.textContent = `${width} x ${height}, ${formatSelect.options[formatSelect.selectedIndex].text}, quality ${Math.round(Number(qualityInput.value) * 100)}%`;
 }
 
 async function updatePreview() {
   drawPreview();
+  const sequence = ++previewSequence;
+  const mimeType = formatSelect.value;
+  const quality = Number(qualityInput.value);
+
+  try {
+    const blob = await exportCanvas(mimeType, quality);
+    if (sequence !== previewSequence || !sourceFile) return;
+
+    const savings = Math.round((1 - blob.size / sourceFile.size) * 100);
+    const savingsLabel = savings > 0 ? `${savings}% smaller` : savings < 0 ? `${Math.abs(savings)}% larger` : "same file size";
+    outputMeta.textContent = `${previewCanvas.width} x ${previewCanvas.height}, ${formatSelect.options[formatSelect.selectedIndex].text}, ${formatBytes(blob.size)}`;
+    previewMeasure.textContent = `${formatBytes(blob.size)} · ${savingsLabel}`;
+  } catch {
+    if (sequence === previewSequence) previewMeasure.textContent = "Output measurement unavailable";
+  }
+}
+
+function setPreviewMode(mode) {
+  const showOriginal = mode === "original";
+  originalCanvas.classList.toggle("is-hidden", !showOriginal);
+  previewCanvas.classList.toggle("is-hidden", showOriginal);
+  originalPreviewBtn.classList.toggle("is-active", showOriginal);
+  resultPreviewBtn.classList.toggle("is-active", !showOriginal);
+  originalPreviewBtn.setAttribute("aria-pressed", String(showOriginal));
+  resultPreviewBtn.setAttribute("aria-pressed", String(!showOriginal));
 }
 
 function exportCanvas(mimeType, quality) {
@@ -178,6 +208,10 @@ async function loadFile(file) {
   widthInput.value = sourceImage.naturalWidth;
   heightInput.value = sourceImage.naturalHeight;
   originalMeta.textContent = `${sourceImage.naturalWidth} x ${sourceImage.naturalHeight}, ${formatBytes(file.size)}`;
+  originalCanvas.width = sourceImage.naturalWidth;
+  originalCanvas.height = sourceImage.naturalHeight;
+  originalCtx.clearRect(0, 0, originalCanvas.width, originalCanvas.height);
+  originalCtx.drawImage(sourceImage, 0, 0);
   previewEmpty.hidden = true;
 
   const preferredFormat = file.type === "image/png" || file.type === "image/webp" ? file.type : "image/jpeg";
@@ -185,6 +219,7 @@ async function loadFile(file) {
   enableControls(true);
   syncTargetControls();
   setStatus(`Loaded ${file.name}. Adjust the size or choose a preset.`);
+  setPreviewMode("result");
   await updatePreview();
 }
 
@@ -265,6 +300,9 @@ presetButtons.forEach((button) => {
   });
 });
 
+resultPreviewBtn.addEventListener("click", () => setPreviewMode("result"));
+originalPreviewBtn.addEventListener("click", () => setPreviewMode("original"));
+
 downloadBtn.addEventListener("click", () => {
   if (!sourceImage || !sourceFile) return;
 
@@ -297,6 +335,7 @@ targetDownloadBtn.addEventListener("click", async () => {
     const { blob, quality } = await exportNearTarget(mimeType, targetKb * 1024);
     qualityInput.value = quality.toFixed(2);
     qualityOutput.textContent = `${Math.round(quality * 100)}%`;
+    await updatePreview();
     downloadBlob(blob, mimeType, `target-${targetKb}kb`);
     setStatus(`Downloaded a ${formatBytes(blob.size)} image, the closest available result to your ${targetKb} KB target.`);
   } catch (error) {

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How FitMyPic Tests Image Output</title>
+    <meta name="description" content="See how FitMyPic checks image dimensions, format encoding, file size measurements, transparency, and target-size exports in the browser." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://www.fitmypic.com/image-output-testing.html" />
+    <link rel="alternate" hreflang="en" href="https://www.fitmypic.com/image-output-testing.html" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002" crossorigin="anonymous"></script>
+    <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <nav aria-label="Primary navigation"><a href="./#tool">Tool</a><a href="./image-resizer.html">Resize guide</a><a href="./about.html">About</a><a href="./privacy.html">Privacy</a></nav>
+    </header>
+    <main class="page article-page">
+      <p class="eyebrow">Testing notes</p>
+      <h1>How FitMyPic Tests Image Output</h1>
+      <section>
+        <h2>Why publish a test method?</h2>
+        <p>An image tool should make results that can be checked, not just display a success message. FitMyPic reports dimensions and output size from the browser-generated file. This page explains what is checked before changes are published and what the numbers on the tool mean.</p>
+        <p>The checks focus on tasks users can verify themselves: whether the downloaded image opens, whether its pixel dimensions match the selected values, whether the chosen format is used, and whether the measured byte size agrees with the downloaded file.</p>
+      </section>
+      <section>
+        <h2>Core test matrix</h2>
+        <table>
+          <thead><tr><th>Input</th><th>Operation</th><th>Expected result</th></tr></thead>
+          <tbody>
+            <tr><td>Large JPG photo</td><td>Resize with aspect ratio locked</td><td>Width and height change proportionally; JPG downloads and opens.</td></tr>
+            <tr><td>Transparent PNG</td><td>Resize and keep PNG output</td><td>Dimensions change while transparent pixels remain transparent.</td></tr>
+            <tr><td>WebP image</td><td>Convert to JPG, PNG, and WebP</td><td>Each supported format downloads with the selected extension and dimensions.</td></tr>
+            <tr><td>JPG or WebP</td><td>Export near a target KB size</td><td>The browser tests multiple quality values and returns the closest result found within the supported range.</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h2>How file size is measured</h2>
+        <p>After drawing the selected image to a canvas at the requested dimensions, the browser encodes that canvas with <code>toBlob</code>. The resulting blob has a byte size. FitMyPic converts that byte count into KB or MB and compares it with the original file size. The result shown above the preview is based on the current browser output, not a universal compression estimate.</p>
+        <p>Different browsers can use different image encoders, so two browsers may create slightly different file sizes from the same source and quality setting. The downloaded image remains the authority: its dimensions, format, and actual stored size are what matter.</p>
+      </section>
+      <section>
+        <h2>How target-size export works</h2>
+        <p>For JPG and WebP, the tool performs a bounded search across quality values. It encodes several candidate files, compares each candidate with the requested byte target, and retains the closest result. It does not guarantee an exact number because image complexity, dimensions, browser encoding, and the minimum allowed quality all affect the smallest practical result.</p>
+        <p>PNG is excluded from target-size export because browser PNG output is normally lossless and does not respond to a JPG-style quality value. For a much smaller photographic file, JPG or WebP is usually the more appropriate output.</p>
+      </section>
+      <section>
+        <h2>Visual and interaction checks</h2>
+        <ul>
+          <li>Original and Result controls must switch previews without changing the export canvas.</li>
+          <li>Keyboard focus must remain visible on upload, inputs, presets, and download controls.</li>
+          <li>The tool must not create horizontal overflow at common mobile widths.</li>
+          <li>Reset must restore original dimensions and the default quality value.</li>
+          <li>Pasted images and files selected through the picker must follow the same processing path.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Known limits</h2>
+        <p>FitMyPic is a resizer and encoder, not a crop editor or professional color-management system. Entering an aspect ratio that differs from the original can stretch an image. Converting a transparent image to JPG replaces transparency with white. Very large images can consume substantial device memory, especially when both an original and a result preview are present.</p>
+        <p>Testing notes last reviewed in July 2026. Found a result that does not match this method? Use the <a href="./contact.html">contact page</a> and include the browser, input format, selected settings, and expected result without sending a private source image.</p>
+      </section>
+    </main>
+    <footer><span>&copy; 2026 FitMyPic</span><a href="./about.html">About</a><a href="./contact.html">Contact</a><a href="./privacy.html">Privacy Policy</a><a href="./terms.html">Terms</a></footer>
+  </body>
+</html>

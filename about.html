@@ -46,6 +46,16 @@
         <p>The browser-local workflow is useful when you only need a quick resize or compression result. You choose a file, adjust settings, preview the result, and download the output without creating an account.</p>
       </section>
       <section>
+        <h2>How results are produced and checked</h2>
+        <p>FitMyPic uses the browser's image decoder and canvas encoder. After a user changes dimensions, format, or quality, the tool redraws the selected image and creates an output blob in the chosen format. The displayed output size is measured from that blob rather than inferred from a generic percentage.</p>
+        <p>Before publishing changes, the main workflows are checked with real JPG, PNG, and WebP files on desktop and mobile-sized browsers. Checks cover loading, aspect-ratio controls, preview comparison, output dimensions, download naming, and local processing behavior.</p>
+      </section>
+      <section>
+        <h2>Editorial approach</h2>
+        <p>FitMyPic guides are maintained around tasks the tool can actually perform. They distinguish resizing, cropping, and compression; explain format limitations; and use concrete dimensions instead of promising a single setting that works everywhere. Corrections can be requested through the contact page.</p>
+        <p>Read the detailed <a href="./image-output-testing.html">image output testing method</a>. Last reviewed: July 2026.</p>
+      </section>
+      <section>
         <h2>Contact</h2>
         <p>Questions, feedback, and correction requests can be sent through the <a href="./contact.html">contact page</a>.</p>
       </section>

@@ -28,7 +28,7 @@
         "operatingSystem": "Any modern web browser",
         "description": "A free browser-based image resizer, compressor, and format converter.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "featureList": ["Image resizing", "Image compression", "JPG, PNG, and WebP conversion", "Social media size presets", "Target file size export", "Local browser processing"]
+        "featureList": ["Image resizing", "Image compression", "JPG, PNG, and WebP conversion", "Original and result comparison", "Measured output file size", "Social media size presets", "Target file size export", "Local browser processing"]
       }
     </script>
   </head>
@@ -37,7 +37,7 @@
       <a class="brand" href="./" aria-label="FitMyPic home">
         <img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" />
         <span>FitMyPic</span>
-        <small>Image workspace</small>
+        <small>Private image tools</small>
       </a>
       <nav aria-label="Primary navigation">
         <a href="#tool">Tool</a>
@@ -51,19 +51,19 @@
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">RESIZE &middot; COMPRESS &middot; CONVERT</p>
-          <h1>Resize, compress, and convert images</h1>
+          <p class="eyebrow">Private, browser-based image tools</p>
+          <h1>Make the image fit. See exactly what changed.</h1>
           <p>
-            Set exact dimensions, choose a practical preset, or aim for a target file size. Your image stays on this device.
+            Resize, compress, and convert JPG, PNG, or WebP files. Compare the original with the result and check the measured output size before downloading.
           </p>
           <div class="task-links" aria-label="Choose an image task">
             <a href="#tool">Open image tool</a>
             <a href="#presets">Browse size presets</a>
           </div>
           <ul class="hero-facts" aria-label="Tool benefits">
-            <li>Browser-local</li>
+            <li>Measured output size</li>
             <li>No account</li>
-            <li>JPG, PNG, WebP</li>
+            <li>Files stay local</li>
           </ul>
         </div>
       </section>
@@ -75,7 +75,7 @@
             <span class="feature-badge">Target KB available</span>
           </div>
           <h2 id="tool-title">Image Resizer and Compressor</h2>
-          <p>Upload an image, set the target size, choose an output format, and download the optimized result.</p>
+          <p>Upload one image, choose the dimensions and format, then inspect the real browser-generated result before downloading.</p>
         </div>
 
         <div class="tool-grid">
@@ -139,12 +139,20 @@
           </div>
 
           <div class="preview-panel">
+            <div class="preview-toolbar">
+              <div class="segmented-control" role="group" aria-label="Preview image">
+                <button id="resultPreviewBtn" type="button" class="segment is-active" aria-pressed="true">Result</button>
+                <button id="originalPreviewBtn" type="button" class="segment" aria-pressed="false">Original</button>
+              </div>
+              <span id="previewMeasure" class="preview-measure">Measured after processing</span>
+            </div>
             <div class="preview-stage">
               <canvas id="previewCanvas" width="800" height="520" aria-label="Image preview"></canvas>
+              <canvas id="originalCanvas" class="is-hidden" width="800" height="520" aria-label="Original image preview"></canvas>
               <div id="previewEmpty" class="preview-empty" aria-hidden="true">
                 <span class="preview-symbol">PX</span>
                 <strong>Your image preview appears here</strong>
-                <small>Original and output details update automatically</small>
+                <small>Original and result can be compared after selection</small>
               </div>
             </div>
             <dl class="meta-grid">
@@ -158,6 +166,31 @@
               </div>
             </dl>
           </div>
+        </div>
+      </section>
+
+      <section class="evidence-section" aria-labelledby="evidence-title">
+        <div class="section-head">
+          <p class="eyebrow">A result you can verify</p>
+          <h2 id="evidence-title">The preview is generated from your chosen settings</h2>
+          <p>FitMyPic does not display a generic savings claim. It renders the selected image in your browser, encodes the chosen format, and reports the resulting dimensions and file size.</p>
+        </div>
+        <div class="evidence-grid">
+          <article>
+            <span class="evidence-number">01</span>
+            <h3>Compare before and after</h3>
+            <p>Use the Original and Result control above the preview to check framing, sharpness, transparency, and color before saving.</p>
+          </article>
+          <article>
+            <span class="evidence-number">02</span>
+            <h3>Measure the encoded file</h3>
+            <p>The output size is calculated from the actual JPG, PNG, or WebP blob created by the browser, not from a fixed estimate.</p>
+          </article>
+          <article>
+            <span class="evidence-number">03</span>
+            <h3>Understand the tradeoff</h3>
+            <p>A smaller result can mean fewer pixels, stronger compression, or both. The comparison helps you decide whether the savings are worth the visual change.</p>
+          </article>
         </div>
       </section>
 
@@ -197,6 +230,20 @@
         </dl>
       </section>
 
+      <section class="decision-section" aria-labelledby="decision-title">
+        <div class="section-head">
+          <p class="eyebrow">Choose deliberately</p>
+          <h2 id="decision-title">Which output should you use?</h2>
+          <p>The best format depends on what the image contains and where it will be used.</p>
+        </div>
+        <div class="decision-table" role="table" aria-label="Image format comparison">
+          <div class="decision-row decision-head" role="row"><span role="columnheader">Output</span><span role="columnheader">Best for</span><span role="columnheader">Watch for</span></div>
+          <div class="decision-row" role="row"><strong role="cell">JPG</strong><span role="cell">Photos, marketplace uploads, email attachments</span><span role="cell">No transparency; repeated compression can soften detail</span></div>
+          <div class="decision-row" role="row"><strong role="cell">PNG</strong><span role="cell">Logos, screenshots, interface graphics, transparency</span><span role="cell">Photo files can be much larger</span></div>
+          <div class="decision-row" role="row"><strong role="cell">WebP</strong><span role="cell">Modern websites and smaller web delivery</span><span role="cell">Some older apps and upload forms may reject it</span></div>
+        </div>
+      </section>
+
       <section id="guides" class="content-grid" aria-labelledby="guides-title">
         <div class="section-head">
           <p class="eyebrow">Guides</p>
@@ -233,6 +280,10 @@
         <article>
           <h3><a href="./resize-without-losing-quality.html">Resize without losing quality</a></h3>
           <p>Use practical checks to avoid stretched, blurry, or over-compressed images.</p>
+        </article>
+        <article>
+          <h3><a href="./image-output-testing.html">How FitMyPic tests image output</a></h3>
+          <p>Review the reproducible checks used for dimensions, format encoding, measured file size, transparency, and target-size export.</p>
         </article>
       </section>
 

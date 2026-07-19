@@ -48,9 +48,22 @@
     </header>
 
     <main class="workspace-page">
+      <section class="product-intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="intro-kicker">Image resizing, without the guesswork</p>
+          <h1 id="page-title">Make every image fit.</h1>
+          <p>Resize, crop, compress, and convert a photo in one private browser workspace. See the real dimensions and file size before you download.</p>
+        </div>
+        <div class="capability-strip" aria-label="FitMyPic capabilities">
+          <div><span>PX</span><strong>Exact dimensions</strong><small>Custom width, height, and crop ratios</small></div>
+          <div><span>KB</span><strong>Smaller files</strong><small>Quality control and target-size export</small></div>
+          <div><span>↔</span><strong>Before and after</strong><small>Compare the original with the result</small></div>
+        </div>
+      </section>
+
       <section id="tool" class="tool-shell app-workspace" aria-labelledby="tool-title">
         <div class="section-head workspace-head">
-          <div class="workspace-title"><h1 id="tool-title">Image workspace</h1>
+          <div class="workspace-title"><p class="workspace-kicker">Free browser tool</p><h2 id="tool-title">Image workspace</h2>
           <p>Resize, crop, compress, and verify the real output dimensions and file size before downloading.</p></div>
           <ul class="workspace-facts" aria-label="Tool benefits"><li>Free</li><li>No account</li><li>Local processing</li></ul>
         </div>
@@ -64,7 +77,13 @@
               <span>JPG, PNG, or WebP &middot; Drop here or paste with Ctrl+V</span>
             </div>
 
-            <div class="control-section">
+            <div class="start-summary">
+              <strong>One file, one clear workflow</strong>
+              <ul><li>Choose an image</li><li>Adjust only what you need</li><li>Preview and download</li></ul>
+              <p>Your file stays on this device during normal processing.</p>
+            </div>
+
+            <div class="control-section source-controls">
               <div class="control-section-head">
                 <strong>Size and crop</strong>
                 <button id="resetTransformBtn" type="button" class="text-action" disabled>Reset edits</button>
@@ -84,7 +103,7 @@
               </div>
             </div>
 
-            <div class="control-section">
+            <div class="control-section source-controls">
               <strong class="control-section-title">Export</strong>
               <div class="settings-grid export-settings" aria-label="Export settings">
                 <label>Output format<select id="formatSelect" disabled><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></label>
@@ -93,8 +112,8 @@
               </div>
             </div>
 
-            <p class="control-label">Quick sizes</p>
-            <div id="presets" class="preset-grid" aria-label="Size presets">
+            <p class="control-label source-controls">Quick sizes</p>
+            <div id="presets" class="preset-grid source-controls" aria-label="Size presets">
               <button type="button" class="preset" data-width="1080" data-height="1080" disabled>Instagram Square</button>
               <button type="button" class="preset" data-width="1080" data-height="1920" disabled>Story / Reels</button>
               <button type="button" class="preset" data-width="1280" data-height="720" disabled>YouTube Thumbnail</button>
@@ -103,7 +122,7 @@
               <button type="button" class="preset" data-width="1920" data-height="1080" disabled>HD 16:9</button>
             </div>
 
-            <div class="actions">
+            <div class="actions source-controls">
               <button id="downloadBtn" type="button" disabled>Download image</button>
               <button id="targetDownloadBtn" type="button" class="secondary target-action" hidden disabled>Download near target</button>
               <button id="cancelBtn" type="button" class="secondary" hidden>Cancel processing</button>
@@ -124,7 +143,16 @@
             <div class="preview-stage">
               <canvas id="previewCanvas" width="800" height="520" aria-label="Image preview"></canvas>
               <canvas id="originalCanvas" class="is-hidden" width="800" height="520" aria-label="Original image preview"></canvas>
-              <div id="previewEmpty" class="preview-empty" aria-hidden="true"><span class="preview-symbol">PX</span><strong>Your image preview appears here</strong><small>Original and result can be compared after selection</small></div>
+              <div id="previewEmpty" class="preview-empty empty-dashboard" aria-hidden="true">
+                <div class="empty-heading"><span class="preview-symbol">F</span><div><strong>Everything you need for a clean export</strong><small>Choose a file and the workspace becomes your live preview.</small></div></div>
+                <div class="empty-capabilities">
+                  <div><span>01</span><strong>Resize precisely</strong><small>Enter exact pixels or start with a social preset.</small></div>
+                  <div><span>02</span><strong>Crop without stretching</strong><small>Use square, portrait, or landscape framing.</small></div>
+                  <div><span>03</span><strong>Compress with control</strong><small>Balance image quality against the measured file size.</small></div>
+                  <div><span>04</span><strong>Export your format</strong><small>Download JPG, PNG, or WebP without an account.</small></div>
+                </div>
+                <p class="empty-privacy"><span></span> Local browser processing · No upload queue</p>
+              </div>
             </div>
             <dl class="meta-grid">
               <div><dt>Original</dt><dd id="originalMeta">-</dd></div>

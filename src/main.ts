@@ -78,6 +78,7 @@ function setBusy(busy: boolean, progress = 0): void {
 }
 
 function enableControls(enabled: boolean): void {
+  document.body.classList.toggle("has-source", enabled);
   controls.forEach((control) => { control.disabled = !enabled; });
   syncTargetControls();
 }

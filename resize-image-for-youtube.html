@@ -3,67 +3,142 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Resize Image for YouTube Thumbnail - FitMyPic</title>
-    <meta name="description" content="Resize images to 1280 x 720 for YouTube thumbnails and learn how to keep thumbnail text clear." />
+    <title>YouTube Thumbnail Resizer - 1280x720 Online | FitMyPic</title>
+    <meta name="description" content="Resize and crop an image to a 1280 x 720 YouTube thumbnail. Preview the 16:9 frame and safe area, measure file size, and download JPG, PNG, or WebP." />
+    <meta name="robots" content="index,follow" />
     <link rel="canonical" href="https://www.fitmypic.com/resize-image-for-youtube.html" />
     <link rel="alternate" hreflang="en" href="https://www.fitmypic.com/resize-image-for-youtube.html" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002" crossorigin="anonymous"></script>
     <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./task-tool.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "YouTube Thumbnail Resizer",
+        "url": "https://www.fitmypic.com/resize-image-for-youtube.html",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any modern web browser",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": ["1280 x 720 output", "16:9 crop or fit-inside layout", "Thumbnail safe-area preview", "Measured output file size", "Local browser processing"]
+      }
+    </script>
   </head>
-  <body>
+  <body data-tool-width="1280" data-tool-height="720" data-tool-label="1280 x 720" data-safe-area="true">
     <header class="topbar">
-      <a class="brand" href="./"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
       <nav aria-label="Primary navigation">
-        <a href="./#presets">Presets</a>
-        <a href="./resize-image-for-instagram.html">Instagram</a>
+        <a href="#tool">YouTube Tool</a>
+        <a href="./resize-image-to-1024x1024.html">1024 × 1024</a>
         <a href="./about.html">About</a>
-        <a href="./terms.html">Terms</a>
+        <a href="./privacy.html">Privacy</a>
       </nav>
     </header>
-    <main class="page article-page">
-      <p class="eyebrow">Video thumbnail sizing</p>
-      <h1>Resize Image for YouTube Thumbnail</h1>
-      <section>
-        <h2>Recommended thumbnail size</h2>
-        <p>A common YouTube thumbnail size is 1280 x 720 pixels, which is a 16:9 aspect ratio. This size works well for video previews and keeps the image sharp across desktop and mobile screens.</p>
-        <p>Starting with a larger 16:9 source image is ideal. If the source is vertical or square, use a crop or background before exporting the final thumbnail.</p>
+
+    <main class="task-page">
+      <section class="task-intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">YouTube thumbnail preset</p>
+          <h1 id="page-title">Resize a thumbnail to 1280 × 720.</h1>
+          <p class="task-intro-copy">Create an exact 16:9 YouTube thumbnail, compare the source with the result, and inspect a safe-area guide before downloading. The guide is preview-only and is never added to the file.</p>
+        </div>
+        <dl class="task-summary">
+          <div><dt>Output</dt><dd>1280 × 720 px</dd></div>
+          <div><dt>Ratio</dt><dd>16:9 landscape</dd></div>
+          <div><dt>Guide</dt><dd>Preview only</dd></div>
+        </dl>
       </section>
-      <section>
-        <h2>Make text readable</h2>
-        <p>Thumbnail text should be large enough to read on a phone. Avoid placing important words near the bottom right, where interface elements may cover part of the image.</p>
-        <p>Strong contrast between text and background helps the thumbnail stand out. Use fewer words and leave enough space around faces, products, and key objects.</p>
+
+      <section id="tool" class="preset-workspace" aria-labelledby="tool-title">
+        <div class="preset-workspace-head">
+          <div><h2 id="tool-title">YouTube thumbnail resizer</h2><p>Crop to fill the frame or fit the full source inside it.</p></div>
+          <span class="local-note">No upload required</span>
+        </div>
+        <div class="preset-tool-grid">
+          <div class="preset-controls">
+            <div id="taskDropzone" class="preset-dropzone" tabindex="0" role="button" aria-label="Choose or drop an image">
+              <input id="taskFile" type="file" accept="image/jpeg,image/png,image/webp" />
+              <span class="upload-mark" aria-hidden="true">+</span>
+              <strong>Choose a thumbnail image</strong>
+              <span>JPG, PNG, or WebP · drop a file here</span>
+              <button id="taskSample" class="try-sample" type="button">Try the built-in sample</button>
+            </div>
+            <div class="preset-settings">
+              <div class="setting-row">
+                <label>Layout<select id="taskFit"><option value="cover">Crop to fill 16:9</option><option value="contain">Fit entire image</option></select></label>
+                <label>Output format<select id="taskFormat"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></label>
+              </div>
+              <label>Quality<div class="range-line"><input id="taskQuality" type="range" min="0.35" max="1" step="0.01" value="0.9" /><output id="taskQualityValue">90%</output></div></label>
+              <div class="setting-row">
+                <label>Target size (KB)<input id="taskTargetKb" type="number" min="10" placeholder="Optional" /></label>
+                <label>Canvas color<input id="taskBackground" type="color" value="#ffffff" /></label>
+              </div>
+            </div>
+            <div class="preset-actions">
+              <button id="taskDownload" type="button" disabled>Download 1280 × 720</button>
+              <button id="taskReset" type="button">Reset</button>
+            </div>
+            <p id="taskStatus" class="task-status" role="status">Choose an image or try the sample to begin.</p>
+          </div>
+
+          <div class="preset-preview">
+            <div class="preview-toolbar">
+              <div class="preview-tabs" aria-label="Preview mode">
+                <button id="taskResultTab" class="is-active" type="button" aria-pressed="true">Result</button>
+                <button id="taskOriginalTab" type="button" aria-pressed="false">Original</button>
+              </div>
+              <span class="preview-format">Dashed line is not exported</span>
+            </div>
+            <div id="taskPreviewStage" class="task-preview-stage">
+              <canvas id="taskResult" width="1280" height="720" aria-label="1280 by 720 thumbnail result preview"></canvas>
+              <img id="taskOriginal" alt="" hidden />
+              <div id="taskEmpty" class="task-empty">Your 16:9 preview appears here. The guide helps keep text and faces away from crowded edges.</div>
+              <div class="safe-area" aria-hidden="true"></div>
+            </div>
+            <div class="task-metrics">
+              <div><strong>Original</strong><span id="taskOriginalMetric">No image selected</span></div>
+              <div><strong>Measured output</strong><span id="taskOutputMetric">1280 x 720 preset</span></div>
+            </div>
+          </div>
+        </div>
       </section>
-      <section>
-        <h2>Use the preset</h2>
-        <p>Upload your image, click the YouTube Thumbnail preset, and export as JPG or WebP for a smaller file. If your source image is not 16:9, crop or reposition it before final publishing.</p>
-        <p><a href="./#presets">Resize to 1280 x 720</a></p>
-      </section>
-      <section>
-        <h2>Practical checklist</h2>
-        <ul>
-          <li>Use 1280 x 720 pixels for a standard 16:9 thumbnail.</li>
-          <li>Keep the main subject visible at small sizes.</li>
-          <li>Avoid tiny text, thin fonts, and low-contrast colors.</li>
-          <li>Export a compressed JPG or WebP when the platform allows it.</li>
-        </ul>
-      </section>
-      <section>
-        <h2>FAQ</h2>
-        <h3>Can I use a square photo for a YouTube thumbnail?</h3>
-        <p>You can, but it should be cropped, padded, or redesigned into a 16:9 canvas before final export.</p>
-        <h3>Why does text look blurry?</h3>
-        <p>The source may be too small, the text may be thin, or the export quality may be too low. Use a larger source and increase export quality.</p>
-        <h3>Should I export PNG?</h3>
-        <p>PNG is fine for graphics with sharp text, but JPG or WebP is often smaller for photo-based thumbnails.</p>
-      </section>
+
+      <div class="task-content">
+        <div>
+          <section>
+            <h2>What the thumbnail preset does</h2>
+            <p>The tool creates a real 1280 × 720 image with a 16:9 aspect ratio. Crop fills the complete thumbnail without stretching. Fit preserves the whole source and adds canvas space where necessary.</p>
+          </section>
+          <section>
+            <h2>Use the safe-area guide</h2>
+            <p>The dashed inset is a visual check, not an official YouTube template. Keep faces and essential text comfortably inside it, and avoid relying on the bottom-right corner where a video duration badge can appear. The overlay is never written into the downloaded image.</p>
+          </section>
+          <section>
+            <h2>Check the thumbnail at small size</h2>
+            <p>A technically correct 1280 × 720 file can still be hard to understand on a phone. Use large text, clear contrast, one main subject, and enough empty space around important details.</p>
+          </section>
+        </div>
+        <aside>
+          <section>
+            <h2>Verified workflow</h2>
+            <ol>
+              <li>Choose a source image.</li>
+              <li>Crop or fit it to 16:9.</li>
+              <li>Inspect the safe-area preview.</li>
+              <li>Check dimensions and file size.</li>
+              <li>Download the measured result.</li>
+            </ol>
+            <p class="tested-note">Last browser test: July 25, 2026. See the <a href="./image-output-testing.html">output testing method</a>.</p>
+          </section>
+          <section>
+            <h2>Practical limits</h2>
+            <p>FitMyPic resizes and crops existing artwork. It does not generate thumbnail text, remove backgrounds, or recover detail from a very small source image.</p>
+          </section>
+        </aside>
+      </div>
     </main>
-    <footer>
-      <span>&copy; 2026 FitMyPic</span>
-      <a href="./about.html">About</a>
-      <a href="./contact.html">Contact</a>
-      <a href="./privacy.html">Privacy Policy</a>
-      <a href="./terms.html">Terms</a>
-    </footer>
+    <footer><span>&copy; 2026 FitMyPic</span><a href="./about.html">About</a><a href="./contact.html">Contact</a><a href="./privacy.html">Privacy Policy</a><a href="./terms.html">Terms</a></footer>
+    <script type="module" src="./src/task-tool.ts"></script>
   </body>
 </html>

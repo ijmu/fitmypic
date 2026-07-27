@@ -5,7 +5,20 @@ import { join } from "node:path";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const out = fileURLToPath(new URL("../dist/", import.meta.url));
 const rootFiles = await readdir(root, { withFileTypes: true });
-const excluded = new Set(["index.html", "node_modules", "dist", ".git", "src", "package.json", "package-lock.json", "tsconfig.json", "vite.config.ts", "script.js"]);
+const excluded = new Set([
+  "index.html",
+  "resize-image-to-1024x1024.html",
+  "resize-image-for-youtube.html",
+  "node_modules",
+  "dist",
+  ".git",
+  "src",
+  "package.json",
+  "package-lock.json",
+  "tsconfig.json",
+  "vite.config.ts",
+  "script.js",
+]);
 
 await mkdir(out, { recursive: true });
 for (const entry of rootFiles) {

@@ -11,6 +11,7 @@ const excluded = new Set([
   "resize-image-for-youtube.html",
   "node_modules",
   "dist",
+  "zh",
   ".git",
   "src",
   "package.json",

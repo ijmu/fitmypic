@@ -8,8 +8,23 @@
       "permanent": true
     },
     {
+      "source": "/zh",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/zh/index.html",
-      "destination": "/zh/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/:path*",
+      "destination": "/:path*",
       "permanent": true
     }
   ]

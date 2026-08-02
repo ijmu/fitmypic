@@ -1257,3 +1257,37 @@ body {
   .hero-cta,
   .topbar nav a { transition: none; }
 }
+
+/* Keep the hero type readable at every viewport: the title must own its line box. */
+.product-intro .intro-copy {
+  max-width: 900px;
+  width: 100%;
+}
+
+.product-intro h1 {
+  font-size: clamp(2.85rem, 5.2vw, 4.6rem);
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  margin: 0;
+  max-width: 860px;
+  text-wrap: balance;
+}
+
+.intro-copy > p {
+  margin: 24px auto 0;
+  max-width: 620px;
+}
+
+.hero-cta { margin-top: 24px; }
+
+@media (max-width: 640px) {
+  .product-intro h1 {
+    font-size: clamp(2.35rem, 10vw, 3.1rem);
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    max-width: 100%;
+  }
+
+  .intro-copy > p:last-child { margin-top: 18px; }
+  .hero-cta { margin-top: 20px; }
+}

@@ -157,6 +157,32 @@
         </div>
       </section>
 
+      <section class="task-atlas" aria-labelledby="task-atlas-title">
+        <div class="section-head task-atlas-head">
+          <h2 id="task-atlas-title">Start with where the image will be used</h2>
+          <p>Choosing the destination first prevents accidental stretching and avoids exporting more pixels than the upload needs.</p>
+        </div>
+        <div class="format-map" aria-label="Common image destinations and dimensions">
+          <a class="format-route format-route-square" href="./resize-image-to-1024x1024.html">
+            <span class="format-preview" aria-hidden="true"><i></i></span>
+            <span><strong>Square upload</strong><small>1024 x 1024</small><em>Profiles, product tiles, forms</em></span>
+          </a>
+          <a class="format-route format-route-wide" href="./resize-image-for-youtube.html">
+            <span class="format-preview" aria-hidden="true"><i></i></span>
+            <span><strong>YouTube thumbnail</strong><small>1280 x 720</small><em>16:9 with a visible safe area</em></span>
+          </a>
+          <a class="format-route format-route-tall" href="./resize-image-for-instagram.html">
+            <span class="format-preview" aria-hidden="true"><i></i></span>
+            <span><strong>Vertical social image</strong><small>1080 x 1350 or 1080 x 1920</small><em>Posts, stories, and reels</em></span>
+          </a>
+          <a class="format-route format-route-light" href="./compress-image.html">
+            <span class="format-preview" aria-hidden="true"><i></i></span>
+            <span><strong>Smaller file</strong><small>Target KB or quality</small><em>Email, websites, upload limits</em></span>
+          </a>
+        </div>
+        <p class="task-atlas-note">Need a different size? Enter exact dimensions in the tool and keep aspect ratio enabled unless distortion is intentional.</p>
+      </section>
+
       <section class="evidence-section" aria-labelledby="evidence-title">
         <div class="section-head">
           <p class="eyebrow">A result you can verify</p>
@@ -229,6 +255,27 @@
           <div class="decision-row" role="row"><strong role="cell">JPG</strong><span role="cell">Photos, marketplace uploads, email attachments</span><span role="cell">No transparency; repeated compression can soften detail</span></div>
           <div class="decision-row" role="row"><strong role="cell">PNG</strong><span role="cell">Logos, screenshots, interface graphics, transparency</span><span role="cell">Photo files can be much larger</span></div>
           <div class="decision-row" role="row"><strong role="cell">WebP</strong><span role="cell">Modern websites and smaller web delivery</span><span role="cell">Some older apps and upload forms may reject it</span></div>
+        </div>
+      </section>
+
+      <section class="output-anatomy" aria-labelledby="output-anatomy-title">
+        <div class="section-head">
+          <h2 id="output-anatomy-title">Three controls shape the final file</h2>
+          <p>File size is not controlled by one magic slider. Dimensions, format, and encoding quality each change a different part of the result.</p>
+        </div>
+        <div class="anatomy-rows">
+          <article>
+            <div class="anatomy-visual pixels-visual" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div><h3>Dimensions set the pixel budget</h3><p>Reducing width and height removes pixels. This is usually the strongest way to shrink a large camera image before an online upload.</p><a href="./resize-without-losing-quality.html">See the quality checklist</a></div>
+          </article>
+          <article>
+            <div class="anatomy-visual format-visual" aria-hidden="true"><span>JPG</span><span>PNG</span><span>WebP</span></div>
+            <div><h3>Format decides what can be preserved</h3><p>JPG suits photos, PNG preserves transparency and sharp graphics, and WebP is useful when modern web delivery matters.</p><a href="./image-file-size-guide.html">Compare file-size factors</a></div>
+          </article>
+          <article>
+            <div class="anatomy-visual quality-visual" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div><h3>Quality balances detail and bytes</h3><p>For JPG and WebP, lower quality can reduce the encoded file. Inspect edges, text, and faces in the real preview before downloading.</p><a href="./image-output-testing.html">Review the output tests</a></div>
+          </article>
         </div>
       </section>
 

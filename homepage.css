@@ -1291,3 +1291,181 @@ body {
   .intro-copy > p:last-child { margin-top: 18px; }
   .hero-cta { margin-top: 20px; }
 }
+
+/* Task-first depth: real destinations and output tradeoffs, not decorative feature cards. */
+.task-atlas,
+.output-anatomy {
+  margin-top: 76px;
+}
+
+.task-atlas {
+  background: #1d1d1f;
+  border-radius: var(--apple-radius);
+  color: #f5f5f7;
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 56px);
+}
+
+.task-atlas-head h2 {
+  color: #f5f5f7;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.task-atlas-head > p:last-child { color: #b9b9bf; }
+
+.format-map {
+  border-top: 1px solid #3a3a3c;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 36px;
+}
+
+.format-route {
+  align-items: center;
+  color: inherit;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 112px minmax(0, 1fr);
+  min-height: 170px;
+  padding: 26px 28px;
+  text-decoration: none;
+  transition: background-color 180ms ease;
+}
+
+.format-route:nth-child(odd) { border-right: 1px solid #3a3a3c; }
+.format-route:nth-child(-n + 2) { border-bottom: 1px solid #3a3a3c; }
+.format-route:hover { background: #29292b; }
+.format-route:focus-visible { box-shadow: inset 0 0 0 3px #2997ff; outline: 0; }
+.format-route strong { display: block; font-size: 1rem; line-height: 1.3; }
+.format-route small { color: #64a9ff; display: block; font-size: 0.78rem; font-weight: 650; margin-top: 5px; }
+.format-route em { color: #a1a1a6; display: block; font-size: 0.76rem; font-style: normal; line-height: 1.45; margin-top: 8px; }
+
+.format-preview {
+  align-items: center;
+  background: #303033;
+  display: flex;
+  height: 104px;
+  justify-content: center;
+  overflow: hidden;
+  width: 104px;
+}
+
+.format-preview i { background: linear-gradient(145deg, #65a9ff, #b7dcff); display: block; }
+.format-route-square .format-preview i { height: 62px; width: 62px; }
+.format-route-wide .format-preview i { height: 48px; width: 84px; }
+.format-route-tall .format-preview i { height: 82px; width: 46px; }
+.format-route-light .format-preview i { background: #f5f5f7; box-shadow: 14px 14px 0 -8px #86868b, 25px 25px 0 -15px #5f5f63; height: 56px; width: 72px; }
+
+.task-atlas-note { color: #8f8f94; font-size: 0.78rem; line-height: 1.6; margin: 24px 0 0; max-width: 72ch; }
+
+.output-anatomy {
+  display: grid;
+  gap: 44px;
+  grid-template-columns: minmax(260px, 0.64fr) minmax(0, 1fr);
+}
+
+.anatomy-rows { border-top: 1px solid var(--apple-line); }
+.anatomy-rows article { align-items: center; border-bottom: 1px solid var(--apple-line); display: grid; gap: 24px; grid-template-columns: 150px minmax(0, 1fr); padding: 28px 0; }
+.anatomy-rows h3 { color: var(--apple-ink); font-size: 1.05rem; margin: 0; }
+.anatomy-rows p { color: var(--apple-muted); font-size: 0.86rem; line-height: 1.65; margin: 8px 0 0; }
+.anatomy-rows a { color: var(--apple-blue); display: inline-block; font-size: 0.78rem; font-weight: 650; margin-top: 10px; text-underline-offset: 3px; }
+
+.anatomy-visual { align-items: center; background: #ececf0; border-radius: var(--apple-control-radius); display: flex; height: 94px; justify-content: center; overflow: hidden; }
+.pixels-visual { align-content: center; display: grid; gap: 4px; grid-template-columns: repeat(3, 18px); }
+.pixels-visual span { background: #0071e3; height: 18px; opacity: 0.3; }
+.pixels-visual span:nth-child(2), .pixels-visual span:nth-child(4), .pixels-visual span:nth-child(6) { opacity: 0.8; }
+.format-visual { gap: 6px; }
+.format-visual span { background: #fff; border: 1px solid #d2d2d7; border-radius: 7px; color: #515154; font-size: 0.63rem; font-weight: 700; padding: 9px 8px; }
+.quality-visual { gap: 7px; }
+.quality-visual span { background: #0071e3; height: 52px; width: 22px; }
+.quality-visual span:nth-child(2) { opacity: 0.62; }
+.quality-visual span:nth-child(3) { opacity: 0.28; }
+
+@media (max-width: 900px) {
+  .output-anatomy { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .task-atlas,
+  .output-anatomy { margin-top: 56px; }
+  .format-map { grid-template-columns: 1fr; }
+  .format-route { border-bottom: 1px solid #3a3a3c; border-right: 0 !important; grid-template-columns: 82px minmax(0, 1fr); min-height: 132px; padding: 20px 0; }
+  .format-route:last-child { border-bottom: 0; }
+  .format-preview { height: 76px; width: 76px; }
+  .format-route-square .format-preview i { height: 46px; width: 46px; }
+  .format-route-wide .format-preview i { height: 34px; width: 60px; }
+  .format-route-tall .format-preview i { height: 60px; width: 34px; }
+  .format-route-light .format-preview i { height: 42px; width: 54px; }
+  .anatomy-rows article { align-items: start; grid-template-columns: 92px minmax(0, 1fr); }
+  .anatomy-visual { height: 74px; }
+}
+
+/* Final mobile containment: keep every interactive surface inside the viewport. */
+@media (max-width: 640px) {
+  html,
+  body { max-width: 100%; overflow-x: clip; }
+
+  .topbar {
+    align-items: center;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 0;
+    padding: 9px 12px 8px;
+  }
+
+  .topbar nav {
+    display: grid;
+    flex: 0 0 100%;
+    gap: 0;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    overflow: visible;
+    padding: 2px 0 0;
+    width: 100%;
+  }
+
+  .topbar nav a {
+    font-size: 0.67rem;
+    justify-content: center;
+    min-width: 0;
+    padding: 0 2px;
+    white-space: nowrap;
+  }
+
+  main,
+  .workspace-page,
+  .product-intro,
+  .product-intro .intro-copy,
+  .app-workspace,
+  .app-workspace .tool-grid,
+  .app-workspace .app-sidebar,
+  .app-workspace .app-canvas {
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+  }
+
+  main,
+  .workspace-page { padding-inline: 12px; }
+  .product-intro { padding-inline: 0; }
+
+  .product-intro h1 {
+    font-size: clamp(2rem, 9vw, 2.55rem);
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+  }
+
+  .intro-copy > p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .app-workspace .tool-grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin-inline: 0;
+  }
+
+  .format-route,
+  .anatomy-rows article { min-width: 0; }
+}

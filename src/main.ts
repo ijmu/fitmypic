@@ -39,6 +39,7 @@ const previewMeasure = get<HTMLElement>("#previewMeasure");
 const originalMeta = get<HTMLElement>("#originalMeta");
 const outputMeta = get<HTMLElement>("#outputMeta");
 const previewEmpty = get<HTMLElement>("#previewEmpty");
+const sampleImageBtn = get<HTMLButtonElement>("#sampleImageBtn");
 const presetButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".preset"));
 
 const originalContext = originalCanvas.getContext("2d")!;
@@ -179,6 +180,32 @@ function canvasBlob(canvas: HTMLCanvasElement, mimeType: string, quality: number
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error("The browser could not encode this image.")), mimeType, quality);
   });
+}
+
+async function createSampleImage(): Promise<File> {
+  const canvas = document.createElement("canvas");
+  canvas.width = 1600;
+  canvas.height = 1000;
+  const context = canvas.getContext("2d");
+  if (!context) throw new Error("Canvas is unavailable in this browser.");
+  context.fillStyle = "#eef4fb";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = "#1476d4";
+  context.fillRect(110, 110, 520, 780);
+  context.fillStyle = "#ffffff";
+  context.fillRect(720, 150, 760, 280);
+  context.fillStyle = "#1d1d1f";
+  context.font = "700 92px Arial, sans-serif";
+  context.fillText("FitMyPic", 790, 325);
+  context.fillStyle = "#73b4f1";
+  context.beginPath();
+  context.arc(1100, 690, 230, 0, Math.PI * 2);
+  context.fill();
+  context.fillStyle = "#1d1d1f";
+  context.font = "600 54px Arial, sans-serif";
+  context.fillText("1600 x 1000 sample", 740, 940);
+  const blob = await canvasBlob(canvas, "image/jpeg", 0.9);
+  return new File([blob], "fitmypic-sample.jpg", { type: "image/jpeg" });
 }
 
 async function updatePreview(): Promise<void> {
@@ -341,6 +368,17 @@ flipHorizontalBtn.addEventListener("click", () => { flipX *= -1; schedulePreview
 flipVerticalBtn.addEventListener("click", () => { flipY *= -1; schedulePreview(); });
 resetTransformBtn.addEventListener("click", () => resetTransforms());
 resetBtn.addEventListener("click", resetAll);
+sampleImageBtn.addEventListener("click", async () => {
+  sampleImageBtn.disabled = true;
+  setStatus("Creating a local sample...");
+  try {
+    await loadFile(await createSampleImage());
+  } catch (error) {
+    setStatus(error instanceof Error ? error.message : "The sample could not be created.");
+  } finally {
+    sampleImageBtn.disabled = false;
+  }
+});
 resultPreviewBtn.addEventListener("click", () => setPreviewMode("result"));
 originalPreviewBtn.addEventListener("click", () => setPreviewMode("original"));
 

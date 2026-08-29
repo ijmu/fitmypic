@@ -16,3 +16,6 @@ secrets.*
 node_modules/
 dist/
 .vercel/
+
+.npmcache/
+node_modules/

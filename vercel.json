@@ -8,6 +8,31 @@
       "permanent": true
     },
     {
+      "source": "/image-resizer.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/compress-image.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/social-media-image-sizes.html",
+      "destination": "/resize-image-for-instagram.html",
+      "permanent": true
+    },
+    {
+      "source": "/image-file-size-guide.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/resize-without-losing-quality.html",
+      "destination": "/image-output-testing.html",
+      "permanent": true
+    },
+    {
       "source": "/zh",
       "destination": "/",
       "permanent": true

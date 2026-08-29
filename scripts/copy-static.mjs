@@ -8,6 +8,7 @@ const rootFiles = await readdir(root, { withFileTypes: true });
 const excluded = new Set([
   "index.html",
   "resize-image-to-1024x1024.html",
+  "resize-image-for-instagram.html",
   "resize-image-for-youtube.html",
   "node_modules",
   "dist",

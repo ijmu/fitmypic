@@ -342,6 +342,8 @@ main.page ul, main.page ol { color: #39414f; padding-left: 22px; line-height: 1.
 .preset-dropzone strong { font-size: 1rem; }
 
 .try-sample, .sample-action {
+  position: relative;
+  z-index: 2;
   margin-top: 10px;
   background: var(--surface);
   border: 1.5px solid var(--line-strong);

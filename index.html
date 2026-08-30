@@ -3,25 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Free Image Resizer &amp; Compressor Online | FitMyPic</title>
+    <title>Free Background Remover &amp; Image Resizer Online | FitMyPic</title>
     <meta
       name="description"
-      content="Resize, compress, and convert JPG, PNG, or WebP images free online. Use exact dimensions, social presets, or a target file size in your browser."
+      content="Remove image backgrounds and resize or compress JPG, PNG, and WebP files free online. Everything runs locally in your browser — no upload, no account, no watermarks."
     />
     <meta name="robots" content="index,follow" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="FitMyPic" />
-    <meta property="og:title" content="Free Image Resizer &amp; Compressor Online | FitMyPic" />
-    <meta property="og:description" content="Resize, compress, and convert JPG, PNG, or WebP images free online. Use exact dimensions, social presets, or a target file size in your browser." />
-    <meta property="og:url" content="https://www.fitmypic.com/" />
-    <meta property="og:image" content="https://www.fitmypic.com/og-image.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Free Image Resizer &amp; Compressor Online | FitMyPic" />
-    <meta name="twitter:description" content="Resize, compress, and convert JPG, PNG, or WebP images free online. Use exact dimensions, social presets, or a target file size in your browser." />
-    <meta name="twitter:image" content="https://www.fitmypic.com/og-image.png" />
     <link rel="canonical" href="https://www.fitmypic.com/" />
     <link rel="alternate" hreflang="en" href="https://www.fitmypic.com/" />
     <link rel="alternate" hreflang="x-default" href="https://www.fitmypic.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FitMyPic" />
+    <meta property="og:title" content="Free Background Remover &amp; Image Resizer Online | FitMyPic" />
+    <meta property="og:description" content="Remove image backgrounds and resize or compress JPG, PNG, and WebP files — privately, in your browser. No upload, no account." />
+    <meta property="og:url" content="https://www.fitmypic.com/" />
+    <meta property="og:image" content="https://www.fitmypic.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free Background Remover &amp; Image Resizer Online | FitMyPic" />
+    <meta name="twitter:description" content="Remove image backgrounds and resize or compress JPG, PNG, and WebP files — privately, in your browser. No upload, no account." />
+    <meta name="twitter:image" content="https://www.fitmypic.com/og-image.png" />
 <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002"
@@ -30,7 +30,6 @@
     <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./homepage.css" />
-    <link rel="stylesheet" href="./visual-refresh.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -39,9 +38,9 @@
         "url": "https://www.fitmypic.com/",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Any modern web browser",
-        "description": "A free browser-based image resizer, compressor, and format converter.",
+        "description": "A free browser-based background remover, image resizer, and compressor.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "featureList": ["High-quality image resizing", "Image compression", "Centered crop ratios", "Rotate and flip controls", "JPG, PNG, and WebP conversion", "Original and result comparison", "Measured output file size", "Social media size presets", "Target file size export", "Local browser processing"]
+        "featureList": ["Solid background removal", "Transparent PNG export", "High-quality image resizing", "Image compression to target KB", "Centered crop ratios", "Rotate and flip controls", "JPG, PNG, and WebP conversion", "Original and result comparison", "Measured output file size", "Social media size presets", "Local browser processing"]
       }
     </script>
   </head>
@@ -52,337 +51,404 @@
         <span>FitMyPic</span>
       </a>
       <nav aria-label="Primary navigation">
-        <a href="#tool">Tool</a>
-        <a href="#presets">Presets</a>
+        <a href="#tool">Tools</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
         <a href="#guides">Guides</a>
         <a href="./about.html">About</a>
-        <a href="./privacy.html">Privacy</a>
       </nav>
     </header>
 
     <main class="workspace-page">
-      <section class="product-intro" aria-labelledby="page-title">
-        <div class="intro-copy">
-          <p class="hero-badge">Free &middot; In your browser &middot; No account</p>
-          <h1 id="page-title">Resize and compress images online.</h1>
-          <p>Set exact dimensions, crop or fit the image, and measure the real JPG, PNG, or WebP result before downloading.</p>
-          <a class="hero-cta" href="#tool">Open image tool</a>
-          <ul class="hero-chips">
-            <li>Local processing</li>
+      <!-- ===== Hero ===== -->
+      <section class="hp-hero">
+        <div class="hp-hero-inner">
+          <p class="hp-badge">Free &middot; Private &middot; Right in your browser</p>
+          <h1>Cut out backgrounds. Resize anything. <em>Without uploading.</em></h1>
+          <p class="hp-lead">FitMyPic removes solid backgrounds from your photos and resizes or compresses JPG, PNG, and WebP files to exact dimensions. Every pixel is processed on your own device.</p>
+          <div class="hp-actions">
+            <a class="hp-btn-primary" href="#tool">Start editing — it's free</a>
+            <a class="hp-btn-ghost" href="#how">How it works</a>
+          </div>
+          <ul class="hp-chips">
+            <li>100% local processing</li>
+            <li>No account needed</li>
+            <li>No watermarks</li>
             <li>JPG &middot; PNG &middot; WebP</li>
-            <li>Measured file size</li>
           </ul>
         </div>
       </section>
 
-      <section id="tool" class="tool-shell app-workspace" aria-labelledby="tool-title">
-        <div class="section-head workspace-head">
-          <div class="workspace-title"><p class="workspace-kicker">Image tool</p><h2 id="tool-title">Resize, crop, and export</h2>
-          <p>Choose one image, adjust the settings, then inspect the result.</p></div>
-        </div>
-
-        <div class="tool-grid">
-          <div class="control-panel app-sidebar">
-            <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose, drop, or paste an image">
-              <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" />
-              <div class="drop-icon">+</div>
-              <p>Choose an image</p>
-              <span>JPG, PNG, or WebP &middot; Drop here or paste with Ctrl+V</span>
-            </div>
-
-            <div class="start-summary">
-              <strong>One file, one clear workflow</strong>
-              <ul><li>Choose an image</li><li>Adjust only what you need</li><li>Preview and download</li></ul>
-              <p>Your file stays on this device during normal processing.</p>
-              <button id="sampleImageBtn" class="sample-action" type="button">Try a sample image</button>
-            </div>
-
-            <div class="control-section source-controls">
-              <div class="control-section-head">
-                <strong>Size and crop</strong>
-                <button id="resetTransformBtn" type="button" class="text-action" disabled>Reset edits</button>
+      <!-- ===== Tool ===== -->
+      <section id="tool" class="hp-section" aria-labelledby="tool-title">
+        <div class="hp-section-inner">
+          <div class="hp-toolcard">
+            <div class="hp-toolcard-head">
+              <div>
+                <h2 id="tool-title">Pick a task and start</h2>
+                <p>Both tools run locally — switch between them any time.</p>
               </div>
-              <div class="settings-grid" aria-label="Image settings">
-                <label>Width<input id="widthInput" type="number" min="1" placeholder="Width" disabled /></label>
-                <label>Height<input id="heightInput" type="number" min="1" placeholder="Height" disabled /></label>
-                <label class="check-row"><input id="lockRatioInput" type="checkbox" checked disabled />Keep aspect ratio</label>
-                <label>Crop ratio<select id="cropRatioSelect" disabled><option value="original">Original</option><option value="1:1">Square 1:1</option><option value="4:5">Portrait 4:5</option><option value="16:9">Landscape 16:9</option></select></label>
-                <label>Image fit<select id="fitModeSelect" disabled><option value="cover">Fill frame</option><option value="contain">Fit inside</option><option value="stretch">Stretch</option></select></label>
-              </div>
-              <div class="transform-actions" aria-label="Transform image">
-                <button id="rotateLeftBtn" type="button" class="icon-action" title="Rotate left" disabled aria-label="Rotate left">&#8634;</button>
-                <button id="rotateRightBtn" type="button" class="icon-action" title="Rotate right" disabled aria-label="Rotate right">&#8635;</button>
-                <button id="flipHorizontalBtn" type="button" class="icon-action" title="Flip horizontally" disabled aria-label="Flip horizontally">&#8596;</button>
-                <button id="flipVerticalBtn" type="button" class="icon-action" title="Flip vertically" disabled aria-label="Flip vertically">&#8597;</button>
+              <div class="hp-tabs" role="tablist" aria-label="Choose a tool">
+                <button id="tabBackground" class="hp-tab is-active" type="button" role="tab" aria-selected="true" data-panel="panelBackground">✂️ Remove background</button>
+                <button id="tabResize" class="hp-tab" type="button" role="tab" aria-selected="false" data-panel="panelResize">📐 Resize &amp; compress</button>
               </div>
             </div>
 
-            <div class="control-section source-controls">
-              <strong class="control-section-title">Export</strong>
-              <div class="settings-grid export-settings" aria-label="Export settings">
-                <label>Output format<select id="formatSelect" disabled><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></label>
-                <label>Quality<input id="qualityInput" type="range" min="0.35" max="1" step="0.05" value="0.82" disabled /><output id="qualityOutput">82%</output></label>
-                <label class="target-field">Target size (KB)<input id="targetSizeInput" type="number" min="10" step="10" placeholder="Optional" disabled /><span class="field-help">For JPG and WebP output</span></label>
-              </div>
-            </div>
-
-            <p class="control-label source-controls">Quick sizes</p>
-            <div id="presets" class="preset-grid source-controls" aria-label="Size presets">
-              <button type="button" class="preset" data-width="1080" data-height="1080" disabled>Instagram Square</button>
-              <button type="button" class="preset" data-width="1080" data-height="1920" disabled>Story / Reels</button>
-              <button type="button" class="preset" data-width="1280" data-height="720" disabled>YouTube Thumbnail</button>
-              <button type="button" class="preset" data-width="1024" data-height="1024" disabled>1024 x 1024</button>
-              <button type="button" class="preset" data-width="1200" data-height="628" disabled>Social Share</button>
-              <button type="button" class="preset" data-width="1920" data-height="1080" disabled>HD 16:9</button>
-            </div>
-
-            <div class="actions source-controls">
-              <button id="downloadBtn" type="button" disabled>Download image</button>
-              <button id="targetDownloadBtn" type="button" class="secondary target-action" hidden disabled>Download near target</button>
-              <button id="cancelBtn" type="button" class="secondary" hidden>Cancel processing</button>
-              <button id="resetBtn" type="button" class="secondary" disabled>Start over</button>
-            </div>
-            <progress id="progressBar" class="progress-bar" max="100" value="0" hidden>0%</progress>
-            <div id="status" class="status" role="status">Choose an image to start.</div>
-          </div>
-
-          <div class="preview-panel app-canvas">
-            <div class="preview-toolbar">
-              <div class="segmented-control" role="group" aria-label="Preview image">
-                <button id="resultPreviewBtn" type="button" class="segment is-active" aria-pressed="true">Result</button>
-                <button id="originalPreviewBtn" type="button" class="segment" aria-pressed="false">Original</button>
-              </div>
-              <span id="previewMeasure" class="preview-measure">Measured after processing</span>
-            </div>
-            <div class="preview-stage">
-              <canvas id="previewCanvas" width="800" height="520" aria-label="Image preview"></canvas>
-              <canvas id="originalCanvas" class="is-hidden" width="800" height="520" aria-label="Original image preview"></canvas>
-              <div id="previewEmpty" class="preview-empty empty-dashboard" aria-hidden="true">
-                <div class="empty-heading"><span class="preview-symbol">F</span><div><strong>Everything you need for a clean export</strong><small>Choose a file and the workspace becomes your live preview.</small></div></div>
-                <div class="empty-capabilities">
-                  <div><span>01</span><strong>Resize precisely</strong><small>Enter exact pixels or start with a social preset.</small></div>
-                  <div><span>02</span><strong>Crop without stretching</strong><small>Use square, portrait, or landscape framing.</small></div>
-                  <div><span>03</span><strong>Compress with control</strong><small>Balance image quality against the measured file size.</small></div>
-                  <div><span>04</span><strong>Export your format</strong><small>Download JPG, PNG, or WebP without an account.</small></div>
+            <!-- Background removal panel -->
+            <div id="panelBackground" class="hp-panel" role="tabpanel" aria-labelledby="tabBackground">
+              <div class="transparent-grid">
+                <div class="guide-controls">
+                  <div id="transparentDropzone" class="transparent-dropzone" tabindex="0" role="button" aria-label="Choose or drop an image">
+                    <input id="transparentFile" type="file" accept="image/jpeg,image/png,image/webp" />
+                    <span class="upload-mark" aria-hidden="true">+</span>
+                    <strong>Choose an image</strong>
+                    <span>JPG, PNG, or WebP &middot; drop a file here</span>
+                    <button id="transparentSample" class="try-sample" type="button">Try the built-in sample</button>
+                  </div>
+                  <div class="transparent-settings">
+                    <div class="setting-row">
+                      <label>Removal mode<select id="transparentMode"><option value="edges">Connected to edges</option><option value="global">Every matching pixel</option></select></label>
+                      <label>Background color<input id="transparentColor" type="color" value="#ffffff" /></label>
+                    </div>
+                    <label>Tolerance<div class="range-line"><input id="transparentTolerance" type="range" min="0" max="160" value="35" /><output id="transparentToleranceValue">35</output></div></label>
+                    <label>Edge feather<div class="range-line"><input id="transparentFeather" type="range" min="0" max="80" value="18" /><output id="transparentFeatherValue">18</output></div></label>
+                  </div>
+                  <div class="transparent-actions">
+                    <button id="transparentDownload" type="button" disabled>Download transparent PNG</button>
+                    <button id="transparentReset" type="button">Reset</button>
+                  </div>
+                  <p id="transparentStatus" class="transparent-status" role="status">Choose an image or try the sample to begin.</p>
                 </div>
-                <p class="empty-privacy"><span></span> Local browser processing · No upload queue</p>
+
+                <div class="transparent-preview">
+                  <div class="preview-toolbar">
+                    <div class="preview-tabs" aria-label="Preview mode">
+                      <button id="transparentResultTab" class="is-active" type="button" aria-pressed="true">Result</button>
+                      <button id="transparentOriginalTab" type="button" aria-pressed="false">Original</button>
+                    </div>
+                    <span class="preview-instruction">Click the image to sample a color</span>
+                  </div>
+                  <div class="transparent-stage">
+                    <canvas id="transparentResult" width="900" height="600" aria-label="Transparent PNG result preview"></canvas>
+                    <canvas id="transparentOriginal" width="900" height="600" aria-label="Original image preview" hidden></canvas>
+                    <div id="transparentEmpty" class="transparent-empty">Your image appears on a checkerboard so real transparency is visible. Try the sample to test the full workflow.</div>
+                  </div>
+                  <div class="transparent-metrics">
+                    <div><strong>Original</strong><span id="transparentOriginalMetric">No image selected</span></div>
+                    <div><strong>Measured PNG</strong><span id="transparentOutputMetric">Measured after processing</span></div>
+                  </div>
+                </div>
               </div>
             </div>
-            <dl class="meta-grid">
-              <div><dt>Original</dt><dd id="originalMeta">-</dd></div>
-              <div><dt>Output</dt><dd id="outputMeta">-</dd></div>
-            </dl>
+
+            <!-- Resize & compress panel -->
+            <div id="panelResize" class="hp-panel" role="tabpanel" aria-labelledby="tabResize" hidden>
+              <div class="tool-grid">
+                <div class="control-panel app-sidebar">
+                  <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose, drop, or paste an image">
+                    <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" />
+                    <div class="drop-icon">+</div>
+                    <p>Choose an image</p>
+                    <span>JPG, PNG, or WebP &middot; Drop here or paste with Ctrl+V</span>
+                  </div>
+
+                  <div class="start-summary">
+                    <strong>One file, one clear workflow</strong>
+                    <ul><li>Choose an image</li><li>Adjust only what you need</li><li>Preview and download</li></ul>
+                    <p>Your file stays on this device during normal processing.</p>
+                    <button id="sampleImageBtn" class="sample-action" type="button">Try a sample image</button>
+                  </div>
+
+                  <div class="control-section source-controls">
+                    <div class="control-section-head">
+                      <strong>Size and crop</strong>
+                      <button id="resetTransformBtn" type="button" class="text-action" disabled>Reset edits</button>
+                    </div>
+                    <div class="settings-grid" aria-label="Image settings">
+                      <label>Width<input id="widthInput" type="number" min="1" placeholder="Width" disabled /></label>
+                      <label>Height<input id="heightInput" type="number" min="1" placeholder="Height" disabled /></label>
+                      <label class="check-row"><input id="lockRatioInput" type="checkbox" checked disabled />Keep aspect ratio</label>
+                      <label>Crop ratio<select id="cropRatioSelect" disabled><option value="original">Original</option><option value="1:1">Square 1:1</option><option value="4:5">Portrait 4:5</option><option value="16:9">Landscape 16:9</option></select></label>
+                      <label>Image fit<select id="fitModeSelect" disabled><option value="cover">Fill frame</option><option value="contain">Fit inside</option><option value="stretch">Stretch</option></select></label>
+                    </div>
+                    <div class="transform-actions" aria-label="Transform image">
+                      <button id="rotateLeftBtn" type="button" class="icon-action" title="Rotate left" disabled aria-label="Rotate left">&#8634;</button>
+                      <button id="rotateRightBtn" type="button" class="icon-action" title="Rotate right" disabled aria-label="Rotate right">&#8635;</button>
+                      <button id="flipHorizontalBtn" type="button" class="icon-action" title="Flip horizontally" disabled aria-label="Flip horizontally">&#8596;</button>
+                      <button id="flipVerticalBtn" type="button" class="icon-action" title="Flip vertically" disabled aria-label="Flip vertically">&#8597;</button>
+                    </div>
+                  </div>
+
+                  <div class="control-section source-controls">
+                    <strong class="control-section-title">Export</strong>
+                    <div class="settings-grid export-settings" aria-label="Export settings">
+                      <label>Output format<select id="formatSelect" disabled><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></label>
+                      <label>Quality<input id="qualityInput" type="range" min="0.35" max="1" step="0.05" value="0.82" disabled /><output id="qualityOutput">82%</output></label>
+                      <label class="target-field">Target size (KB)<input id="targetSizeInput" type="number" min="10" step="10" placeholder="Optional" disabled /><span class="field-help">For JPG and WebP output</span></label>
+                    </div>
+                  </div>
+
+                  <p class="control-label source-controls">Quick sizes</p>
+                  <div id="presets" class="preset-grid source-controls" aria-label="Size presets">
+                    <button type="button" class="preset" data-width="1080" data-height="1080" disabled>Instagram Square</button>
+                    <button type="button" class="preset" data-width="1080" data-height="1920" disabled>Story / Reels</button>
+                    <button type="button" class="preset" data-width="1280" data-height="720" disabled>YouTube Thumbnail</button>
+                    <button type="button" class="preset" data-width="1024" data-height="1024" disabled>1024 x 1024</button>
+                    <button type="button" class="preset" data-width="1200" data-height="628" disabled>Social Share</button>
+                    <button type="button" class="preset" data-width="1920" data-height="1080" disabled>HD 16:9</button>
+                  </div>
+
+                  <div class="actions source-controls">
+                    <button id="downloadBtn" type="button" disabled>Download image</button>
+                    <button id="targetDownloadBtn" type="button" class="secondary target-action" hidden disabled>Download near target</button>
+                    <button id="cancelBtn" type="button" class="secondary" hidden>Cancel processing</button>
+                    <button id="resetBtn" type="button" class="secondary" disabled>Start over</button>
+                  </div>
+                  <progress id="progressBar" class="progress-bar" max="100" value="0" hidden>0%</progress>
+                  <div id="status" class="status" role="status">Choose an image to start.</div>
+                </div>
+
+                <div class="preview-panel app-canvas">
+                  <div class="preview-toolbar">
+                    <div class="segmented-control" role="group" aria-label="Preview image">
+                      <button id="resultPreviewBtn" type="button" class="segment is-active" aria-pressed="true">Result</button>
+                      <button id="originalPreviewBtn" type="button" class="segment" aria-pressed="false">Original</button>
+                    </div>
+                    <span id="previewMeasure" class="preview-measure">Measured after processing</span>
+                  </div>
+                  <div class="preview-stage">
+                    <canvas id="previewCanvas" width="800" height="520" aria-label="Image preview"></canvas>
+                    <canvas id="originalCanvas" class="is-hidden" width="800" height="520" aria-label="Original image preview"></canvas>
+                    <div id="previewEmpty" class="preview-empty empty-dashboard" aria-hidden="true">
+                      <div class="empty-heading"><span class="preview-symbol">F</span><div><strong>Everything you need for a clean export</strong><small>Choose a file and the workspace becomes your live preview.</small></div></div>
+                      <div class="empty-capabilities">
+                        <div><span>01</span><strong>Resize precisely</strong><small>Enter exact pixels or start with a social preset.</small></div>
+                        <div><span>02</span><strong>Crop without stretching</strong><small>Use square, portrait, or landscape framing.</small></div>
+                        <div><span>03</span><strong>Compress with control</strong><small>Balance image quality against the measured file size.</small></div>
+                        <div><span>04</span><strong>Export your format</strong><small>Download JPG, PNG, or WebP without an account.</small></div>
+                      </div>
+                      <p class="empty-privacy"><span></span> Local browser processing · No upload queue</p>
+                    </div>
+                  </div>
+                  <dl class="meta-grid">
+                    <div><dt>Original</dt><dd id="originalMeta">-</dd></div>
+                    <div><dt>Output</dt><dd id="outputMeta">-</dd></div>
+                  </dl>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="task-atlas" aria-labelledby="task-atlas-title">
-        <div class="section-head task-atlas-head">
-          <h2 id="task-atlas-title">Start with where the image will be used</h2>
-          <p>Choosing the destination first prevents accidental stretching and avoids exporting more pixels than the upload needs.</p>
-        </div>
-        <div class="format-map" aria-label="Common image destinations and dimensions">
-          <a class="format-route format-route-square" href="./resize-image-to-1024x1024.html">
-            <span class="format-preview" aria-hidden="true"><i></i></span>
-            <span><strong>Square upload</strong><small>1024 x 1024</small><em>Profiles, product tiles, forms</em></span>
-          </a>
-          <a class="format-route format-route-wide" href="./resize-image-for-youtube.html">
-            <span class="format-preview" aria-hidden="true"><i></i></span>
-            <span><strong>YouTube thumbnail</strong><small>1280 x 720</small><em>16:9 with a visible safe area</em></span>
-          </a>
-          <a class="format-route format-route-tall" href="./resize-image-for-instagram.html">
-            <span class="format-preview" aria-hidden="true"><i></i></span>
-            <span><strong>Vertical social image</strong><small>1080 x 1350 or 1080 x 1920</small><em>Posts, stories, and reels</em></span>
-          </a>
-          <a class="format-route format-route-light" href="#tool">
-            <span class="format-preview" aria-hidden="true"><i></i></span>
-            <span><strong>Smaller file</strong><small>Target KB or quality</small><em>Email, websites, upload limits</em></span>
-          </a>
-        </div>
-        <p class="task-atlas-note">Need a different size? Enter exact dimensions in the tool and keep aspect ratio enabled unless distortion is intentional.</p>
-      </section>
-
-      <section class="evidence-section" aria-labelledby="evidence-title">
-        <div class="section-head">
-          <p class="eyebrow">A result you can verify</p>
-          <h2 id="evidence-title">The preview is generated from your chosen settings</h2>
-          <p>FitMyPic does not display a generic savings claim. It renders the selected image in your browser, encodes the chosen format, and reports the resulting dimensions and file size.</p>
-        </div>
-        <div class="evidence-grid">
-          <article>
-            <span class="evidence-number">01</span>
-            <h3>Compare before and after</h3>
-            <p>Use the Original and Result control above the preview to check framing, sharpness, transparency, and color before saving.</p>
-          </article>
-          <article>
-            <span class="evidence-number">02</span>
-            <h3>Measure the encoded file</h3>
-            <p>The output size is calculated from the actual JPG, PNG, or WebP blob created by the browser, not from a fixed estimate.</p>
-          </article>
-          <article>
-            <span class="evidence-number">03</span>
-            <h3>Understand the tradeoff</h3>
-            <p>A smaller result can mean fewer pixels, stronger compression, or both. The comparison helps you decide whether the savings are worth the visual change.</p>
-          </article>
-        </div>
-        <div class="review-line" aria-label="FitMyPic review information">
-          <span><strong>Built and reviewed by FitMyPic</strong> for browser-based image preparation.</span>
-          <a href="./image-output-testing.html">Testing method</a>
-          <a href="./about.html">About the site</a>
-          <span>Last workflow review: August 8, 2026</span>
+      <!-- ===== Features ===== -->
+      <section id="features" class="hp-section hp-section-alt" aria-labelledby="features-title">
+        <div class="hp-section-inner">
+          <div class="section-head">
+            <p class="eyebrow">Features</p>
+            <h2 id="features-title">Two precise tools, zero compromise</h2>
+            <p>Competitor-grade results without accounts, credits, or uploads.</p>
+          </div>
+          <div class="hp-features">
+            <div class="hp-card"><div class="hp-icon">✂️</div><h3>Background remover</h3><p>Click any solid background to remove it — white studio shots, flat colors, and near-solid tones. Fine-tune tolerance and edge feathering live.</p></div>
+            <div class="hp-card"><div class="hp-icon">📐</div><h3>Exact resizing</h3><p>Set precise pixel dimensions, lock the aspect ratio, or crop to square, portrait, and landscape frames without stretching.</p></div>
+            <div class="hp-card"><div class="hp-icon">🗜️</div><h3>Compression with a target</h3><p>Export JPG or WebP near an exact KB size for upload limits, forms, and fast-loading pages.</p></div>
+            <div class="hp-card"><div class="hp-icon">🔒</div><h3>Private by design</h3><p>Your images are processed by your own browser. Nothing is uploaded, stored, or sent to a server.</p></div>
+            <div class="hp-card"><div class="hp-icon">🧾</div><h3>Measured results</h3><p>The output dimensions and file size are read from the real encoded file — never an estimate.</p></div>
+            <div class="hp-card"><div class="hp-icon">🆓</div><h3>Free, no watermark</h3><p>Unlimited use, full-resolution downloads, no signup, and no branding stamped on your work.</p></div>
+          </div>
         </div>
       </section>
 
-      <section class="info-grid" aria-labelledby="steps-title">
-        <div class="section-head">
-          <p class="eyebrow">Workflow</p>
-          <h2 id="steps-title">How to resize or compress an image</h2>
-          <p>Use FitMyPic for everyday image cleanup before uploading to social media, stores, forms, or websites.</p>
-        </div>
-        <article>
-          <h3>1. Select an image</h3>
-          <p>Choose a JPG, PNG, or WebP file from your device. The file is opened in your browser for normal resizing and compression.</p>
-        </article>
-        <article>
-          <h3>2. Set size and format</h3>
-          <p>Enter a custom width and height, keep the aspect ratio locked, or use a common preset such as 1024 x 1024 or YouTube thumbnail.</p>
-        </article>
-        <article>
-          <h3>3. Download the result</h3>
-          <p>Export the optimized image as JPG, PNG, or WebP. Lower quality settings can reduce file size when the output format supports compression.</p>
-        </article>
-      </section>
-
-      <section class="tool-shell reference-panel" aria-labelledby="support-title">
-        <div class="section-head">
-          <p class="eyebrow">Formats and privacy</p>
-          <h2 id="support-title">Supported image options</h2>
-          <p>These notes help you decide whether the tool fits the file you are preparing.</p>
-        </div>
-        <dl class="detail-list">
-          <div><dt>Input formats</dt><dd>JPG, PNG, and WebP images.</dd></div>
-          <div><dt>Output formats</dt><dd>JPG, PNG, and WebP, depending on browser support.</dd></div>
-          <div><dt>Best uses</dt><dd>Profile images, thumbnails, product previews, blog images, and upload-ready square graphics.</dd></div>
-          <div><dt>Privacy model</dt><dd>Normal processing happens in your browser, without sending selected image files to a conversion server.</dd></div>
-          <div><dt>File size guidance</dt><dd>Large camera photos may use more memory. For smoother browser performance, resize very large files in smaller batches.</dd></div>
-          <div><dt>Target size</dt><dd>For JPG and WebP exports, FitMyPic can try several quality levels to download a file close to a target KB size.</dd></div>
-        </dl>
-      </section>
-
-      <section class="decision-section" aria-labelledby="decision-title">
-        <div class="section-head">
-          <p class="eyebrow">Choose deliberately</p>
-          <h2 id="decision-title">Which output should you use?</h2>
-          <p>The best format depends on what the image contains and where it will be used.</p>
-        </div>
-        <div class="decision-table" role="table" aria-label="Image format comparison">
-          <div class="decision-row decision-head" role="row"><span role="columnheader">Output</span><span role="columnheader">Best for</span><span role="columnheader">Watch for</span></div>
-          <div class="decision-row" role="row"><strong role="cell">JPG</strong><span role="cell">Photos, marketplace uploads, email attachments</span><span role="cell">No transparency; repeated compression can soften detail</span></div>
-          <div class="decision-row" role="row"><strong role="cell">PNG</strong><span role="cell">Logos, screenshots, interface graphics, transparency</span><span role="cell">Photo files can be much larger</span></div>
-          <div class="decision-row" role="row"><strong role="cell">WebP</strong><span role="cell">Modern websites and smaller web delivery</span><span role="cell">Some older apps and upload forms may reject it</span></div>
+      <!-- ===== Privacy band ===== -->
+      <section class="hp-section" aria-labelledby="privacy-title">
+        <div class="hp-section-inner">
+          <div class="hp-privacy">
+            <div>
+              <h2 id="privacy-title">Your images <em>never leave</em> your device</h2>
+              <p>Most online tools upload your photos to their servers before processing. FitMyPic does the opposite: the browser does all the work, and the file goes straight from your disk to your download folder.</p>
+            </div>
+            <ul class="hp-privacy-list">
+              <li><span class="hp-pi">📴</span><div><b>No upload queue</b><span>Works even on slow or restricted connections.</span></div></li>
+              <li><span class="hp-pi">🕵️</span><div><b>No tracking of your files</b><span>We never see, store, or analyze the images you edit.</span></div></li>
+              <li><span class="hp-pi">⚡</span><div><b>Instant results</b><span>No waiting for a server round-trip — processing starts immediately.</span></div></li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      <section class="output-anatomy" aria-labelledby="output-anatomy-title">
-        <div class="section-head">
-          <h2 id="output-anatomy-title">Three controls shape the final file</h2>
-          <p>File size is not controlled by one magic slider. Dimensions, format, and encoding quality each change a different part of the result.</p>
-        </div>
-        <div class="anatomy-rows">
-          <article>
-            <div class="anatomy-visual pixels-visual" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-            <div><h3>Dimensions set the pixel budget</h3><p>Reducing width and height removes pixels. This is usually the strongest way to shrink a large camera image before an online upload.</p><a href="#tool">Set exact dimensions</a></div>
-          </article>
-          <article>
-            <div class="anatomy-visual format-visual" aria-hidden="true"><span>JPG</span><span>PNG</span><span>WebP</span></div>
-            <div><h3>Format decides what can be preserved</h3><p>JPG suits photos, PNG preserves transparency and sharp graphics, and WebP is useful when modern web delivery matters.</p><a href="#decision-title">Compare output formats</a></div>
-          </article>
-          <article>
-            <div class="anatomy-visual quality-visual" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div><h3>Quality balances detail and bytes</h3><p>For JPG and WebP, lower quality can reduce the encoded file. Inspect edges, text, and faces in the real preview before downloading.</p><a href="./image-output-testing.html">Review the output tests</a></div>
-          </article>
+      <!-- ===== How it works ===== -->
+      <section id="how" class="hp-section hp-section-alt" aria-labelledby="how-title">
+        <div class="hp-section-inner">
+          <div class="section-head">
+            <p class="eyebrow">How it works</p>
+            <h2 id="how-title">Three steps to a clean result</h2>
+          </div>
+          <div class="hp-steps">
+            <div class="hp-step"><div class="hp-num">STEP 01</div><h3>Choose your image</h3><p>Drop in a JPG, PNG, or WebP file — or paste it with Ctrl+V. It opens instantly because it never leaves your device.</p></div>
+            <div class="hp-step"><div class="hp-num">STEP 02</div><h3>Edit with live preview</h3><p>Sample the background to remove it, or set exact dimensions and quality. Compare original and result side by side.</p></div>
+            <div class="hp-step"><div class="hp-num">STEP 03</div><h3>Download the measured file</h3><p>Check the real output size, then download your transparent PNG or optimized image at full quality.</p></div>
+          </div>
         </div>
       </section>
 
-      <section id="guides" class="content-grid" aria-labelledby="guides-title">
-        <div class="section-head">
-          <p class="eyebrow">Guides</p>
-          <h2 id="guides-title">Image sizing guides</h2>
+      <!-- ===== Use cases ===== -->
+      <section class="hp-section" aria-labelledby="usecases-title">
+        <div class="hp-section-inner">
+          <div class="section-head">
+            <p class="eyebrow">Use cases</p>
+            <h2 id="usecases-title">Built for everyday image work</h2>
+          </div>
+          <div class="hp-usecases">
+            <div class="hp-usecase"><span class="hp-ui">🛒</span><div><b>Ecommerce product photos</b><span>Clean cutouts with transparent backgrounds for stores and marketplaces.</span></div></div>
+            <div class="hp-usecase"><span class="hp-ui">👤</span><div><b>Profile pictures &amp; avatars</b><span>Square, correctly sized headshots for social and work accounts.</span></div></div>
+            <div class="hp-usecase"><span class="hp-ui">📱</span><div><b>Social media posts</b><span>Presets for Instagram, Stories, YouTube thumbnails, and share cards.</span></div></div>
+            <div class="hp-usecase"><span class="hp-ui">📝</span><div><b>Forms &amp; applications</b><span>Hit exact pixel and file-size limits for visas, job portals, and uploads.</span></div></div>
+            <div class="hp-usecase"><span class="hp-ui">🎨</span><div><b>Design assets</b><span>Extract logos and graphics onto transparent canvases for any layout.</span></div></div>
+            <div class="hp-usecase"><span class="hp-ui">🌐</span><div><b>Faster websites</b><span>Compress hero images and banners to quick-loading file sizes.</span></div></div>
+          </div>
         </div>
-        <article>
-          <h3><a href="./resize-image-for-instagram.html">Resize images for Instagram</a></h3>
-          <p>Use square, portrait, and story sizes that fit common Instagram posts and vertical content.</p>
-        </article>
-        <article>
-          <h3><a href="./resize-image-for-youtube.html">YouTube thumbnail resizer - 1280 x 720</a></h3>
-          <p>Crop or fit an image to an exact 16:9 thumbnail and check the preview safe area before downloading.</p>
-        </article>
-        <article>
-          <h3><a href="./resize-image-to-1024x1024.html">Resize an image to 1024 x 1024 pixels</a></h3>
-          <p>Create an exact square output with crop or fit controls for avatars, product previews, and upload forms.</p>
-        </article>
-        <article>
-          <h3><a href="./image-output-testing.html">How FitMyPic tests image output</a></h3>
-          <p>Review the reproducible checks used for dimensions, format encoding, measured file size, transparency, and target-size export.</p>
-        </article>
       </section>
 
-      <section class="faq-section" aria-labelledby="faq-title">
-        <div class="section-head">
-          <p class="eyebrow">FAQ</p>
-          <h2 id="faq-title">Image resizing questions</h2>
+      <!-- ===== Compare ===== -->
+      <section class="hp-section hp-section-alt" aria-labelledby="compare-title">
+        <div class="hp-section-inner">
+          <div class="section-head">
+            <p class="eyebrow">Honest comparison</p>
+            <h2 id="compare-title">How FitMyPic compares</h2>
+            <p>The differences that matter when your photos are involved.</p>
+          </div>
+          <div class="hp-compare" role="table" aria-label="FitMyPic compared with typical alternatives">
+            <div class="hp-row hp-head" role="row"><span role="columnheader"></span><span role="columnheader">FitMyPic</span><span role="columnheader">Typical upload tools</span><span role="columnheader">Desktop software</span></div>
+            <div class="hp-row" role="row"><span role="cell">Image privacy</span><span role="cell"><span class="yes">✓</span> Stays on your device</span><span role="cell"><span class="no">✗</span> Uploaded to servers</span><span role="cell"><span class="yes">✓</span> Local files</span></div>
+            <div class="hp-row" role="row"><span role="cell">Price</span><span role="cell"><span class="yes">✓</span> Free, unlimited</span><span role="cell">Freemium, credit limits</span><span role="cell">Paid licenses</span></div>
+            <div class="hp-row" role="row"><span role="cell">Account required</span><span role="cell"><span class="yes">✓</span> None</span><span role="cell"><span class="no">✗</span> Usually yes</span><span role="cell">Installation needed</span></div>
+            <div class="hp-row" role="row"><span role="cell">Watermarks</span><span role="cell"><span class="yes">✓</span> Never</span><span role="cell"><span class="no">✗</span> Common on free tiers</span><span role="cell"><span class="yes">✓</span> None</span></div>
+            <div class="hp-row" role="row"><span role="cell">Setup time</span><span role="cell"><span class="yes">✓</span> Open and go</span><span role="cell">Sign-up flow</span><span role="cell">Download + install</span></div>
+          </div>
         </div>
-        <details>
-          <summary>Are my images uploaded?</summary>
-          <p>No. For normal use, image resizing, compression, and preview rendering run locally in your browser.</p>
-        </details>
-        <details>
-          <summary>Which format should I choose?</summary>
-          <p>Use JPG for photos, PNG for transparent graphics or screenshots, and WebP for smaller website images when compatibility is acceptable.</p>
-        </details>
-        <details>
-          <summary>How do I avoid stretching an image?</summary>
-          <p>Keep the aspect ratio option enabled when changing width or height. Disable it only when you intentionally need an exact distorted size.</p>
-        </details>
-        <details>
-          <summary>Why is my exported file still large?</summary>
-          <p>PNG can stay large because it preserves sharp edges and transparency. Use JPG or WebP with a lower quality setting when smaller file size matters more.</p>
-        </details>
+      </section>
+
+      <!-- ===== FAQ ===== -->
+      <section id="faq" class="hp-section" aria-labelledby="faq-title">
+        <div class="hp-section-inner">
+          <div class="section-head">
+            <p class="eyebrow">FAQ</p>
+            <h2 id="faq-title">Questions, answered</h2>
+          </div>
+          <div class="hp-faq-list">
+            <details>
+              <summary>Are my images uploaded anywhere?</summary>
+              <p>No. Background removal, resizing, compression, and previews all run locally in your browser using the canvas API. Your files are never transmitted to a server.</p>
+            </details>
+            <details>
+              <summary>What kinds of backgrounds can be removed?</summary>
+              <p>Solid and near-solid backgrounds: white studio backdrops, flat colors, and lightly uneven tones. Choose "connected to edges" for a safer result, or "every matching pixel" when the same color appears in separate areas. Photos with busy, detailed backgrounds need professional AI tools.</p>
+            </details>
+            <details>
+              <summary>Is the result a real transparent PNG?</summary>
+              <p>Yes. The exported file contains a genuine alpha channel — the checkerboard you see is only a preview convention. Place the PNG on any background and the transparent areas will show through.</p>
+            </details>
+            <details>
+              <summary>How do I avoid stretching when resizing?</summary>
+              <p>Keep the aspect-ratio lock enabled when you change width or height, or use a crop ratio. Stretch mode exists only for the rare cases where exact distorted dimensions are intentional.</p>
+            </details>
+            <details>
+              <summary>Can I hit an exact file-size limit?</summary>
+              <p>For JPG and WebP, enter a target KB value and FitMyPic will test quality levels to land close to it. Exact bytes can't be guaranteed because image content affects compression, but the measured result is always shown before download.</p>
+            </details>
+            <details>
+              <summary>Which format should I export?</summary>
+              <p>PNG for transparency and sharp graphics, JPG for photos and smaller files, WebP for modern websites that accept it. The tool shows the measured size of whichever format you pick.</p>
+            </details>
+            <details>
+              <summary>Is there a file-size or usage limit?</summary>
+              <p>No accounts, credits, or daily caps. Very large camera photos may process slower depending on your device's memory, but there is no artificial limit.</p>
+            </details>
+            <details>
+              <summary>Does it work on phones?</summary>
+              <p>Yes. The layout adapts to small screens, and touch devices can choose files normally. Paste-from-clipboard works on desktop browsers.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Guides ===== -->
+      <section id="guides" class="hp-section hp-section-alt" aria-labelledby="guides-title">
+        <div class="hp-section-inner">
+          <div class="section-head">
+            <p class="eyebrow">Guides</p>
+            <h2 id="guides-title">Learn the exact sizes</h2>
+          </div>
+          <div class="hp-guides">
+            <a class="hp-guide" href="./resize-image-for-instagram.html"><b>Resize images for Instagram posts, Stories, and Reels</b><span>READ GUIDE →</span></a>
+            <a class="hp-guide" href="./resize-image-for-youtube.html"><b>YouTube thumbnails at exactly 1280 × 720</b><span>READ GUIDE →</span></a>
+            <a class="hp-guide" href="./resize-image-to-1024x1024.html"><b>Perfect 1024 × 1024 squares for avatars and forms</b><span>READ GUIDE →</span></a>
+            <a class="hp-guide" href="./image-output-testing.html"><b>How FitMyPic tests its output</b><span>READ GUIDE →</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CTA ===== -->
+      <section class="hp-section" aria-label="Call to action">
+        <div class="hp-section-inner">
+          <div class="hp-cta">
+            <h2>Ready to edit — privately?</h2>
+            <p>No signup. No upload. No watermark. Just your image and a clean result.</p>
+            <a class="hp-btn-primary" href="#tool">Open the free tools</a>
+          </div>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
-      <p>Free browser-based image resizing, compression, and conversion. Your files stay on your device — no account needed.</p>
-    </div>
-    <div class="footer-col">
-      <strong>Tools</strong>
-      <a href="./#tool">Image resizer &amp; compressor</a>
-      <a href="./resize-image-to-1024x1024.html">Square 1024 x 1024</a>
-      <a href="./resize-image-for-instagram.html">Instagram sizes</a>
-      <a href="./resize-image-for-youtube.html">YouTube thumbnail</a>
-    </div>
-    <div class="footer-col">
-      <strong>Resources</strong>
-      <a href="./image-output-testing.html">Output testing method</a>
-      <a href="./about.html">About FitMyPic</a>
-      <a href="./contact.html">Contact</a>
-    </div>
-    <div class="footer-col">
-      <strong>Legal</strong>
-      <a href="./privacy.html">Privacy Policy</a>
-      <a href="./terms.html">Terms of Use</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 FitMyPic. All rights reserved.</span>
-    <span>Images are processed locally in your browser.</span>
-  </div>
-</footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+          <p>Free browser-based background removal, image resizing, and compression. Your files stay on your device — no account needed.</p>
+        </div>
+        <div class="footer-col">
+          <strong>Tools</strong>
+          <a href="./#tool">Background remover</a>
+          <a href="./#tool">Image resizer &amp; compressor</a>
+          <a href="./resize-image-to-1024x1024.html">Square 1024 × 1024</a>
+          <a href="./resize-image-for-youtube.html">YouTube thumbnail</a>
+        </div>
+        <div class="footer-col">
+          <strong>Resources</strong>
+          <a href="./resize-image-for-instagram.html">Instagram sizes</a>
+          <a href="./image-output-testing.html">Output testing method</a>
+          <a href="./about.html">About FitMyPic</a>
+          <a href="./contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <strong>Legal</strong>
+          <a href="./privacy.html">Privacy Policy</a>
+          <a href="./terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 FitMyPic. All rights reserved.</span>
+        <span>Images are processed locally in your browser.</span>
+      </div>
+    </footer>
 
+    <script>
+      // Tab switching between the two tools
+      document.querySelectorAll(".hp-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".hp-tab").forEach((t) => {
+            const active = t === tab;
+            t.classList.toggle("is-active", active);
+            t.setAttribute("aria-selected", active ? "true" : "false");
+          });
+          document.querySelectorAll(".hp-panel").forEach((panel) => {
+            panel.hidden = panel.id !== tab.getAttribute("data-panel");
+          });
+        });
+      });
+    </script>
     <script type="module" src="./src/main.ts"></script>
-</body>
+    <script type="module" src="./src/transparent-tool.ts"></script>
+  </body>
 </html>
-

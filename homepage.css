@@ -11,8 +11,8 @@
   padding: 96px 22px 72px;
   text-align: left;
   background:
-    radial-gradient(920px 460px at 16% -18%, rgba(63, 99, 196, 0.16), transparent 62%),
-    radial-gradient(760px 400px at 94% -6%, rgba(63, 99, 196, 0.09), transparent 58%),
+    radial-gradient(920px 460px at 16% -18%, rgba(63, 99, 196, 0.1), transparent 62%),
+    radial-gradient(760px 400px at 94% -6%, rgba(63, 99, 196, 0.06), transparent 58%),
     linear-gradient(180deg, #fbfaf8 0%, var(--bg) 100%);
 }
 
@@ -103,7 +103,7 @@
 .hp-chips li::before { content: "✓"; color: var(--accent); font-weight: 800; }
 
 /* ---------- Sections ---------- */
-.hp-section { padding: 88px 22px; }
+.hp-section { padding: 104px 22px; }
 .hp-section-alt { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .hp-section-inner { max-width: 1200px; margin: 0 auto; }
 

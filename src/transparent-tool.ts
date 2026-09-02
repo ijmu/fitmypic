@@ -27,6 +27,9 @@ const originalButton = required<HTMLButtonElement>("#transparentOriginalTab");
 const emptyState = required<HTMLElement>("#transparentEmpty");
 const originalMetric = required<HTMLElement>("#transparentOriginalMetric");
 const outputMetric = required<HTMLElement>("#transparentOutputMetric");
+// Optional background-replacement controls: pages without them keep transparent-only output.
+const fillSelect = document.querySelector<HTMLSelectElement>("#transparentFill");
+const fillColorInput = document.querySelector<HTMLInputElement>("#transparentFillColor");
 
 let sourceFile: File | null = null;
 let originalData: ImageData | null = null;
@@ -117,6 +120,19 @@ async function process(): Promise<void> {
     removeConnectedEdges(output.data, output.width, output.height, target, tolerance, feather);
   }
 
+  const fillMode = fillSelect ? fillSelect.value : "none";
+  if (fillMode !== "none") {
+    const fillHex = fillMode === "custom" ? fillColorInput?.value || "#ffffff" : fillMode === "black" ? "#000000" : "#ffffff";
+    const fill = hexToRgb(fillHex);
+    for (let index = 0; index < output.data.length; index += 4) {
+      const alpha = output.data[index + 3] / 255;
+      output.data[index] = Math.round(output.data[index] * alpha + fill.r * (1 - alpha));
+      output.data[index + 1] = Math.round(output.data[index + 1] * alpha + fill.g * (1 - alpha));
+      output.data[index + 2] = Math.round(output.data[index + 2] * alpha + fill.b * (1 - alpha));
+      output.data[index + 3] = 255;
+    }
+  }
+
   resultCanvas.width = output.width;
   resultCanvas.height = output.height;
   resultCanvas.getContext("2d")?.putImageData(output, 0, 0);
@@ -124,8 +140,12 @@ async function process(): Promise<void> {
   const transparentPercent = transparentPixels / (output.width * output.height) * 100;
   outputBlob = await canvasBlob(resultCanvas);
   if (version !== measureVersion) return;
-  outputMetric.textContent = `${output.width} x ${output.height}, ${transparentPercent.toFixed(1)}% fully transparent, ${formatBytes(outputBlob.size)}`;
-  status.textContent = "Result measured. Click the preview to sample another background color or download the PNG.";
+  outputMetric.textContent = fillMode === "none"
+    ? `${output.width} x ${output.height}, ${transparentPercent.toFixed(1)}% fully transparent, ${formatBytes(outputBlob.size)}`
+    : `${output.width} x ${output.height}, background replaced with ${fillMode === "custom" ? fillColorInput?.value || "a custom color" : fillMode}, ${formatBytes(outputBlob.size)}`;
+  status.textContent = fillMode === "none"
+    ? "Result measured. Click the preview to sample another background color or download the PNG."
+    : "Result measured with the new background. Download the PNG or switch back to transparent.";
   downloadButton.disabled = false;
 }
 
@@ -222,6 +242,8 @@ function reset(): void {
   featherInput.value = "18";
   toleranceValue.textContent = "35";
   featherValue.textContent = "18";
+  if (fillSelect) fillSelect.value = "none";
+  if (fillColorInput) { fillColorInput.value = "#ffffff"; fillColorInput.disabled = true; }
   originalMetric.textContent = "No image selected";
   outputMetric.textContent = "Measured after processing";
   downloadButton.disabled = true;
@@ -269,15 +291,24 @@ originalButton.addEventListener("click", () => show("original"));
 resetButton.addEventListener("click", reset);
 downloadButton.addEventListener("click", () => {
   if (!outputBlob || !sourceFile) return;
+  const filled = fillSelect && fillSelect.value !== "none";
   const url = URL.createObjectURL(outputBlob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `${sourceFile.name.replace(/\.[^.]+$/, "")}-transparent.png`;
+  link.download = `${sourceFile.name.replace(/\.[^.]+$/, "")}${filled ? "-background" : "-transparent"}.png`;
   document.body.append(link);
   link.click();
   link.remove();
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-  status.textContent = `Downloaded ${formatBytes(outputBlob.size)} transparent PNG.`;
+  status.textContent = `Downloaded ${formatBytes(outputBlob.size)} ${filled ? "PNG with replaced background" : "transparent PNG"}.`;
 });
+
+fillSelect?.addEventListener("input", () => {
+  const filled = fillSelect.value !== "none";
+  if (fillColorInput) fillColorInput.disabled = fillSelect.value !== "custom";
+  downloadButton.textContent = filled ? "Download PNG with new background" : "Download transparent PNG";
+  if (originalData) void process();
+});
+fillColorInput?.addEventListener("input", () => { if (originalData) void process(); });
 
 reset();

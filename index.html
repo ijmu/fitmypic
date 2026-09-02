@@ -42,11 +42,11 @@
         "operatingSystem": "Any modern web browser",
         "description": "A free browser-based background remover, image resizer, and compressor.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "featureList": ["Solid background removal", "Transparent PNG export", "High-quality image resizing", "Image compression to target KB", "Centered crop ratios", "Rotate and flip controls", "JPG, PNG, and WebP conversion", "Original and result comparison", "Measured output file size", "Social media size presets", "Local browser processing"]
+        "featureList": ["Solid background removal", "Transparent PNG export", "Solid background replacement (white, black, or custom color)", "High-quality image resizing", "Image compression to target KB", "Centered crop ratios", "Rotate and flip controls", "JPG, PNG, and WebP conversion", "Original and result comparison", "Measured output file size", "Social media size presets", "Local browser processing"]
       }
     </script>
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are my images uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Background removal, resizing, compression, and previews all run locally in your browser using the canvas API. Your files are never transmitted to a server."}},{"@type":"Question","name":"What kinds of backgrounds can be removed?","acceptedAnswer":{"@type":"Answer","text":"Solid and near-solid backgrounds: white studio backdrops, flat colors, and lightly uneven tones. Choose \"connected to edges\" for a safer result, or \"every matching pixel\" when the same color appears in separate areas. Photos with busy, detailed backgrounds need professional AI tools."}},{"@type":"Question","name":"Is the result a real transparent PNG?","acceptedAnswer":{"@type":"Answer","text":"Yes. The exported file contains a genuine alpha channel — the checkerboard you see is only a preview convention. Place the PNG on any background and the transparent areas will show through."}},{"@type":"Question","name":"How do I avoid stretching when resizing?","acceptedAnswer":{"@type":"Answer","text":"Keep the aspect-ratio lock enabled when you change width or height, or use a crop ratio. Stretch mode exists only for the rare cases where exact distorted dimensions are intentional."}},{"@type":"Question","name":"Can I hit an exact file-size limit?","acceptedAnswer":{"@type":"Answer","text":"For JPG and WebP, enter a target KB value and FitMyPic will test quality levels to land close to it. Exact bytes can't be guaranteed because image content affects compression, but the measured result is always shown before download."}},{"@type":"Question","name":"Which format should I export?","acceptedAnswer":{"@type":"Answer","text":"PNG for transparency and sharp graphics, JPG for photos and smaller files, WebP for modern websites that accept it. The tool shows the measured size of whichever format you pick."}},{"@type":"Question","name":"Is there a file-size or usage limit?","acceptedAnswer":{"@type":"Answer","text":"No accounts, credits, or daily caps. Very large camera photos may process slower depending on your device's memory, but there is no artificial limit."}},{"@type":"Question","name":"Does it work on phones?","acceptedAnswer":{"@type":"Answer","text":"Yes. The layout adapts to small screens, and touch devices can choose files normally. Paste-from-clipboard works on desktop browsers."}}]}
+      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are my images uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Background removal, resizing, compression, and previews all run locally in your browser using the canvas API. Your files are never transmitted to a server."}},{"@type":"Question","name":"What kinds of backgrounds can be removed?","acceptedAnswer":{"@type":"Answer","text":"Solid and near-solid backgrounds: white studio backdrops, flat colors, and lightly uneven tones. Choose \"connected to edges\" for a safer result, or \"every matching pixel\" when the same color appears in separate areas. Photos with busy, detailed backgrounds need professional AI tools."}},{"@type":"Question","name":"Can I replace the background with a solid color instead of transparency?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose solid white, solid black, or any custom color in the Replace with menu. Feathered edges blend smoothly into the new background, and the result downloads as a ready-to-use PNG."}},{"@type":"Question","name":"Is the result a real transparent PNG?","acceptedAnswer":{"@type":"Answer","text":"Yes. The exported file contains a genuine alpha channel — the checkerboard you see is only a preview convention. Place the PNG on any background and the transparent areas will show through."}},{"@type":"Question","name":"How do I avoid stretching when resizing?","acceptedAnswer":{"@type":"Answer","text":"Keep the aspect-ratio lock enabled when you change width or height, or use a crop ratio. Stretch mode exists only for the rare cases where exact distorted dimensions are intentional."}},{"@type":"Question","name":"Can I hit an exact file-size limit?","acceptedAnswer":{"@type":"Answer","text":"For JPG and WebP, enter a target KB value and FitMyPic will test quality levels to land close to it. Exact bytes can't be guaranteed because image content affects compression, but the measured result is always shown before download."}},{"@type":"Question","name":"Which format should I export?","acceptedAnswer":{"@type":"Answer","text":"PNG for transparency and sharp graphics, JPG for photos and smaller files, WebP for modern websites that accept it. The tool shows the measured size of whichever format you pick."}},{"@type":"Question","name":"Is there a file-size or usage limit?","acceptedAnswer":{"@type":"Answer","text":"No accounts, credits, or daily caps. Very large camera photos may process slower depending on your device's memory, but there is no artificial limit."}},{"@type":"Question","name":"Does it work on phones?","acceptedAnswer":{"@type":"Answer","text":"Yes. The layout adapts to small screens, and touch devices can choose files normally. Paste-from-clipboard works on desktop browsers."}}]}
     </script>
   </head>
   <body>
@@ -114,6 +114,10 @@
                     <div class="setting-row">
                       <label>Removal mode<select id="transparentMode"><option value="edges">Connected to edges</option><option value="global">Every matching pixel</option></select></label>
                       <label>Background color<input id="transparentColor" type="color" value="#ffffff" /></label>
+                    </div>
+                    <div class="setting-row">
+                      <label>Replace with<select id="transparentFill"><option value="none" selected>Keep transparent</option><option value="white">Solid white</option><option value="black">Solid black</option><option value="custom">Custom color…</option></select></label>
+                      <label>Fill color<input id="transparentFillColor" type="color" value="#ffffff" disabled /></label>
                     </div>
                     <label>Tolerance<div class="range-line"><input id="transparentTolerance" type="range" min="0" max="160" value="35" /><output id="transparentToleranceValue">35</output></div></label>
                     <label>Edge feather<div class="range-line"><input id="transparentFeather" type="range" min="0" max="80" value="18" /><output id="transparentFeatherValue">18</output></div></label>
@@ -255,7 +259,7 @@
             <p>Competitor-grade results without accounts, credits, or uploads.</p>
           </div>
           <div class="hp-features">
-            <div class="hp-card"><div class="hp-icon">✂️</div><h3>Background remover</h3><p>Click any solid background to remove it — white studio shots, flat colors, and near-solid tones. Fine-tune tolerance and edge feathering live.</p></div>
+            <div class="hp-card"><div class="hp-icon">✂️</div><h3>Background remover</h3><p>Click any solid background to remove it — white studio shots, flat colors, and near-solid tones. Fine-tune tolerance and edge feathering live, then keep it transparent or swap in white, black, or any custom color.</p></div>
             <div class="hp-card"><div class="hp-icon">📐</div><h3>Exact resizing</h3><p>Set precise pixel dimensions, lock the aspect ratio, or crop to square, portrait, and landscape frames without stretching.</p></div>
             <div class="hp-card"><div class="hp-icon">🗜️</div><h3>Compression with a target</h3><p>Export JPG or WebP near an exact KB size for upload limits, forms, and fast-loading pages.</p></div>
             <div class="hp-card"><div class="hp-icon">🔒</div><h3>Private by design</h3><p>Your images are processed by your own browser. Nothing is uploaded, stored, or sent to a server.</p></div>
@@ -351,6 +355,10 @@
               <p>Solid and near-solid backgrounds: white studio backdrops, flat colors, and lightly uneven tones. Choose "connected to edges" for a safer result, or "every matching pixel" when the same color appears in separate areas. Photos with busy, detailed backgrounds need professional AI tools.</p>
             </details>
             <details>
+              <summary>Can I replace the background with a solid color instead of transparency?</summary>
+              <p>Yes. Choose solid white, solid black, or any custom color in the Replace with menu. Feathered edges blend smoothly into the new background, and the result downloads as a ready-to-use PNG.</p>
+            </details>
+            <details>
               <summary>Is the result a real transparent PNG?</summary>
               <p>Yes. The exported file contains a genuine alpha channel — the checkerboard you see is only a preview convention. Place the PNG on any background and the transparent areas will show through.</p>
             </details>
@@ -389,7 +397,7 @@
             <a class="hp-guide" href="./resize-image-for-instagram.html"><b>Resize images for Instagram posts, Stories, and Reels</b><span>READ GUIDE →</span></a>
             <a class="hp-guide" href="./resize-image-for-youtube.html"><b>YouTube thumbnails at exactly 1280 × 720</b><span>READ GUIDE →</span></a>
             <a class="hp-guide" href="./resize-image-to-1024x1024.html"><b>Perfect 1024 × 1024 squares for avatars and forms</b><span>READ GUIDE →</span></a>
-            <a class="hp-guide" href="./image-output-testing.html"><b>How FitMyPic tests its output</b><span>READ GUIDE →</span></a>
+            <a class="hp-guide" href="./remove-background-from-image.html"><b>How to remove the background from any image</b><span>READ GUIDE →</span></a>
           </div>
         </div>
       </section>
@@ -422,6 +430,7 @@
         <div class="footer-col">
           <strong>Resources</strong>
           <a href="./resize-image-for-instagram.html">Instagram sizes</a>
+          <a href="./remove-background-from-image.html">Background removal guide</a>
           <a href="./image-output-testing.html">Output testing method</a>
           <a href="./about.html">About FitMyPic</a>
           <a href="./contact.html">Contact</a>

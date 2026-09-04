@@ -343,3 +343,15 @@
   .hp-cta, .hp-privacy { border-radius: 18px; }
   .hp-row { grid-template-columns: 1fr; }
 }
+
+/* ---------- Dark mode ---------- */
+@media (prefers-color-scheme: dark) {
+  .hp-hero {
+    background:
+      radial-gradient(920px 460px at 16% -18%, rgba(103, 141, 224, 0.13), transparent 62%),
+      radial-gradient(760px 400px at 94% -6%, rgba(103, 141, 224, 0.08), transparent 58%),
+      linear-gradient(180deg, #1b1a15 0%, var(--bg) 100%);
+  }
+  .hp-row .yes { color: #5ad194; }
+  .hp-row .no { color: #e58a5c; }
+}

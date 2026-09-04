@@ -1,0 +1,12 @@
+{
+  "name": "FitMyPic — Background Remover & Image Tools",
+  "short_name": "FitMyPic",
+  "description": "Free browser-based background removal, image resizing, and compression. Files never leave your device.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f5f2",
+  "theme_color": "#f6f5f2",
+  "icons": [
+    { "src": "/site-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

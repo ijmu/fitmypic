@@ -762,3 +762,33 @@ details p { margin: 12px 0 0; color: var(--ink-2); font-size: 0.95rem; }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* ---------- Guide CTA band ---------- */
+.guide-cta-band { margin-top: 56px; padding: 40px 28px; text-align: center; background: var(--surface-soft); border: 1px solid var(--line); border-radius: var(--radius-lg); }
+.guide-cta-band h2 { font-size: 1.5rem; margin: 0 0 10px; }
+.guide-cta-band p { color: var(--ink-2); margin: 0 auto 22px; max-width: 52ch; }
+.guide-related { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-top: 26px; }
+.guide-related strong { flex-basis: 100%; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+.guide-related a { display: inline-block; padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; font-size: 0.88rem; font-weight: 650; color: var(--ink-2); transition: border-color 150ms ease, color 150ms ease; }
+.guide-related a:hover { border-color: var(--accent); color: var(--accent-dark); }
+
+/* ---------- Dark mode ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14130f;
+    --surface: #1d1b17;
+    --surface-soft: #191712;
+    --ink: #edeae1;
+    --ink-2: #b4afa3;
+    --ink-3: #827e72;
+    --line: #2c2a24;
+    --line-strong: #3b382f;
+    --accent-soft: rgba(103, 141, 224, 0.16);
+    --accent-line: rgba(103, 141, 224, 0.45);
+    --checker: repeating-conic-gradient(#2c2c2c 0% 25%, #1f1f1f 0% 50%) 0 0 / 22px 22px;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 3px 10px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.3), 0 12px 28px rgba(0, 0, 0, 0.4);
+  }
+  main.page p, main.page li { color: var(--ink-2); }
+  main.page h1, main.page h2, main.page h3 { color: var(--ink); }
+}

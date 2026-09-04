@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f6f5f2" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f5f2" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14130f" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+    <link rel="manifest" href="/site.webmanifest" />
     <title>Free Background Remover &amp; Image Resizer Online | FitMyPic</title>
     <meta
       name="description"
@@ -396,7 +398,7 @@
           <div class="hp-guides">
             <a class="hp-guide" href="./resize-image-for-instagram.html"><b>Resize images for Instagram posts, Stories, and Reels</b><span>READ GUIDE →</span></a>
             <a class="hp-guide" href="./resize-image-for-youtube.html"><b>YouTube thumbnails at exactly 1280 × 720</b><span>READ GUIDE →</span></a>
-            <a class="hp-guide" href="./resize-image-to-1024x1024.html"><b>Perfect 1024 × 1024 squares for avatars and forms</b><span>READ GUIDE →</span></a>
+            <a class="hp-guide" href="./compress-image-to-100kb.html"><b>Compress any image to 100KB or less</b><span>READ GUIDE →</span></a>
             <a class="hp-guide" href="./remove-background-from-image.html"><b>How to remove the background from any image</b><span>READ GUIDE →</span></a>
           </div>
         </div>
@@ -430,6 +432,7 @@
         <div class="footer-col">
           <strong>Resources</strong>
           <a href="./resize-image-for-instagram.html">Instagram sizes</a>
+          <a href="./compress-image-to-100kb.html">Compress to 100KB</a>
           <a href="./remove-background-from-image.html">Background removal guide</a>
           <a href="./image-output-testing.html">Output testing method</a>
           <a href="./about.html">About FitMyPic</a>
@@ -464,5 +467,8 @@
     </script>
     <script type="module" src="./src/main.ts"></script>
     <script type="module" src="./src/transparent-tool.ts"></script>
+    <script>
+      if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {})); }
+    </script>
   </body>
 </html>

@@ -7,6 +7,7 @@
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1f" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
     <link rel="manifest" href="/site.webmanifest" />
+    <script>(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;r.classList.add(d?"dark":"light");window.__setTheme=function(x){r.classList.remove("dark","light");r.classList.add(x);try{localStorage.setItem("theme",x)}catch(e){};var b=document.querySelectorAll(".theme-toggle");for(var i=0;i<b.length;i++)b[i].textContent=x==="dark"?"\u2600\uFE0F":"\uD83C\uDF19";};window.__setTheme(d?"dark":"light");}catch(e){}})();</script>
     <title>Free Background Remover &amp; Image Resizer Online | FitMyPic</title>
     <meta
       name="description"
@@ -71,6 +72,7 @@
         <a href="#guides">Guides</a>
         <a href="./about.html">About</a>
       </nav>
+        <button class="theme-toggle" type="button" onclick="__setTheme(document.documentElement.classList.contains('dark')?'light':'dark')" aria-label="Toggle dark mode">🌙</button>
     </header>
 
     <main class="workspace-page">

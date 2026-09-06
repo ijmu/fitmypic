@@ -719,7 +719,7 @@ details p { margin: 12px 0 0; color: var(--ink-2); font-size: 0.95rem; }
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--surface-soft), #efede8);
+  background: linear-gradient(180deg, var(--surface-soft), var(--surface-soft));
   padding: 56px max(22px, calc((100vw - 1200px) / 2)) 28px;
   margin-top: 60px;
 }
@@ -845,3 +845,19 @@ h1, h2, h3 { letter-spacing: -0.015em; }
   main.page p, main.page li { color: var(--ink-2); }
   main.page h1, main.page h2, main.page h3 { color: var(--ink); }
 }
+
+/* html-level theme override (manual toggle, VitePress pattern) */
+html.dark {
+  --bg: #1b1b1f; --surface: #1f1f23; --surface-soft: #161618;
+  --ink: rgba(255, 255, 245, 0.86); --ink-2: rgba(235, 235, 245, 0.6); --ink-3: rgba(235, 235, 245, 0.38);
+  --line: #2e2e32; --line-strong: #3a3a3f;
+  --dark: #1b1b1f;
+}
+html.light {
+  --bg: #ffffff; --surface: #ffffff; --surface-soft: #f6f6f7;
+  --ink: #213547; --ink-2: rgba(60, 60, 67, 0.78); --ink-3: rgba(60, 60, 67, 0.56);
+  --line: #e2e2e3; --line-strong: #d9d9db;
+  --dark: #17181c;
+}
+.theme-toggle { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface); cursor: pointer; font-size: 1.05rem; line-height: 1; transition: border-color 0.2s ease, transform 0.2s ease; }
+.theme-toggle:hover { border-color: var(--accent); transform: rotate(12deg); }

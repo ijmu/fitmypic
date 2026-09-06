@@ -355,3 +355,39 @@
   .hp-row .yes { color: #5ad194; }
   .hp-row .no { color: #e58a5c; }
 }
+
+/* ===== VitePress-style homepage layer ===== */
+.hp-hero { background: none; padding: 88px 22px 72px; }
+.hp-badge { background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--accent-dark); border-radius: 999px; box-shadow: none; }
+.hp-hero h1 { color: var(--ink); font-weight: 800; letter-spacing: -0.025em; }
+.hp-hero h1 em {
+  font-style: normal;
+  background: linear-gradient(120deg, #3f63c4 15%, #7c9ae8 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.hp-lead { color: var(--ink-2); }
+.hp-btn-primary { background: var(--accent); border-radius: 20px; box-shadow: none; }
+.hp-btn-ghost { border: 1px solid var(--line-strong); border-radius: 20px; color: var(--ink-2); background: var(--surface); }
+.hp-chips li { background: var(--surface-soft); border: 1px solid var(--line); border-radius: 10px; color: var(--ink-2); box-shadow: none; }
+.hp-section-alt { background: var(--surface-soft); border-color: var(--line); }
+.hp-card, .hp-guide, .hp-usecase, .hp-step {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.hp-card:hover, .hp-guide:hover, .hp-usecase:hover, .hp-step:hover { border-color: var(--accent-line); transform: translateY(-2px); box-shadow: none; }
+.hp-privacy { background: var(--surface-soft); border: 1px solid var(--line); border-radius: 12px; color: var(--ink-2); }
+.hp-privacy h2, .hp-privacy strong, .hp-privacy-list .hp-pi b { color: var(--ink); }
+.hp-cta { background: var(--surface-soft); border: 1px solid var(--line); border-radius: 12px; }
+.hp-cta h2 { color: var(--ink); }
+.hp-cta p { color: var(--ink-2); }
+@media (prefers-color-scheme: dark) {
+  .hp-hero { background: none; }
+  .hp-hero h1 { color: rgba(255, 255, 245, 0.86); }
+  .hp-privacy, .hp-cta { background: var(--surface-soft); }
+  .hp-cta h2, .hp-privacy h2 { color: rgba(255, 255, 245, 0.86); }
+}

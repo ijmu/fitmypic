@@ -89,6 +89,13 @@ nav a {
 nav a:hover { color: var(--accent); }
 
 /* ---------- Shared bits ---------- */
+.page-meta {
+  margin: -2px 0 ;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  letter-spacing: 0.01em;
+}
+
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.18em;

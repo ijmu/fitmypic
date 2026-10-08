@@ -31,7 +31,10 @@
     </script>
       <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002" crossorigin="anonymous"></script>
-</head>
+<script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "WebPage", "name": "Privacy Policy - FitMyPic", "description": "How FitMyPic handles photos, cookies, AdSense advertising, analytics, and data requests.", "url": "https://www.fitmypic.com/privacy.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}, "publisher": {"@type": "Organization", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}, "datePublished": "2026-09-06", "dateModified": "2026-10-08"}
+    </script>
+  </head>
   <body>
     <header class="topbar">
       <a class="brand" href="./"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
@@ -45,31 +48,74 @@
     <main class="page article-page">
       <p class="eyebrow">Privacy</p>
       <h1>Privacy Policy</h1>
+      <p class="page-meta">Last reviewed: 8 October 2026</p>
+
       <section>
-        <h2>Image processing</h2>
-        <p>FitMyPic processes selected images in your browser for normal use. Resizing, compression, format conversion, and preview generation are handled with browser features on your device.</p>
-        <p>FitMyPic does not intentionally upload, store, or inspect the image files you choose for resizing or compression.</p>
+        <h2>How your photos are handled</h2>
+        <p>FitMyPic resizes, crops, compresses, converts, and removes backgrounds from images. All of that work happens in your browser using the Canvas API and WebAssembly. When you select a photo, the browser reads it from your device, the tool transforms the pixels in memory, and you receive the result as a download. No FitMyPic server receives your photo.</p>
+        <p>You do not have to take that on trust. Open your browser's developer tools, switch to the network panel, and resize a photo. You will see page assets loading and no request carrying image data. There is no upload field and no endpoint that accepts one.</p>
       </section>
+
       <section>
-        <h2>Information you may send</h2>
-        <p>If you contact FitMyPic by email, you may choose to send your email address, browser name, page URL, and a description of the issue. Do not send sensitive images unless required for troubleshooting.</p>
+        <h2>Particularly sensitive images</h2>
+        <p>People use image tools for identity photographs, scanned documents, and product shots. Because processing is local, those files stay with you. Two caveats are honest to state anyway:</p>
+        <ul>
+          <li>On a shared or public computer, the <em>download</em> you save and the browser's local cache remain on that machine. Clear site data and your downloads folder when you are finished.</li>
+          <li>Anything you later post to a social platform leaves your device at that point, under that platform's terms. FitMyPic has no part in that step.</li>
+        </ul>
       </section>
+
       <section>
-        <h2>Advertising and cookies</h2>
-        <p>This site may use Google AdSense. Google and its partners may use cookies or similar technologies to show ads, measure ad performance, limit frequency, and help prevent abuse.</p>
-        <p>You can manage cookies in your browser settings and through Google advertising controls where available.</p>
-        <p>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visits to this and other sites. You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" rel="noopener">Google Ads Settings</a>. To learn more about how Google uses data when you use our partners' sites or apps, see <a href="https://policies.google.com/technologies/ads" rel="noopener">policies.google.com/technologies/ads</a>.</p>
+        <h2>What FitMyPic does not collect</h2>
+        <ul>
+          <li><strong>Image pixels</strong> — never transmitted, in any form.</li>
+          <li><strong>Photo metadata</strong> — EXIF data present in your file is not read, logged, or transmitted.</li>
+          <li><strong>Filename, dimensions, or output size</strong> — shown to you on screen to confirm the result, never sent anywhere.</li>
+          <li><strong>Account details</strong> — FitMyPic has no registration, login, or saved profiles.</li>
+        </ul>
       </section>
+
       <section>
-        <h2>Third-party services</h2>
-        <p>FitMyPic is hosted by third-party infrastructure providers and may use third-party advertising or measurement services. These services may process technical information such as IP address, browser type, request time, and page URL according to their own policies.</p>
-        <p>We use Google Analytics (measurement ID G-XDE7CN1DH1) to understand aggregate site usage — pages viewed, approximate region, and device type. Google Analytics relies on cookies and may process technical data such as your IP address (truncated) under Google's privacy policy. Your images themselves are never uploaded or measured — all processing stays in your browser.</p>
+        <h2>Local storage and offline caching</h2>
+        <p>FitMyPic keeps your light or dark theme preference in <code>localStorage</code>. It holds no identifier and cannot be read by other websites. A service worker caches the site's own pages and assets so the tools work on a weak connection and load quickly on return visits; it never caches the images you open. Clearing site data in your browser removes both.</p>
       </section>
+
+      <section>
+        <h2>Advertising</h2>
+        <p>Ads on this site are served through Google AdSense. Google and its partners may use cookies or similar technologies to select ads, measure their performance, cap frequency, and detect invalid activity.</p>
+        <p>Google's advertising cookies allow it and its partners to serve ads based on your visits to this site and other sites. To opt out of personalised advertising, visit <a href="https://adssettings.google.com" rel="noopener nofollow">Google Ads Settings</a>. For a fuller account of how Google handles data from partner sites, see <a href="https://policies.google.com/technologies/ads" rel="noopener nofollow">Google's advertising technologies page</a>. Other ad vendors may also set cookies under their own policies.</p>
+        <p>Blocking or deleting advertising cookies does not disable any FitMyPic feature. The image tools work identically whether or not ad cookies are present.</p>
+      </section>
+
+      <section>
+        <h2>Analytics</h2>
+        <p>We use Google Analytics (measurement ID G-XDE7CN1DH1) to see which tools and guides people actually use, in aggregate — pages viewed, approximate region, and device type. That information guides what we build next; it is not used to identify anyone, and it is not combined with other data. Google Analytics sets cookies and may process technical data such as a truncated IP address under <a href="https://policies.google.com/privacy" rel="noopener nofollow">Google's privacy policy</a>. The <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener nofollow">Google Analytics opt-out add-on</a> disables it.</p>
+      </section>
+
+      <section>
+        <h2>Web hosting</h2>
+        <p>The site is delivered as static files by a third-party host. That host may keep standard access logs — IP address, user agent, requested URL, timestamp — for security and operational purposes. This is ordinary infrastructure logging outside our control and subject to the provider's policy.</p>
+      </section>
+
+      <section>
+        <h2>Retention and your choices</h2>
+        <p>Since photos and their details never reach us, there is no image data to retain or erase. Aggregate analytics is kept for the standard Analytics retention period. You may ask what data relates to your use of this site, or ask for it to be deleted, by writing to the address below.</p>
+      </section>
+
+      <section>
+        <h2>Children</h2>
+        <p>FitMyPic is a general image utility, not a service aimed at children under 13. We do not knowingly collect personal information from children. If you believe a child has submitted personal information via the contact address, tell us and we will remove it.</p>
+      </section>
+
+      <section>
+        <h2>Updates</h2>
+        <p>The "Last reviewed" date at the top of this page changes whenever this policy is revised. Changes that materially affect how data is handled will be described on this page rather than introduced quietly.</p>
+      </section>
+
       <section>
         <h2>Contact</h2>
-        <p>For privacy questions, email <a href="mailto:5202013@gmail.com">5202013@gmail.com</a> or use the <a href="./contact.html">contact page</a>.</p>
+        <p>Email <a href="mailto:5202013@gmail.com">5202013@gmail.com</a> or use the <a href="./contact.html">contact page</a> for any privacy question, including requests about your rights under applicable data protection law.</p>
       </section>
-    </main>
     <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-brand">

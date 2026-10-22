@@ -1,7 +1,7 @@
-alpha,alpha_edge_exact_pct,alpha_edge_mean_err,alpha_edge_px,alpha_px,alpha_total,alpha_zero_out,alpha_zero_src,encode_ms,image,jpg85_kb,jpg85_vs_webp,jpg92_kb,jpg_alpha_area_err,jpg_white_shift_mean,pixels,png_kb,png_source_kb,png_vs_webp,webp80_kb,webp_source_kb
-False,,,,,,,,2217,photo,140.3,2.31,230.3,,,1920000,1106.8,3167.5,18.22,54.5,60.7
-False,,,,,,,,1874,screenshot,331.9,2.11,439.8,,,2073600,1157.2,1082.3,7.34,152.8,157.7
-True,100.0,nan,0,229211,640000,229211,229211,836,logo,31.1,3.92,39.1,0.36,-0.4,640000,70.3,6.3,8.86,8.9,7.9
-False,,,,,,,,1359,flat-art,78.9,3.19,99.8,,,1440000,190.2,16.1,7.69,23.7,24.7
-True,100.0,nan,0,1056057,1960000,1056057,1056057,3145,product-cutout,82.8,3.32,118.5,0.12,-0.1,1960000,401.5,1713.1,16.08,20.5,25.0
-False,,,,,,,,1344,gradient,72.9,7.83,103.0,,,1440000,136.9,6.9,14.7,9.7,9.3
+alpha,alpha_px,alpha_within_1,alpha_zero_out,image,jpg85_kb,jpg85_vs_webp,jpg92_kb,pixels,png_kb,png_source_kb,png_vs_webp,webp80_kb,webp_source_kb
+False,,,,photo,140.3,2.31,230.3,1920000,1106.8,3167.5,18.22,54.5,60.7
+False,,,,screenshot,331.9,2.11,439.8,2073600,1157.2,1082.3,7.34,152.8,157.7
+True,229211,100.0,229211,logo,31.1,3.92,39.1,640000,70.3,6.3,8.85,8.9,7.9
+False,,,,flat-art,78.9,3.19,99.8,1440000,190.2,16.1,7.69,23.7,24.7
+True,1056057,100.0,1056057,product-cutout,82.8,3.32,118.5,1960000,401.5,1713.1,16.08,20.5,25.0
+False,,,,gradient,72.9,7.82,103.0,1440000,136.9,6.9,14.69,9.7,9.3

@@ -122,8 +122,14 @@ def gradient(w=1600, h=900):
     return Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8), "RGB")
 
 
-def make_corpus():
+def make_corpus(force=False):
     os.makedirs(CORPUS, exist_ok=True)
+    have = all(os.path.exists(os.path.join(CORPUS, n + ".png")) for n in
+               ("photo", "screenshot", "logo", "flat-art", "product-cutout", "gradient"))
+    if have and not force:
+        print("  corpus/ already present — using the shipped test images "
+              "(pass --force to regenerate them from the generator)")
+        return
     items = {"photo": photo(), "screenshot": screenshot(), "logo": logo(),
              "flat-art": flat_art(), "product-cutout": product_cutout(), "gradient": gradient()}
     for name, im in items.items():

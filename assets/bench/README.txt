@@ -22,9 +22,17 @@ Environment used for the published numbers
     SciPy   1.13.1
     Date    22 October 2026
 
-The corpus is generated from a fixed random seed, so a second run produces
-byte-identical inputs and comparable numbers. Different library builds will move
-individual figures by a few percent; the rankings do not change.
+corpus.zip contains the exact six test images the published numbers were
+measured on. Unzip it next to this file and the script will use those images
+instead of regenerating them, which is what makes a byte-for-byte reproduction
+possible. The generator is included as well (bench_kit.py corpus --force) for
+anyone who wants to rebuild the corpus from scratch: it is deterministic, and
+an independently generated corpus produces the same rankings with small
+per-file differences.
+
+Timing columns in study-c-resize.csv are the one exception to reproducibility:
+milliseconds depend on the machine and its current load, so treat them as
+indicative. Sizes, PSNR and SSIM reproduce exactly.
 
 Published result files
 ----------------------

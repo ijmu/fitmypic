@@ -1,0 +1,13 @@
+detail_energy,direction,method,ms,overshoot,vs_box_psnr,vs_box_ssim
+3340.2,downscale 2000->500,NEAREST,3,,27.6,0.6453
+345.1,downscale 2000->500,BILINEAR,98,,42.82,0.9691
+417.6,downscale 2000->500,BICUBIC,169,,44.63,0.9781
+447.7,downscale 2000->500,LANCZOS,240,,44.11,0.9743
+169.8,upscale 500->1500,NEAREST,28,0.0,,
+82.5,upscale 500->1500,BILINEAR,138,0.0,,
+78.4,upscale 500->1500,BICUBIC,182,0.0,,
+79.2,upscale 500->1500,LANCZOS,225,0.0,,
+304.8,photo 1600->800,NEAREST,,,39.7,0.9174
+109.3,photo 1600->800,BILINEAR,,,48.89,0.9903
+128.0,photo 1600->800,BICUBIC,,,49.89,0.994
+138.7,photo 1600->800,LANCZOS,,,49.13,0.9924

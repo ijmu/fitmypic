@@ -28,6 +28,7 @@
     ></script>
     <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./identity-fit.css" />
     <script type="application/ld+json">
       {"@context": "https://schema.org", "@type": "Article", "headline": "How to Remove the Background From an Image — Free &amp; Private", "description": "Remove image backgrounds free online: click to sample the background, fine-tune tolerance and edge feathering, then export a real transparent PNG or swap in a solid color. 100% local — no upload, no account.", "url": "https://www.fitmypic.com/remove-background-from-image.html", "inLanguage": "en", "author": {"@type": "Organization", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}, "publisher": {"@type": "Organization", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}, "dateModified": "2026-10-08", "datePublished": "2026-09-06"}
     </script>
@@ -47,16 +48,9 @@
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="./" aria-label="FitMyPic home">
-        <img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" />
-        <span>FitMyPic</span>
-      </a>
-      <nav aria-label="Primary navigation">
-        <a href="./#tool">Tools</a>
-        <a href="./#features">Features</a>
-        <a href="./#faq">FAQ</a>
-        <a href="./about.html">About</a>
-      </nav>
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <nav aria-label="Primary navigation"><a href="./#tool">Tools</a><a href="./guides.html">Guides</a><a href="./jpeg-quality-benchmark.html">JPEG benchmark</a><a href="./about.html">About</a></nav>
+      <button class="theme-toggle" type="button" onclick="__setTheme(document.documentElement.classList.contains('dark')?'light':'dark')" aria-label="Toggle dark mode">🌙</button>
     </header>
 
     <main class="page">
@@ -126,36 +120,46 @@
 </main>
 
     <footer class="site-footer">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
-          <p>Free browser-based background removal, image resizing, and compression. Your files stay on your device — no account needed.</p>
-        </div>
-        <div class="footer-col">
-          <strong>Tools</strong>
-          <a href="./#tool">Background remover</a>
-          <a href="./#tool">Image resizer &amp; compressor</a>
-          <a href="./resize-image-to-1024x1024.html">Square 1024 × 1024</a>
-          <a href="./resize-image-for-youtube.html">YouTube thumbnail</a>
-        </div>
-        <div class="footer-col">
-          <strong>Resources</strong>
-          <a href="./resize-image-for-instagram.html">Instagram sizes</a>
-          <a href="./remove-background-from-image.html">Background removal guide</a>
-          <a href="./image-output-testing.html">Output testing method</a>
-          <a href="./resize-image-for-passport-photo.html">Passport photo sizes</a>
-          <a href="./about.html">About FitMyPic</a>
-        </div>
-        <div class="footer-col">
-          <strong>Legal</strong>
-          <a href="./privacy.html">Privacy Policy</a>
-          <a href="./terms.html">Terms of Use</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 FitMyPic. All rights reserved.</span>
-        <span>Images are processed locally in your browser.</span>
-      </div>
-    </footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <p>FitMyPic builds browser-based image tools and publishes the tests behind its recommendations.</p>
+    </div>
+    <div class="footer-col">
+      <strong>Tools</strong>
+      <a href="./#tool">Image resizer &amp; compressor</a>
+      <a href="./compress-image.html">Compress an image</a>
+      <a href="./remove-background-from-image.html">Remove a background</a>
+      <a href="./resize-image-to-1024x1024.html">Square 1024 x 1024</a>
+    </div>
+    <div class="footer-col">
+      <strong>Guides</strong>
+      <a href="./guides.html">All guides</a>
+      <a href="./jpeg-quality-benchmark.html">JPEG quality benchmark (measured)</a>
+      <a href="./resize-algorithms-guide.html">Resize algorithms compared</a>
+      <a href="./print-resolution-guide.html">Print size and resolution</a>
+      <a href="./image-upscaling-guide.html">What upscaling can do</a>
+    </div>
+    <div class="footer-col">
+      <strong>Reference</strong>
+      <a href="./social-media-image-sizes.html">Social media image sizes</a>
+      <a href="./passport-photo-specs.html">Passport photo specs</a>
+      <a href="./image-file-size-guide.html">Image file size guide</a>
+      <a href="./image-output-testing.html">Output testing method</a>
+    </div>
+    <div class="footer-col">
+      <strong>Site</strong>
+      <a href="./about.html">About &amp; how we test</a>
+      <a href="./editorial-standards.html">Editorial standards</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./privacy.html">Privacy</a>
+      <a href="./terms.html">Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 FitMyPic. All rights reserved.</span>
+    <span>All processing happens locally in your browser.</span>
+  </div>
+</footer>
   </body>
 </html>

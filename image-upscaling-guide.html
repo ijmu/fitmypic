@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <title>What image upscaling can and cannot do, measured on hard edges | FitMyPic</title>
+    <meta name="description" content="We upscaled a hard edge 4x with nearest, bilinear, bicubic and Lanczos and measured the haloes: bicubic overshoots by 10/255, Lanczos by 15/255. What that means for your photos." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://www.fitmypic.com/image-upscaling-guide.html" />
+    <link rel="alternate" hreflang="en" href="https://www.fitmypic.com/image-upscaling-guide.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.fitmypic.com/image-upscaling-guide.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FitMyPic" />
+    <meta property="og:title" content="What image upscaling can and cannot do, measured on hard edges" />
+    <meta property="og:description" content="We upscaled a hard edge 4x with nearest, bilinear, bicubic and Lanczos and measured the haloes: bicubic overshoots by 10/255, Lanczos by 15/255. What that means for your photos." />
+    <meta property="og:url" content="https://www.fitmypic.com/image-upscaling-guide.html" />
+    <meta property="og:image" content="https://www.fitmypic.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002" crossorigin="anonymous"></script>
+    <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./identity-fit.css" />
+    <script>(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;r.classList.add(d?"dark":"light");window.__setTheme=function(x){r.classList.remove("dark","light");r.classList.add(x);try{localStorage.setItem("theme",x)}catch(e){};var b=document.querySelectorAll(".theme-toggle");for(var i=0;i<b.length;i++)b[i].textContent=x==="dark"?"\u2600\uFE0F":"\uD83C\uDF19";};window.__setTheme(d?"dark":"light");}catch(e){}})();</script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "Article", "headline": "What image upscaling can and cannot do, measured on hard edges", "description": "We upscaled a hard edge 4x with nearest, bilinear, bicubic and Lanczos and measured the haloes: bicubic overshoots by 10/255, Lanczos by 15/255. What that means for your photos.", "url": "https://www.fitmypic.com/image-upscaling-guide.html", "inLanguage": "en", "datePublished": "2026-10-22", "dateModified": "2026-10-22", "author": {"@type": "Organization", "name": "FitMyPic Editorial", "url": "https://www.fitmypic.com/editorial-standards.html"}, "publisher": {"@type": "Organization", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}, "isPartOf": {"@type": "WebSite", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fitmypic.com/"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://www.fitmypic.com/guides.html"}, {"@type": "ListItem", "position": 3, "name": "Upscaling", "item": "https://www.fitmypic.com/image-upscaling-guide.html"}]}
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDE7CN1DH1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-XDE7CN1DH1");
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <nav aria-label="Primary navigation"><a href="./#tool">Tools</a><a href="./guides.html">Guides</a><a href="./jpeg-quality-benchmark.html">JPEG benchmark</a><a href="./about.html">About</a></nav>
+      <button class="theme-toggle" type="button" onclick="__setTheme(document.documentElement.classList.contains('dark')?'light':'dark')" aria-label="Toggle dark mode">🌙</button>
+    </header>
+<nav class="crumb" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><a href="./guides.html">Guides</a><span aria-hidden="true">/</span><span>Upscaling</span></nav>
+    <div class="wrap">
+      <div class="layout">
+        <main>
+          <p class="eyebrow">Upscaling</p>
+          <h1 class="article-title">Enlarging an image: what the filters actually do, measured</h1>
+          <p class="deck">Upscaling adds pixels, not information. Here is what each filter does to an edge, why haloes appear, and the point at which enlarging an image stops being worth it.</p>
+          <div class="authorline">
+            <span><strong>By FitMyPic Editorial</strong></span>
+            <span>Published 2026-10-22</span>
+            <span>Last reviewed 2026-10-22</span>
+            <span><a href="./editorial-standards.html">How we test</a></span>
+          </div>
+          <div class="prose">
+<div class="keyfacts"><h2>At a glance</h2><ul><li>Upscaling interpolates: it estimates pixels between the ones that exist. Nothing new is recovered.</li><li>Measuring a hard edge enlarged 4x: nearest and bilinear produced no overshoot, bicubic overshot by 10 levels out of 255 on each side, Lanczos by 15.</li><li>That overshoot is the bright halo people notice along high-contrast edges after enlarging.</li><li>Nearest-neighbour is the wrong choice for photographs at any size: it leaves visible blocks and, when you later shrink the result, moire.</li><li>Enlarging a heavily compressed image enlarges its artefacts too, which is why some files look worse than their pixel count suggests.</li></ul></div>
+<h2 id="what-upscaling-means">What "upscaling" means</h2>
+<p>When you enlarge an image, the software has to decide what colour the new pixels should be. It has no new information, so it estimates: each new pixel is a weighted average of the old ones around it, and the weights are the filter. Nearest-neighbour copies the closest pixel; bilinear blends the nearest four; bicubic and Lanczos use wider kernels with negative lobes that sharpen the transition.</p>
+<p>That last detail is where the trouble comes from. A filter with negative lobes can produce a value <em>beyond</em> the range of its neighbours — brighter than the brightest pixel at the edge, darker than the darkest. On a hard boundary between light and dark, you get a thin bright rim on one side and a dark rim on the other. It is not a bug; it is the arithmetic that makes an interpolated edge look crisp instead of mushy.</p>
+<h2 id="measuring-it">Measuring it</h2>
+<p>We took a 400 x 400 image containing a hard vertical edge — one half at level 90, the other at 220 out of 255 — and enlarged it four times to 1600 x 1600 filter, then measured how far the result overshot the original values.</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Filter</th>
+<th>Overshoot past 220</th>
+<th>Undershoot below 90</th>
+<th>Total deviation</th>
+<th>Visible result</th>
+</tr></thead><tbody>
+<tr>
+<td>NEAREST</td>
+<td>0</td>
+<td>0</td>
+<td><strong class="best">0</strong></td>
+<td>Blocky steps along diagonals</td>
+</tr>
+<tr>
+<td>BILINEAR</td>
+<td>0</td>
+<td>0</td>
+<td><strong class="best">0</strong></td>
+<td>Soft, slightly blurry edge</td>
+</tr>
+<tr>
+<td>BICUBIC</td>
+<td>10/255</td>
+<td>10/255</td>
+<td>Faint halo, sharper edge</td>
+</tr>
+<tr>
+<td>LANCZOS</td>
+<td>15/255</td>
+<td>15/255</td>
+<td>30</td>
+<td>Clear halo, sharpest local contrast</td>
+</tr>
+</tbody></table></div>
+<figure class="figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img" font-family="ui-sans-serif,system-ui,Segoe UI,Helvetica,Arial" aria-label="Upscaling a hard edge 4x: ringing produced by each method">
+<text x="4" y="20" font-size="15" font-weight="700" fill="#17181c">Upscaling a hard edge 4x: ringing produced by each method</text>
+<line x1="58" y1="288.0" x2="704" y2="288.0" stroke="#e7e4de" stroke-width="1"/>
+<text x="50" y="292.0" font-size="11" text-anchor="end" fill="#8b8e98">0</text>
+<line x1="58" y1="227.0" x2="704" y2="227.0" stroke="#e7e4de" stroke-width="1"/>
+<text x="50" y="231.0" font-size="11" text-anchor="end" fill="#8b8e98">8</text>
+<line x1="58" y1="166.0" x2="704" y2="166.0" stroke="#e7e4de" stroke-width="1"/>
+<text x="50" y="170.0" font-size="11" text-anchor="end" fill="#8b8e98">17</text>
+<line x1="58" y1="105.0" x2="704" y2="105.0" stroke="#e7e4de" stroke-width="1"/>
+<text x="50" y="109.0" font-size="11" text-anchor="end" fill="#8b8e98">25</text>
+<line x1="58" y1="44.0" x2="704" y2="44.0" stroke="#e7e4de" stroke-width="1"/>
+<text x="50" y="48.0" font-size="11" text-anchor="end" fill="#8b8e98">34</text>
+<rect x="87.1" y="288.0" width="92.9" height="0.0" rx="3" fill="#c2453c"/>
+<text x="133.5" y="283.0" font-size="10.5" text-anchor="middle" fill="#4c4f58">0</text>
+<text x="138.8" y="306.0" font-size="11.5" text-anchor="middle" fill="#17181c">NEAREST</text>
+<rect x="248.6" y="288.0" width="92.9" height="0.0" rx="3" fill="#c2453c"/>
+<text x="295.0" y="283.0" font-size="10.5" text-anchor="middle" fill="#4c4f58">0</text>
+<text x="300.2" y="306.0" font-size="11.5" text-anchor="middle" fill="#17181c">BILINEAR</text>
+<rect x="410.1" y="142.8" width="92.9" height="145.2" rx="3" fill="#c2453c"/>
+<text x="456.5" y="137.8" font-size="10.5" text-anchor="middle" fill="#4c4f58">20</text>
+<text x="461.8" y="306.0" font-size="11.5" text-anchor="middle" fill="#17181c">BICUBIC</text>
+<rect x="571.6" y="70.1" width="92.9" height="217.9" rx="3" fill="#c2453c"/>
+<text x="618.0" y="65.1" font-size="10.5" text-anchor="middle" fill="#4c4f58">30</text>
+<text x="623.2" y="306.0" font-size="11.5" text-anchor="middle" fill="#17181c">LANCZOS</text>
+<rect x="58" y="345" width="11" height="11" rx="2" fill="#c2453c"/>
+<text x="74" y="354" font-size="11.5" fill="#4c4f58">ringing overshoot beyond the edge (0-255 scale)</text>
+<text x="704" y="354" font-size="11" text-anchor="end" fill="#8b8e98">levels</text>
+</svg><figcaption>Ringing produced when a hard edge is enlarged 4x. Zero is smoother, not better: the filters that ring are also the ones that keep an edge looking like an edge.</figcaption></figure>
+<p>An overshoot of 10 to 15 levels out of 255 is a 4-6% deviation — faint, but visible on a straight high-contrast boundary such as a horizon against a bright sky, a dark window frame, or lettering on a coloured background. If you have ever enlarged a logo or a screenshot and seen a pale outline appear around dark shapes, this is the mechanism. It is also why enlarging, then sharpening with an unsharp mask, quickly produces something worse than what you started with: the two effects add up.</p>
+<h2 id="why-nearest-neighbour-looks-wrong-on-photographs">Why nearest-neighbour looks wrong on photographs</h2>
+<p>Nearest-neighbour does not interpolate at all. Each new pixel simply copies the nearest original, which means large areas of the enlarged image repeat the same value in square blocks. On a photograph this reads as blockiness along every diagonal and curve. Worse, the blockiness interacts with any later resize: shrink that image again and the repeating blocks turn into moire patterns that were never in the original, exactly as measured in the shrinking half of our resizing study, where nearest-neighbour left 6.85 of residual noise in a flat area against 1.18 for bilinear.</p>
+<p>Nearest-neighbour does have one correct use: pixel art, sprite sheets and screenshots of pixel-based user interfaces, where each source pixel is meant to become a square block rather than a gradient.</p>
+<h2 id="what-learned-or-ai-upscalers-add">What learned or "AI" upscalers add</h2>
+<p>Classical filters interpolate from the neighbouring pixels only. Learned upscalers are trained on large image sets to predict what fine detail usually looks like at higher resolutions: skin texture, foliage, fabric weave, lettering. On a good input, the results are noticeably better than bicubic, and for photographs of common subjects they can be convincing.</p>
+<p>Two limits are worth knowing before you rely on them. First, the detail is <em>plausible</em>, not <em>true</em> — the model is inventing texture consistent with its training data, so an enlarged face can gain skin detail that was never in the photograph. That is unacceptable for evidence, identity documents or anything forensic, and risky for product photos where texture accuracy matters. Second, the models work best on clean, lightly compressed inputs; feed them a heavily compressed JPEG and they will confidently enlarge the compression artefacts along with everything else.</p>
+<p>For documents, request a re-scan or the original file. For screenshots of text, look for a vector original or a PDF. For a photo you still have access to, re-take or re-download it. Upscaling is for the cases where none of those options exist.</p>
+<h2 id="when-enlarging-is-acceptable-and-by-how-much">When enlarging is acceptable, and by how much</h2>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Situation</th>
+<th>Verdict</th>
+<th>Reason</th>
+</tr></thead><tbody>
+<tr>
+<td>Photo enlarged up to 2x for screen viewing</td>
+<td>Fine</td>
+<td>At typical screen densities the softening is not visible</td>
+</tr>
+<tr>
+<td>Photo enlarged 2-4x for print viewed in the hand</td>
+<td>Marginal</td>
+<td>Detail is invented; keep prints small or view from further away</td>
+</tr>
+<tr>
+<td>Poster or large print viewed from 1.5 m or more</td>
+<td>Fine</td>
+<td>The eye cannot resolve the difference at that distance</td>
+</tr>
+<tr>
+<td>Text, screenshots, line art</td>
+<td>Avoid</td>
+<td>Edges ring and letterforms distort; find a vector source instead</td>
+</tr>
+<tr>
+<td>Passport or ID photo</td>
+<td>Avoid</td>
+<td>Many authorities reject digitally altered photos outright</td>
+</tr>
+<tr>
+<td>Evidence, medical, insurance or forensic images</td>
+<td>Never</td>
+<td>Interpolated detail is fabricated detail</td>
+</tr>
+</tbody></table></div>
+<p>The rule of thumb we would give a friend: treat 2x as the practical ceiling for a photograph, treat anything beyond that as a compromise you may accept for a large poster and should not accept for a document.</p>
+<h2 id="how-to-enlarge-an-image-well-in-a-browser">How to enlarge an image well in a browser</h2>
+<ol><li><strong>Start from the largest, least-compressed original you have.</strong> Each round of compression and each previous resize compounds.</li><li><strong>Resize once, in a single step, to the final dimensions.</strong> Repeated small enlargements stack artefacts, just as repeated shrinking does.</li><li><strong>Use bicubic or Lanczos</strong> (the resizer here uses a high-order filter at its highest quality setting). Choose bicubic when you want the least ringing, Lanczos when you want the crispest local contrast and can accept a slight halo.</li><li><strong>Sharpen lightly afterwards, if at all.</strong> A modest amount counters interpolation softness; a strong setting amplifies the haloes measured above.</li><li><strong>Do not enlarge, save, reopen and enlarge again.</strong> Save the final result once, in a lossless format if it still has to be edited, or as a high-quality JPEG if it is finished.</li></ol>
+<h2 id="what-cannot-be-recovered">What cannot be recovered</h2>
+<p>No filter recovers detail that was never captured, and no amount of processing removes JPEG artefacts without removing real texture with them. If a file arrived through a chat app at 800 x 600 with visible blocking, the practical options are to find the original, take a new photo, or accept that the enlarged version will look soft and slightly dirty. Choosing the best filter changes how gracefully it degrades; it does not change what is in the file.</p>
+<div class="cta-band"><div><h2>Resize, compress and convert images in your browser</h2><p>Everything happens on your device — no upload, no account.</p></div><a class="btn" href="./#tool">Open the image tools</a></div>
+<h2 id="sources">Sources</h2>
+<ul><li>Pillow resampling filters and behaviour — https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.resize</li><li>pica resampling library (filters used in the browser tools here) — https://github.com/nodeca/pica</li><li>Lanczos and bicubic kernels, ringing artefacts (ImageMagick usage notes) — https://imagemagick.org/Usage/resize/</li></ul>
+          </div>
+<div class="related"><h2>Related reading</h2><div class="related-grid"><a href="./resize-algorithms-guide.html"><strong>Resize algorithms compared</strong><span>The same four filters measured while shrinking</span></a><a href="./print-resolution-guide.html"><strong>Print size and resolution</strong><span>Work out the pixels you actually need before enlarging anything</span></a><a href="./compress-image.html"><strong>Compress an image</strong><span>Keeping the result small after you enlarge it</span></a><a href="./resize-without-losing-quality.html"><strong>Resize without losing quality</strong><span>Practical rules that avoid double resampling</span></a></div></div>
+        </main>
+<aside class="rail" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#what-upscaling-means">What "upscaling" means</a></li><li><a href="#measuring-it">Measuring it</a></li><li><a href="#why-nearest-neighbour-looks-wrong-on-photographs">Why nearest-neighbour looks wrong on photographs</a></li><li><a href="#what-learned-or-ai-upscalers-add">What learned or "AI" upscalers add</a></li><li><a href="#when-enlarging-is-acceptable-and-by-how-much">When enlarging is acceptable, and by how much</a></li><li><a href="#how-to-enlarge-an-image-well-in-a-browser">How to enlarge an image well in a browser</a></li><li><a href="#what-cannot-be-recovered">What cannot be recovered</a></li><li><a href="#sources">Sources</a></li></ol></aside>
+      </div>
+    </div>
+    <footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <p>FitMyPic builds browser-based image tools and publishes the tests behind its recommendations.</p>
+    </div>
+    <div class="footer-col">
+      <strong>Tools</strong>
+      <a href="./#tool">Image resizer &amp; compressor</a>
+      <a href="./compress-image.html">Compress an image</a>
+      <a href="./remove-background-from-image.html">Remove a background</a>
+      <a href="./resize-image-to-1024x1024.html">Square 1024 x 1024</a>
+    </div>
+    <div class="footer-col">
+      <strong>Guides</strong>
+      <a href="./guides.html">All guides</a>
+      <a href="./jpeg-quality-benchmark.html">JPEG quality benchmark (measured)</a>
+      <a href="./resize-algorithms-guide.html">Resize algorithms compared</a>
+      <a href="./print-resolution-guide.html">Print size and resolution</a>
+      <a href="./image-upscaling-guide.html">What upscaling can do</a>
+    </div>
+    <div class="footer-col">
+      <strong>Reference</strong>
+      <a href="./social-media-image-sizes.html">Social media image sizes</a>
+      <a href="./passport-photo-specs.html">Passport photo specs</a>
+      <a href="./image-file-size-guide.html">Image file size guide</a>
+      <a href="./image-output-testing.html">Output testing method</a>
+    </div>
+    <div class="footer-col">
+      <strong>Site</strong>
+      <a href="./about.html">About &amp; how we test</a>
+      <a href="./editorial-standards.html">Editorial standards</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./privacy.html">Privacy</a>
+      <a href="./terms.html">Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 FitMyPic. All rights reserved.</span>
+    <span>All processing happens locally in your browser.</span>
+  </div>
+</footer>
+  </body>
+</html>

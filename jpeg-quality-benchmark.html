@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <title>JPEG quality settings compared: size, PSNR and SSIM measured | FitMyPic</title>
+    <meta name="description" content="We encoded five image types at ten quality settings and recorded file size, PSNR and SSIM. The curve flattens much earlier than most people assume, and text-heavy images never improve." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://www.fitmypic.com/jpeg-quality-benchmark.html" />
+    <link rel="alternate" hreflang="en" href="https://www.fitmypic.com/jpeg-quality-benchmark.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.fitmypic.com/jpeg-quality-benchmark.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FitMyPic" />
+    <meta property="og:title" content="JPEG quality settings compared: size, PSNR and SSIM measured" />
+    <meta property="og:description" content="We encoded five image types at ten quality settings and recorded file size, PSNR and SSIM. The curve flattens much earlier than most people assume, and text-heavy images never improve." />
+    <meta property="og:url" content="https://www.fitmypic.com/jpeg-quality-benchmark.html" />
+    <meta property="og:image" content="https://www.fitmypic.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002" crossorigin="anonymous"></script>
+    <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./identity-fit.css" />
+    <script>(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;r.classList.add(d?"dark":"light");window.__setTheme=function(x){r.classList.remove("dark","light");r.classList.add(x);try{localStorage.setItem("theme",x)}catch(e){};var b=document.querySelectorAll(".theme-toggle");for(var i=0;i<b.length;i++)b[i].textContent=x==="dark"?"\u2600\uFE0F":"\uD83C\uDF19";};window.__setTheme(d?"dark":"light");}catch(e){}})();</script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "Article", "headline": "JPEG quality settings compared: size, PSNR and SSIM measured", "description": "We encoded five image types at ten quality settings and recorded file size, PSNR and SSIM. The curve flattens much earlier than most people assume, and text-heavy images never improve.", "url": "https://www.fitmypic.com/jpeg-quality-benchmark.html", "inLanguage": "en", "datePublished": "2026-10-22", "dateModified": "2026-10-22", "author": {"@type": "Organization", "name": "FitMyPic Editorial", "url": "https://www.fitmypic.com/editorial-standards.html"}, "publisher": {"@type": "Organization", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}, "isPartOf": {"@type": "WebSite", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fitmypic.com/"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://www.fitmypic.com/guides.html"}, {"@type": "ListItem", "position": 3, "name": "Benchmark", "item": "https://www.fitmypic.com/jpeg-quality-benchmark.html"}]}
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDE7CN1DH1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-XDE7CN1DH1");
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <nav aria-label="Primary navigation"><a href="./#tool">Tools</a><a href="./guides.html">Guides</a><a href="./jpeg-quality-benchmark.html">JPEG benchmark</a><a href="./about.html">About</a></nav>
+      <button class="theme-toggle" type="button" onclick="__setTheme(document.documentElement.classList.contains('dark')?'light':'dark')" aria-label="Toggle dark mode">🌙</button>
+    </header>
+<nav class="crumb" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><a href="./guides.html">Guides</a><span aria-hidden="true">/</span><span>Benchmark</span></nav>
+    <div class="wrap">
+      <div class="layout">
+        <main>
+          <p class="eyebrow">Benchmark</p>
+          <h1 class="article-title">The JPEG quality slider, measured: what each setting actually buys you</h1>
+          <p class="deck">Ten quality settings, five image types, three metrics. Where the size curve accelerates, where quality stops improving, and the settings we would actually ship.</p>
+          <div class="authorline">
+            <span><strong>By FitMyPic Editorial</strong></span>
+            <span>Published 2026-10-22</span>
+            <span>Last reviewed 2026-10-22</span>
+            <span><a href="./editorial-standards.html">How we test</a></span>
+          </div>
+          <div class="prose">
+<div class="keyfacts"><h2>At a glance</h2><ul><li>Five image types, ten JPEG quality settings, 50 encodes: every size, PSNR and SSIM value is published as CSV.</li><li>On a photographic image, going from quality 75 to quality 90 tripled the file (141.2 KB to 414.7 KB) and moved SSIM by <strong>0.005</strong>.</li><li>At quality 95 the photo's PSNR actually fell (38.0 dB versus 38.9 dB at quality 85) while the file grew to 952.8 KB.</li><li>Screenshots barely respond to quality at all: 170.9 KB at quality 40 versus 752.0 KB at quality 95, with SSIM moving 0.917 to 0.934 and PSNR flat at 26.7 dB.</li><li>Chroma subsampling at 4:2:0 cut file size by 29-32% with no measurable change on this corpus — with one important caveat about saturated colour.</li></ul></div>
+<h2 id="the-question-the-quality-slider-never-answers">The question the quality slider never answers</h2>
+<p>Every image tool has a JPEG quality slider, usually pre-set to 80 or 85, usually with no explanation. The understandable assumption is that the number is a fidelity dial: higher must be better, and if you care about your images you should move it up.</p>
+<p>Measured across 50 encodes, that assumption costs people a great deal of bandwidth for very little image. The curve has a knee, it arrives earlier than the defaults suggest, and on some kinds of image the curve is flat in both directions — a slight quality increase that does nothing and a large file that does nothing with it.</p>
+<h2 id="what-we-measured">What we measured</h2>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Setting</th>
+<th>Value</th>
+</tr></thead><tbody>
+<tr>
+<td>Encoder</td>
+<td>Pillow 11.0.0 with libjpeg-turbo</td>
+</tr>
+<tr>
+<td>Quality steps</td>
+<td>40, 50, 60, 65, 70, 75, 80, 85, 90, 95</td>
+</tr>
+<tr>
+<td>Chroma</td>
+<td>4:4:4 (no subsampling) unless stated</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>photo 1600x1200, screenshot 1920x1080, flat art, gradient, product cutout</td>
+</tr>
+<tr>
+<td>Metrics</td>
+<td>file size, PSNR (dB), SSIM (0-1), bits per pixel</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>22 October 2026</td>
+</tr>
+</tbody></table></div>
+<p>The test images are generated by a script we publish, so the numbers can be reproduced exactly. They are synthetic: smooth gradients, a photographic texture, flat artwork, a UI screenshot and a cutout product shot.</p>
+<h2 id="where-the-curve-breaks-a-photo">Where the curve breaks: a photo</h2>
+<p>A photograph — the case JPEG was designed for — behaves like this.</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Quality</th>
+<th>File size</th>
+<th>PSNR</th>
+<th>SSIM</th>
+</tr></thead><tbody>
+<tr>
+<td>40</td>
+<td>46.8 KB</td>
+<td>38.3 dB</td>
+<td>0.877</td>
+</tr>
+<tr>
+<td>60</td>
+<td>76.3 KB</td>
+<td>38.6 dB</td>
+<td>0.883</td>
+</tr>
+<tr>
+<td>75</td>
+<td>141.2 KB</td>
+<td>38.7 dB</td>
+<td>0.888</td>
+</tr>
+<tr>
+<td>80</td>
+<td>193.5 KB</td>
+<td>38.8 dB</td>
+<td>0.890</td>
+</tr>
+<tr>
+<td>85</td>
+<td>270.2 KB</td>
+<td>38.9 dB</td>
+<td>0.892</td>
+</tr>
+<tr>
+<td>90</td>
+<td>414.7 KB</td>
+<td>38.8 dB</td>
+<td>0.893</td>
+</tr>
+<tr>
+<td>95</td>
+<td><strong class="best">952.8 KB</strong></td>
+<td>38.0 dB</td>
+<td>0.877</td>
+</tr>
+</tbody></table></div>
+<p>Read the last two rows again. Between quality 85 and quality 95 the file grows 3.5x — from 270.2 KB to 952.8 KB — and both metrics get <em>worse</em>. PSNR drops by 0.9 dB, SSIM drops from 0.892 to 0.877.</p>
+<figure class="figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img" font-family="ui-sans-serif,system-ui,Segoe UI,Helvetica,Arial" aria-label="JPEG file size vs quality (photo leans exponential, screenshot almost linear)">
+<text x="4" y="20" font-size="15" font-weight="700" fill="#17181c">JPEG file size vs quality (photo leans exponential, screenshot almost linear)</text>
+<line x1="62" y1="306.0" x2="650" y2="306.0" stroke="#e7e4de"/>
+<text x="54" y="310.0" font-size="11" text-anchor="end" fill="#8b8e98">0</text>
+<line x1="62" y1="240.5" x2="650" y2="240.5" stroke="#e7e4de"/>
+<text x="54" y="244.5" font-size="11" text-anchor="end" fill="#8b8e98">200</text>
+<line x1="62" y1="175.0" x2="650" y2="175.0" stroke="#e7e4de"/>
+<text x="54" y="179.0" font-size="11" text-anchor="end" fill="#8b8e98">400</text>
+<line x1="62" y1="109.5" x2="650" y2="109.5" stroke="#e7e4de"/>
+<text x="54" y="113.5" font-size="11" text-anchor="end" fill="#8b8e98">600</text>
+<line x1="62" y1="44.0" x2="650" y2="44.0" stroke="#e7e4de"/>
+<text x="54" y="48.0" font-size="11" text-anchor="end" fill="#8b8e98">800</text>
+<text x="62.0" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">40</text>
+<text x="168.9" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">50</text>
+<text x="275.8" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">60</text>
+<text x="329.3" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">65</text>
+<text x="382.7" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">70</text>
+<text x="436.2" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">75</text>
+<text x="489.6" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">80</text>
+<text x="543.1" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">85</text>
+<text x="596.5" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">90</text>
+<text x="650.0" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">95</text>
+<text x="356.0" y="350" font-size="11.5" text-anchor="middle" fill="#4c4f58">JPEG quality setting</text>
+<text x="684.0" y="175.0" font-size="11.5" fill="#4c4f58" transform="rotate(90 684 175.0)" text-anchor="middle">KB</text>
+<polyline points="62.0,290.7 168.9,287.0 275.8,281.0 329.3,276.3 382.7,269.2 436.2,259.8 489.6,242.6 543.1,217.5 596.5,170.2 650.0,-6.0" fill="none" stroke="#1d7a5c" stroke-width="2.4" stroke-dasharray="none"/>
+<circle cx="62.0" cy="290.7" r="3" fill="#1d7a5c"/>
+<circle cx="168.9" cy="287.0" r="3" fill="#1d7a5c"/>
+<circle cx="275.8" cy="281.0" r="3" fill="#1d7a5c"/>
+<circle cx="329.3" cy="276.3" r="3" fill="#1d7a5c"/>
+<circle cx="382.7" cy="269.2" r="3" fill="#1d7a5c"/>
+<circle cx="436.2" cy="259.8" r="3" fill="#1d7a5c"/>
+<circle cx="489.6" cy="242.6" r="3" fill="#1d7a5c"/>
+<circle cx="543.1" cy="217.5" r="3" fill="#1d7a5c"/>
+<circle cx="596.5" cy="170.2" r="3" fill="#1d7a5c"/>
+<circle cx="650.0" cy="-6.0" r="3" fill="#1d7a5c"/>
+<text x="66" y="18" font-size="0"> </text>
+<polyline points="62.0,250.0 168.9,241.9 275.8,233.6 329.3,228.0 382.7,220.9 436.2,212.4 489.6,198.8 543.1,176.8 596.5,137.2 650.0,59.7" fill="none" stroke="#c98a3c" stroke-width="2.4" stroke-dasharray="none"/>
+<circle cx="62.0" cy="250.0" r="3" fill="#c98a3c"/>
+<circle cx="168.9" cy="241.9" r="3" fill="#c98a3c"/>
+<circle cx="275.8" cy="233.6" r="3" fill="#c98a3c"/>
+<circle cx="329.3" cy="228.0" r="3" fill="#c98a3c"/>
+<circle cx="382.7" cy="220.9" r="3" fill="#c98a3c"/>
+<circle cx="436.2" cy="212.4" r="3" fill="#c98a3c"/>
+<circle cx="489.6" cy="198.8" r="3" fill="#c98a3c"/>
+<circle cx="543.1" cy="176.8" r="3" fill="#c98a3c"/>
+<circle cx="596.5" cy="137.2" r="3" fill="#c98a3c"/>
+<circle cx="650.0" cy="59.7" r="3" fill="#c98a3c"/>
+<text x="66" y="18" font-size="0"> </text>
+<line x1="66" y1="28" x2="86" y2="28" stroke="#1d7a5c" stroke-width="2.4" stroke-dasharray="none"/>
+<text x="91" y="32" font-size="11.5" fill="#4c4f58">photo - KB</text>
+<line x1="168.0" y1="28" x2="188.0" y2="28" stroke="#c98a3c" stroke-width="2.4" stroke-dasharray="none"/>
+<text x="193.0" y="32" font-size="11.5" fill="#4c4f58">screenshot - KB</text>
+</svg><figcaption>File size against quality. The photo's curve turns exponential above quality 80; the screenshot's stays almost linear, which is its own kind of warning.</figcaption></figure>
+<p>What is happening is that above a certain setting the encoder stops removing noise the eye never sees and starts preserving it, while the larger coefficient set forces coarser quantisation elsewhere. You are paying for detail you cannot perceive with bits taken from detail you can. The optimum on this image sits around quality 80 to 85 — exactly where most tools default, and only if you ignore the two ends of the slider.</p>
+<h2 id="screenshots-do-not-improve-at-all">Screenshots do not improve at all</h2>
+<p>The screenshot is the most instructive row in the data. Across the entire quality range, PSNR never moves off 26.7 dB.</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Quality</th>
+<th>Screenshot size</th>
+<th>PSNR</th>
+<th>SSIM</th>
+</tr></thead><tbody>
+<tr>
+<td>40</td>
+<td><strong class="best">170.9 KB</strong></td>
+<td>26.7 dB</td>
+<td>0.917</td>
+</tr>
+<tr>
+<td>60</td>
+<td>221.2 KB</td>
+<td>26.7 dB</td>
+<td>0.925</td>
+</tr>
+<tr>
+<td>75</td>
+<td>285.8 KB</td>
+<td>26.7 dB</td>
+<td>0.930</td>
+</tr>
+<tr>
+<td>85</td>
+<td>394.6 KB</td>
+<td>26.7 dB</td>
+<td>0.933</td>
+</tr>
+<tr>
+<td>95</td>
+<td>752.0 KB</td>
+<td>26.7 dB</td>
+<td>0.934</td>
+</tr>
+</tbody></table></div>
+<p>The file grows 4.4x from quality 40 to 95. PSNR does not care. SSIM crawls from 0.917 to 0.934, and the visible result is the same fuzzy ringing around black text on white that was there at quality 40 — JPEG's 8x8 block transform smears exactly the high-contrast, high-frequency edges that make up a UI.</p>
+<figure class="figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img" font-family="ui-sans-serif,system-ui,Segoe UI,Helvetica,Arial" aria-label="SSIM vs JPEG quality (higher is better)">
+<text x="4" y="20" font-size="15" font-weight="700" fill="#17181c">SSIM vs JPEG quality (higher is better)</text>
+<line x1="62" y1="306.0" x2="650" y2="306.0" stroke="#e7e4de"/>
+<text x="54" y="310.0" font-size="11" text-anchor="end" fill="#8b8e98">0</text>
+<line x1="62" y1="240.5" x2="650" y2="240.5" stroke="#e7e4de"/>
+<text x="54" y="244.5" font-size="11" text-anchor="end" fill="#8b8e98">0</text>
+<line x1="62" y1="175.0" x2="650" y2="175.0" stroke="#e7e4de"/>
+<text x="54" y="179.0" font-size="11" text-anchor="end" fill="#8b8e98">0</text>
+<line x1="62" y1="109.5" x2="650" y2="109.5" stroke="#e7e4de"/>
+<text x="54" y="113.5" font-size="11" text-anchor="end" fill="#8b8e98">1</text>
+<line x1="62" y1="44.0" x2="650" y2="44.0" stroke="#e7e4de"/>
+<text x="54" y="48.0" font-size="11" text-anchor="end" fill="#8b8e98">1</text>
+<text x="62.0" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">40</text>
+<text x="168.9" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">50</text>
+<text x="275.8" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">60</text>
+<text x="329.3" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">65</text>
+<text x="382.7" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">70</text>
+<text x="436.2" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">75</text>
+<text x="489.6" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">80</text>
+<text x="543.1" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">85</text>
+<text x="596.5" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">90</text>
+<text x="650.0" y="324.0" font-size="11" text-anchor="middle" fill="#8b8e98">95</text>
+<text x="356.0" y="350" font-size="11.5" text-anchor="middle" fill="#4c4f58">JPEG quality setting</text>
+<text x="684.0" y="175.0" font-size="11.5" fill="#4c4f58" transform="rotate(90 684 175.0)" text-anchor="middle">SSIM</text>
+<polyline points="62.0,76.3 168.9,75.3 275.8,74.6 329.3,74.1 382.7,73.8 436.2,73.4 489.6,72.9 543.1,72.3 596.5,72.1 650.0,76.2" fill="none" stroke="#1d7a5c" stroke-width="2.4" stroke-dasharray="none"/>
+<circle cx="62.0" cy="76.3" r="3" fill="#1d7a5c"/>
+<circle cx="168.9" cy="75.3" r="3" fill="#1d7a5c"/>
+<circle cx="275.8" cy="74.6" r="3" fill="#1d7a5c"/>
+<circle cx="329.3" cy="74.1" r="3" fill="#1d7a5c"/>
+<circle cx="382.7" cy="73.8" r="3" fill="#1d7a5c"/>
+<circle cx="436.2" cy="73.4" r="3" fill="#1d7a5c"/>
+<circle cx="489.6" cy="72.9" r="3" fill="#1d7a5c"/>
+<circle cx="543.1" cy="72.3" r="3" fill="#1d7a5c"/>
+<circle cx="596.5" cy="72.1" r="3" fill="#1d7a5c"/>
+<circle cx="650.0" cy="76.2" r="3" fill="#1d7a5c"/>
+<text x="66" y="18" font-size="0"> </text>
+<polyline points="62.0,65.7 168.9,64.4 275.8,63.6 329.3,63.3 382.7,62.8 436.2,62.4 489.6,62.0 543.1,61.6 596.5,61.5 650.0,61.2" fill="none" stroke="#3f63c4" stroke-width="2.4" stroke-dasharray="none"/>
+<circle cx="62.0" cy="65.7" r="3" fill="#3f63c4"/>
+<circle cx="168.9" cy="64.4" r="3" fill="#3f63c4"/>
+<circle cx="275.8" cy="63.6" r="3" fill="#3f63c4"/>
+<circle cx="329.3" cy="63.3" r="3" fill="#3f63c4"/>
+<circle cx="382.7" cy="62.8" r="3" fill="#3f63c4"/>
+<circle cx="436.2" cy="62.4" r="3" fill="#3f63c4"/>
+<circle cx="489.6" cy="62.0" r="3" fill="#3f63c4"/>
+<circle cx="543.1" cy="61.6" r="3" fill="#3f63c4"/>
+<circle cx="596.5" cy="61.5" r="3" fill="#3f63c4"/>
+<circle cx="650.0" cy="61.2" r="3" fill="#3f63c4"/>
+<text x="66" y="18" font-size="0"> </text>
+<line x1="66" y1="28" x2="86" y2="28" stroke="#1d7a5c" stroke-width="2.4" stroke-dasharray="none"/>
+<text x="91" y="32" font-size="11.5" fill="#4c4f58">photo - SSIM</text>
+<line x1="182.4" y1="28" x2="202.4" y2="28" stroke="#3f63c4" stroke-width="2.4" stroke-dasharray="none"/>
+<text x="207.4" y="32" font-size="11.5" fill="#4c4f58">screenshot - SSIM</text>
+</svg><figcaption>SSIM against quality on the same axis for two very different image types. Neither reaches the point where more bits produce more fidelity.</figcaption></figure>
+<p>The practical consequence: if your image is text, line art, a chart, a screenshot or a document scan, the quality slider is not the tool. Save it as PNG, or as a lossless WebP, and stop paying JPEG to blur your text. Our own workflow for that case is described in the compress-an-image guide.</p>
+<h2 id="chroma-subsampling-the-setting-nobody-shows-you">Chroma subsampling: the setting nobody shows you</h2>
+<p>JPEG stores brightness at full resolution and colour at reduced resolution. At 4:2:0 the colour channels are quartered, which is what nearly every camera and phone does before you ever touch a slider.</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Image</th>
+<th>Encoding</th>
+<th>Quality</th>
+<th>File size</th>
+<th>PSNR</th>
+<th>SSIM</th>
+</tr></thead><tbody>
+<tr>
+<td>Photo</td>
+<td>4:4:4</td>
+<td>85</td>
+<td>270.2 KB</td>
+<td>38.9 dB</td>
+<td>0.8921</td>
+</tr>
+<tr>
+<td>Photo</td>
+<td>4:2:0</td>
+<td>85</td>
+<td><strong class="best">183.5 KB</strong></td>
+<td>38.9 dB</td>
+<td>0.8922</td>
+</tr>
+<tr>
+<td>Photo</td>
+<td>4:2:0</td>
+<td>75</td>
+<td>101.4 KB</td>
+<td>38.7 dB</td>
+<td>0.8877</td>
+</tr>
+<tr>
+<td>Screenshot</td>
+<td>4:4:4</td>
+<td>85</td>
+<td>394.6 KB</td>
+<td>26.7 dB</td>
+<td>0.9328</td>
+</tr>
+<tr>
+<td>Screenshot</td>
+<td>4:2:0</td>
+<td>85</td>
+<td><strong class="best">280.2 KB</strong></td>
+<td>26.7 dB</td>
+<td>0.9328</td>
+</tr>
+</tbody></table></div>
+<p>Switching to 4:2:0 saved 32% on the photo and 29% on the screenshot with no measurable loss <em>on these images</em>. That caveat matters: our synthetic corpus is mostly grey and muted, and chroma subsampling is precisely what damages saturated red and blue detail, thin coloured text and sharp colour edges. If your image is a red logo on a green field, the savings come at a visible price. For photographs, which is what JPEG is for, 4:2:0 is the sensible default.</p>
+<h2 id="recommended-settings">Recommended settings</h2>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>What you have</th>
+<th>Format</th>
+<th>Setting</th>
+<th>Reason</th>
+</tr></thead><tbody>
+<tr>
+<td>Photograph for a web page</td>
+<td>JPEG</td>
+<td>quality 78-85, 4:2:0, resized first</td>
+<td>Past quality 85 the size curve accelerates and the eye stops noticing</td>
+</tr>
+<tr>
+<td>Photograph for a client or a print</td>
+<td>JPEG</td>
+<td>quality 85-92, 4:4:4</td>
+<td>Keeps colour edges clean for retouching and printing</td>
+</tr>
+<tr>
+<td>Screenshot, chart, document scan</td>
+<td>PNG or lossless WebP</td>
+<td>not JPEG</td>
+<td>Quality cannot fix block artefacts on text</td>
+</tr>
+<tr>
+<td>Logo, icon, anything with transparency</td>
+<td>PNG</td>
+<td>not JPEG</td>
+<td>JPEG cannot store alpha and will flatten it onto a matte</td>
+</tr>
+<tr>
+<td>Archival master</td>
+<td>PNG or TIFF</td>
+<td>lossless</td>
+<td>Every JPEG re-save loses a little more</td>
+</tr>
+<tr>
+<td>"I need it under 100 KB"</td>
+<td>JPEG</td>
+<td>resize first, then quality 75-80</td>
+<td>Dimensions dominate the file size; see the dedicated guide</td>
+</tr>
+</tbody></table></div>
+<p>The single most effective action for a large image is not touching quality at all. Halving both pixel dimensions quarters the pixel count, and a 1600x1200 photo at quality 85 (270.2 KB) is far heavier than the same content at 800x600 — the resize comparison page measures exactly how much of that comes from the dimensions and how much from the resampling method used.</p>
+<h2 id="reproduce-it">Reproduce it</h2>
+<ul><li><a href="./assets/bench/study-b-jpeg-quality.csv">study-b-jpeg-quality.csv</a> — all 50 quality rows with size, PSNR, SSIM and bits per pixel</li><li><a href="./assets/bench/study-b2-subsampling.csv">study-b2-subsampling.csv</a> — the subsampling comparison</li><li><a href="./assets/bench/bench_kit.py">bench_kit.py</a> and <a href="./assets/bench/bench_kit.py">bench_kit.py</a> — the corpus generator and the measurement script</li><li><a href="./assets/bench/README.txt">README.txt</a> — how to run them</li></ul>
+<h2 id="what-this-test-does-not-cover">What this test does not cover</h2>
+<p>The corpus is synthetic and smoother than a real photograph, so absolute sizes will differ on your files while the shape of every curve holds. We measured one encoder build; libjpeg-turbo's trellis quantisation differs slightly from other implementations. The images contain little saturated colour, which flatters 4:2:0 in the subsampling table. And PSNR and SSIM are proxies: they cannot see the specific artefacts — banding in a sky, mosquito noise around a face — that people actually complain about, which is why the recommendations above sit below the settings where the metrics stop improving.</p>
+<div class="cta-band"><div><h2>Resize, compress and convert images in your browser</h2><p>Everything happens on your device — no upload, no account.</p></div><a class="btn" href="./#tool">Open the image tools</a></div>
+<h2 id="sources">Sources</h2>
+<ul><li>JPEG (ITU-T T.81) specification overview — https://www.w3.org/Graphics/JPEG/itu-t81.pdf</li><li>libjpeg-turbo documentation — https://libjpeg-turbo.org/Documentation/Documentation</li><li>Pillow JPEG save options (quality, subsampling, optimize) — https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html#jpeg</li><li>SSIM index, original paper (Wang et al.) — https://ece.uwaterloo.ca/~z70wang/publications/ssim.pdf</li></ul>
+          </div>
+<div class="related"><h2>Related reading</h2><div class="related-grid"><a href="./compress-image.html"><strong>Compress an image</strong><span>The browser tool this benchmark backs</span></a><a href="./compress-image-to-100kb.html"><strong>Compress to 100 KB</strong><span>A target-size workflow built on these findings</span></a><a href="./resize-algorithms-guide.html"><strong>Resize algorithms compared</strong><span>The other half of the file-size equation</span></a><a href="./resize-without-losing-quality.html"><strong>Resize without losing quality</strong><span>Practical rules for keeping detail</span></a></div></div>
+        </main>
+<aside class="rail" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#the-question-the-quality-slider-never-answers">The question the quality slider never answers</a></li><li><a href="#what-we-measured">What we measured</a></li><li><a href="#where-the-curve-breaks-a-photo">Where the curve breaks: a photo</a></li><li><a href="#screenshots-do-not-improve-at-all">Screenshots do not improve at all</a></li><li><a href="#chroma-subsampling-the-setting-nobody-shows-you">Chroma subsampling: the setting nobody shows you</a></li><li><a href="#recommended-settings">Recommended settings</a></li><li><a href="#reproduce-it">Reproduce it</a></li><li><a href="#what-this-test-does-not-cover">What this test does not cover</a></li><li><a href="#sources">Sources</a></li></ol></aside>
+      </div>
+    </div>
+    <footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <p>FitMyPic builds browser-based image tools and publishes the tests behind its recommendations.</p>
+    </div>
+    <div class="footer-col">
+      <strong>Tools</strong>
+      <a href="./#tool">Image resizer &amp; compressor</a>
+      <a href="./compress-image.html">Compress an image</a>
+      <a href="./remove-background-from-image.html">Remove a background</a>
+      <a href="./resize-image-to-1024x1024.html">Square 1024 x 1024</a>
+    </div>
+    <div class="footer-col">
+      <strong>Guides</strong>
+      <a href="./guides.html">All guides</a>
+      <a href="./jpeg-quality-benchmark.html">JPEG quality benchmark (measured)</a>
+      <a href="./resize-algorithms-guide.html">Resize algorithms compared</a>
+      <a href="./print-resolution-guide.html">Print size and resolution</a>
+      <a href="./image-upscaling-guide.html">What upscaling can do</a>
+    </div>
+    <div class="footer-col">
+      <strong>Reference</strong>
+      <a href="./social-media-image-sizes.html">Social media image sizes</a>
+      <a href="./passport-photo-specs.html">Passport photo specs</a>
+      <a href="./image-file-size-guide.html">Image file size guide</a>
+      <a href="./image-output-testing.html">Output testing method</a>
+    </div>
+    <div class="footer-col">
+      <strong>Site</strong>
+      <a href="./about.html">About &amp; how we test</a>
+      <a href="./editorial-standards.html">Editorial standards</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./privacy.html">Privacy</a>
+      <a href="./terms.html">Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 FitMyPic. All rights reserved.</span>
+    <span>All processing happens locally in your browser.</span>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <title>Print size, PPI and resolution: the numbers that actually matter | FitMyPic</title>
+    <meta name="description" content="PPI, DPI and print size explained with the arithmetic spelled out: a table of required pixels for common print sizes, why 300 PPI is a convention rather than a law, and how viewing distance changes it." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://www.fitmypic.com/print-resolution-guide.html" />
+    <link rel="alternate" hreflang="en" href="https://www.fitmypic.com/print-resolution-guide.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.fitmypic.com/print-resolution-guide.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FitMyPic" />
+    <meta property="og:title" content="Print size, PPI and resolution: the numbers that actually matter" />
+    <meta property="og:description" content="PPI, DPI and print size explained with the arithmetic spelled out: a table of required pixels for common print sizes, why 300 PPI is a convention rather than a law, and how viewing distance changes it." />
+    <meta property="og:url" content="https://www.fitmypic.com/print-resolution-guide.html" />
+    <meta property="og:image" content="https://www.fitmypic.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002" crossorigin="anonymous"></script>
+    <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./identity-fit.css" />
+    <script>(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;r.classList.add(d?"dark":"light");window.__setTheme=function(x){r.classList.remove("dark","light");r.classList.add(x);try{localStorage.setItem("theme",x)}catch(e){};var b=document.querySelectorAll(".theme-toggle");for(var i=0;i<b.length;i++)b[i].textContent=x==="dark"?"\u2600\uFE0F":"\uD83C\uDF19";};window.__setTheme(d?"dark":"light");}catch(e){}})();</script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "Article", "headline": "Print size, PPI and resolution: the numbers that actually matter", "description": "PPI, DPI and print size explained with the arithmetic spelled out: a table of required pixels for common print sizes, why 300 PPI is a convention rather than a law, and how viewing distance changes it.", "url": "https://www.fitmypic.com/print-resolution-guide.html", "inLanguage": "en", "datePublished": "2026-10-22", "dateModified": "2026-10-22", "author": {"@type": "Organization", "name": "FitMyPic Editorial", "url": "https://www.fitmypic.com/editorial-standards.html"}, "publisher": {"@type": "Organization", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}, "isPartOf": {"@type": "WebSite", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fitmypic.com/"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://www.fitmypic.com/guides.html"}, {"@type": "ListItem", "position": 3, "name": "Print", "item": "https://www.fitmypic.com/print-resolution-guide.html"}]}
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDE7CN1DH1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-XDE7CN1DH1");
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <nav aria-label="Primary navigation"><a href="./#tool">Tools</a><a href="./guides.html">Guides</a><a href="./jpeg-quality-benchmark.html">JPEG benchmark</a><a href="./about.html">About</a></nav>
+      <button class="theme-toggle" type="button" onclick="__setTheme(document.documentElement.classList.contains('dark')?'light':'dark')" aria-label="Toggle dark mode">🌙</button>
+    </header>
+<nav class="crumb" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><a href="./guides.html">Guides</a><span aria-hidden="true">/</span><span>Print</span></nav>
+    <div class="wrap">
+      <div class="layout">
+        <main>
+          <p class="eyebrow">Print</p>
+          <h1 class="article-title">What resolution do you need to print at a given size?</h1>
+          <p class="deck">The pixel counts behind common print sizes, why the 300 PPI rule is a convention and not physics, and how to tell whether your file is enough before you pay for a print.</p>
+          <div class="authorline">
+            <span><strong>By FitMyPic Editorial</strong></span>
+            <span>Published 2026-10-22</span>
+            <span>Last reviewed 2026-10-22</span>
+            <span><a href="./editorial-standards.html">How we test</a></span>
+          </div>
+          <div class="prose">
+<div class="keyfacts"><h2>At a glance</h2><ul><li>The arithmetic is one multiplication: required pixels = printed size in inches x PPI.</li><li>A4 at the classic 300 PPI needs 2481 x 3508 pixels, about 8.7 megapixels. At 200 PPI the same page needs 1654 x 2339 pixels.</li><li>300 PPI is a printing-industry convention for images viewed at arm's length, not a physical threshold. Posters are routinely printed at 150 PPI or less.</li><li>Viewing distance is a real variable: a 1 m wide print read from 2 m away needs roughly 45 PPI, not 300.</li><li>Upscaling a file in software adds pixels but no new detail. It changes the number, not the information.</li></ul></div>
+<h2 id="ppi-and-dpi-are-not-the-same-thing">PPI and DPI are not the same thing</h2>
+<p><strong>PPI</strong> (pixels per inch) describes an image: how many pixels get printed into every inch of paper. <strong>DPI</strong> (dots per inch) describes a printer: how many ink droplets it can place in an inch, and a typical inkjet lays down several thousand. A file has a PPI value once you decide the print size; a printer has a DPI rating regardless.</p>
+<p>The confusion matters because a photo editor will happily show you a "DPI" number in the file properties that means nothing on its own. A 3000 x 2000 pixel file is 300 PPI at 10 x 6.7 inches and 150 PPI at 20 x 13.3 inches. Same file, same information, two different print qualities. What actually controls the print is the pixel count and the physical size you ask for.</p>
+<h2 id="the-only-formula-you-need">The only formula you need</h2>
+<pre><code class="language-">required pixels = print size (inches) x PPI</code></pre>
+<p>For a 10 x 8 inch print at 300 PPI that is 3000 x 2400 pixels. Everything else in this article is a variation on that line.</p>
+<p>Here is the same formula applied to the sizes people actually order.</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Print size</th>
+<th>Physical</th>
+<th>300 PPI</th>
+<th>200 PPI</th>
+<th>150 PPI</th>
+<th>Megapixels at 300 PPI</th>
+</tr></thead><tbody>
+<tr>
+<td>4 x 6 in</td>
+<td>102 x 152 mm</td>
+<td>1200 x 1800 px</td>
+<td>800 x 1200 px</td>
+<td>600 x 900 px</td>
+<td>2.2 MP</td>
+</tr>
+<tr>
+<td>5 x 7 in</td>
+<td>127 x 178 mm</td>
+<td>1500 x 2100 px</td>
+<td>1000 x 1400 px</td>
+<td>750 x 1050 px</td>
+<td>3.1 MP</td>
+</tr>
+<tr>
+<td>8 x 10 in</td>
+<td>203 x 254 mm</td>
+<td>2400 x 3000 px</td>
+<td>1600 x 2000 px</td>
+<td>1200 x 1500 px</td>
+<td>7.2 MP</td>
+</tr>
+<tr>
+<td>A5</td>
+<td>148 x 210 mm</td>
+<td>1749 x 2481 px</td>
+<td>1166 x 1654 px</td>
+<td>875 x 1241 px</td>
+<td>4.3 MP</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>210 x 297 mm</td>
+<td>2481 x 3508 px</td>
+<td>1654 x 2339 px</td>
+<td>1241 x 1754 px</td>
+<td>8.7 MP</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>297 x 420 mm</td>
+<td>3508 x 4961 px</td>
+<td>2339 x 3308 px</td>
+<td>1754 x 2481 px</td>
+<td>17.4 MP</td>
+</tr>
+</tbody></table></div>
+<p>Two observations, and the second one surprises people. A 12 megapixel phone photo (4032 x 3024) clears 300 PPI up to very nearly A4, and covers A3 comfortably at 200 PPI. The wall most people hit is not the camera, it is the fact that their photo is a <em>crop</em>: taking a third of the frame throws away two thirds of the pixels, and a 12 MP photo becomes a 4 MP one.</p>
+<h2 id="where-the-300-ppi-rule-comes-from">Where the 300 PPI rule comes from</h2>
+<p>300 PPI is a convention from commercial printing. At a normal reading distance the human eye resolves roughly 300 line pairs per inch of paper, give or take, and the figure became the standard request in print specifications because it is comfortably above what most people can distinguish. Print labs therefore ask for it, and photo labs built their order forms around it.</p>
+<p>It is not a physical law and it is not a property of your file. The relevant question is always: how far away will the eye be when it looks at this?</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Viewing distance</th>
+<th>Approximate PPI the eye can use</th>
+<th>Good for</th>
+</tr></thead><tbody>
+<tr>
+<td>30 cm</td>
+<td>300</td>
+<td>Album pages, documents, small framed prints</td>
+</tr>
+<tr>
+<td>60 cm</td>
+<td>150</td>
+<td>Frames on a desk or shelf</td>
+</tr>
+<tr>
+<td>1 m</td>
+<td>90</td>
+<td>Wall prints read while standing close</td>
+</tr>
+<tr>
+<td>2 m</td>
+<td>45</td>
+<td>Large posters, exhibition boards</td>
+</tr>
+</tbody></table></div>
+<div class="stat-grid"><div class="stat"><b>300 PPI</b><span>Convention, not law</span></div><div class="stat"><b>8.7 MP</b><span>A4 at 300 PPI</span></div><div class="stat"><b>3.9 MP</b><span>A4 at 200 PPI</span></div><div class="stat"><b>45 PPI</b><span>Poster at 2 m viewing</span></div></div>
+<p>A 90 x 60 cm poster on a wall, viewed from two metres, is fine at 45 PPI: about 1600 x 1060 pixels. Sending a 6000 x 4000 pixel file to be printed at that size wastes nothing but also gains nothing — the printer will interpolate or discard either way.</p>
+<h2 id="checking-what-you-actually-have">Checking what you actually have</h2>
+<p>Before resizing anything, find out the pixel dimensions of the file. Any browser image tool will show them, and on a desktop the file's properties will as well. Also check the aspect ratio: a 4:3 photo printed on 6 x 4 inch paper needs cropping, since 6 x 4 is 3:2. Cropping is almost always better than stretching, because stretching changes the shape of faces and objects and is instantly visible.</p>
+<p>Then decide in this order:</p>
+<ol><li><strong>Target the physical size and the PPI that matches the viewing distance.</strong> Use 300 for anything read in the hand, 150 for a framed print on a wall, 100 or less for a poster.</li><li><strong>Compare with what you have.</strong> If the file has enough pixels, you are done — do not resize at all. Resizing a file that already meets the target only adds a resampling step.</li><li><strong>If you are short by a little</strong> (under about 25%), a single high-quality downscale of the target — that is, resizing to the exact output pixels with a good filter — plus a very light sharpen usually prints acceptably. Read the upscaling guide before you count on it.</li><li><strong>If you are short by a lot</strong>, increase the print size and hang it further away, print smaller, or find a larger original. A 1 megapixel slice of a phone photo will not print well at A4 no matter which tool enlarges it.</li></ol>
+<h2 id="preparing-the-file-for-the-lab">Preparing the file for the lab</h2>
+<p>Labs accept JPEG and expect 8-bit sRGB. A few habits prevent most rejections and refunds:</p>
+<ul><li><strong>Send the largest version of the file you have</strong>, not one that has been through a social media upload. Platforms re-compress and often downscale; a photo that came back from a chat app may be a fraction of the original.</li><li><strong>Do not resize to the printer's native DPI.</strong> That number refers to the printer's dots, not to useful image pixels. Ask the lab what pixel dimensions or PPI they want, which is the only figure that matters to them.</li><li><strong>Keep JPEG quality high for print</strong> — quality 90 or above, and 4:4:4 chroma if your tool offers the choice. The measurements behind that recommendation are in the JPEG quality benchmark.</li><li><strong>Do not sharpen aggressively.</strong> Resampling then oversharpening creates ringing haloes that are far more visible on paper than on a phone screen.</li><li><strong>Check the file size limits</strong> some labs impose, usually a few megabytes. Compressing to hit a limit is fine; cutting dimensions to hit it is not.</li></ul>
+<p>Workflow in the browser: open the image in the resizer, set the <em>long edge</em> to the pixel count from the table above, keep the aspect-ratio lock on, choose a high-order filter, and export as JPEG at quality 90. The resize-algorithms guide explains which filter to pick; the short answer for print is bicubic or Lanczos, never nearest.</p>
+<h2 id="what-cannot-be-fixed-later">What cannot be fixed later</h2>
+<p>Two limits are worth stating plainly, because they cost people money.</p>
+<p>A file that is too small does not become a print-ready file. Enlarging it fills in pixels between the ones you have; it cannot recover detail the camera never recorded. The result looks smoother and softer, not sharper, and the effect is measurable: see the ringing and detail figures in the upscaling guide.</p>
+<p>A file that was over-compressed stays over-compressed. JPEG artefacts — blocky edges, magenta and green fringes — sit in the pixels themselves. Upscaling a heavily compressed photo enlarges the artefacts along with everything else, which is why old chat-app images print poorly even though the pixel count looks adequate.</p>
+<div class="cta-band"><div><h2>Resize, compress and convert images in your browser</h2><p>Everything happens on your device — no upload, no account.</p></div><a class="btn" href="./#tool">Open the image tools</a></div>
+<h2 id="sources">Sources</h2>
+<ul><li>Image resolution and PPI explained (Adobe) — https://www.adobe.com/creativecloud/photography/discover/image-resolution.html</li><li>Preparing images for print (Canon) — https://www.canon.com.au/about-canon/news-and-press-releases/preparing-images-for-print</li><li>International paper sizes, ISO 216 (A5/A4/A3 dimensions) — https://www.iso.org/standard/36631.html</li></ul>
+          </div>
+<div class="related"><h2>Related reading</h2><div class="related-grid"><a href="./image-upscaling-guide.html"><strong>What upscaling can and cannot do</strong><span>Why enlarging a file never adds real detail</span></a><a href="./resize-algorithms-guide.html"><strong>Resize algorithms compared</strong><span>Which filter to use when you resize for print</span></a><a href="./resize-without-losing-quality.html"><strong>Resize without losing quality</strong><span>The practical order of operations</span></a><a href="./image-file-size-guide.html"><strong>Image file size guide</strong><span>How format and quality interact with dimensions</span></a></div></div>
+        </main>
+<aside class="rail" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#ppi-and-dpi-are-not-the-same-thing">PPI and DPI are not the same thing</a></li><li><a href="#the-only-formula-you-need">The only formula you need</a></li><li><a href="#where-the-300-ppi-rule-comes-from">Where the 300 PPI rule comes from</a></li><li><a href="#checking-what-you-actually-have">Checking what you actually have</a></li><li><a href="#preparing-the-file-for-the-lab">Preparing the file for the lab</a></li><li><a href="#what-cannot-be-fixed-later">What cannot be fixed later</a></li><li><a href="#sources">Sources</a></li></ol></aside>
+      </div>
+    </div>
+    <footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <p>FitMyPic builds browser-based image tools and publishes the tests behind its recommendations.</p>
+    </div>
+    <div class="footer-col">
+      <strong>Tools</strong>
+      <a href="./#tool">Image resizer &amp; compressor</a>
+      <a href="./compress-image.html">Compress an image</a>
+      <a href="./remove-background-from-image.html">Remove a background</a>
+      <a href="./resize-image-to-1024x1024.html">Square 1024 x 1024</a>
+    </div>
+    <div class="footer-col">
+      <strong>Guides</strong>
+      <a href="./guides.html">All guides</a>
+      <a href="./jpeg-quality-benchmark.html">JPEG quality benchmark (measured)</a>
+      <a href="./resize-algorithms-guide.html">Resize algorithms compared</a>
+      <a href="./print-resolution-guide.html">Print size and resolution</a>
+      <a href="./image-upscaling-guide.html">What upscaling can do</a>
+    </div>
+    <div class="footer-col">
+      <strong>Reference</strong>
+      <a href="./social-media-image-sizes.html">Social media image sizes</a>
+      <a href="./passport-photo-specs.html">Passport photo specs</a>
+      <a href="./image-file-size-guide.html">Image file size guide</a>
+      <a href="./image-output-testing.html">Output testing method</a>
+    </div>
+    <div class="footer-col">
+      <strong>Site</strong>
+      <a href="./about.html">About &amp; how we test</a>
+      <a href="./editorial-standards.html">Editorial standards</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./privacy.html">Privacy</a>
+      <a href="./terms.html">Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 FitMyPic. All rights reserved.</span>
+    <span>All processing happens locally in your browser.</span>
+  </div>
+</footer>
+  </body>
+</html>

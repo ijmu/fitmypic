@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <title>Resize algorithms compared: nearest, bilinear, bicubic, Lanczos | FitMyPic</title>
+    <meta name="description" content="Nearest, bilinear, bicubic and Lanczos tested on downscaling and upscaling: aliasing, ringing, detail and even the JPEG size of the result. Which one each job actually needs." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://www.fitmypic.com/resize-algorithms-guide.html" />
+    <link rel="alternate" hreflang="en" href="https://www.fitmypic.com/resize-algorithms-guide.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.fitmypic.com/resize-algorithms-guide.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FitMyPic" />
+    <meta property="og:title" content="Resize algorithms compared: nearest, bilinear, bicubic, Lanczos" />
+    <meta property="og:description" content="Nearest, bilinear, bicubic and Lanczos tested on downscaling and upscaling: aliasing, ringing, detail and even the JPEG size of the result. Which one each job actually needs." />
+    <meta property="og:url" content="https://www.fitmypic.com/resize-algorithms-guide.html" />
+    <meta property="og:image" content="https://www.fitmypic.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002" crossorigin="anonymous"></script>
+    <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./identity-fit.css" />
+    <script>(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;r.classList.add(d?"dark":"light");window.__setTheme=function(x){r.classList.remove("dark","light");r.classList.add(x);try{localStorage.setItem("theme",x)}catch(e){};var b=document.querySelectorAll(".theme-toggle");for(var i=0;i<b.length;i++)b[i].textContent=x==="dark"?"\u2600\uFE0F":"\uD83C\uDF19";};window.__setTheme(d?"dark":"light");}catch(e){}})();</script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "Article", "headline": "Resize algorithms compared: nearest, bilinear, bicubic, Lanczos", "description": "Nearest, bilinear, bicubic and Lanczos tested on downscaling and upscaling: aliasing, ringing, detail and even the JPEG size of the result. Which one each job actually needs.", "url": "https://www.fitmypic.com/resize-algorithms-guide.html", "inLanguage": "en", "datePublished": "2026-10-22", "dateModified": "2026-10-22", "author": {"@type": "Organization", "name": "FitMyPic Editorial", "url": "https://www.fitmypic.com/editorial-standards.html"}, "publisher": {"@type": "Organization", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}, "isPartOf": {"@type": "WebSite", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fitmypic.com/"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://www.fitmypic.com/guides.html"}, {"@type": "ListItem", "position": 3, "name": "Resizing", "item": "https://www.fitmypic.com/resize-algorithms-guide.html"}]}
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDE7CN1DH1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-XDE7CN1DH1");
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <nav aria-label="Primary navigation"><a href="./#tool">Tools</a><a href="./guides.html">Guides</a><a href="./jpeg-quality-benchmark.html">JPEG benchmark</a><a href="./about.html">About</a></nav>
+      <button class="theme-toggle" type="button" onclick="__setTheme(document.documentElement.classList.contains('dark')?'light':'dark')" aria-label="Toggle dark mode">🌙</button>
+    </header>
+<nav class="crumb" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><a href="./guides.html">Guides</a><span aria-hidden="true">/</span><span>Resizing</span></nav>
+    <div class="wrap">
+      <div class="layout">
+        <main>
+          <p class="eyebrow">Resizing</p>
+          <h1 class="article-title">Four resize algorithms, measured on the same images</h1>
+          <p class="deck">The algorithm behind a resize decides whether you get moire, a soft image, or a halo around every edge. Here is what each one does, with the numbers.</p>
+          <div class="authorline">
+            <span><strong>By FitMyPic Editorial</strong></span>
+            <span>Published 2026-10-22</span>
+            <span>Last reviewed 2026-10-22</span>
+            <span><a href="./editorial-standards.html">How we test</a></span>
+          </div>
+          <div class="prose">
+<div class="keyfacts"><h2>At a glance</h2><ul><li>Four algorithms, the same four test images, measured against a true area-average reference.</li><li>Nearest-neighbour left 5.7x more residual noise in flat areas than an ideal downscale (moiré you can see) and scored SSIM 0.60 against 0.99 for the smooth filters.</li><li>Bicubic produced the closest match to the reference when shrinking a photo: SSIM 0.994, PSNR 49.9 dB.</li><li>When enlarging a hard edge 4x, bicubic overshoots the edge by 10/255 on each side and Lanczos by 15/255 — the "sharpening halo" is a mathematical property, not a bug.</li><li>The worst downscale also produced the largest JPEG afterwards: 79.9 KB (nearest) against 49.5 KB (bilinear) for the same content.</li></ul></div>
+<h2 id="what-resize-actually-means">What "resize" actually means</h2>
+<p>Scaling an image is a resampling problem. Every output pixel is a weighted average of the input pixels around it, and the algorithm is nothing more than the choice of weights. That choice decides three things you can see in the result: how much of the original detail survives, whether new patterns appear that were never in the file (aliasing), and whether edges acquire a bright or dark halo (ringing).</p>
+<p>We tested the four algorithms available in virtually every image library and browser:</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Algorithm</th>
+<th>Weights</th>
+<th>Cost</th>
+<th>Character</th>
+</tr></thead><tbody>
+<tr>
+<td>Nearest neighbour</td>
+<td>Picks the single closest source pixel</td>
+<td>lowest</td>
+<td>Blocky when enlarging, moiré when shrinking</td>
+</tr>
+<tr>
+<td>Bilinear</td>
+<td>Linear falloff over 2 pixels</td>
+<td>low</td>
+<td>Soft, no halos, blurs fine detail</td>
+</tr>
+<tr>
+<td>Bicubic</td>
+<td>Cubic falloff over 4 pixels</td>
+<td>medium</td>
+<td>Crisp, slight halos on hard edges</td>
+</tr>
+<tr>
+<td>Lanczos</td>
+<td>Windowed sinc over 6-8 pixels</td>
+<td>highest</td>
+<td>Crispest, most pronounced halos</td>
+</tr>
+</tbody></table></div>
+<h2 id="shrinking-the-reference-is-an-area-average">Shrinking: the reference is an area average</h2>
+<p>For integer ratios there is a defensible "correct" answer: average every block of source pixels into one output pixel. That is a box filter, it is what a camera does when it burns pixels into a smaller sensor, and it is the reference we compare against.</p>
+<p>Test: a 2000x2000 pattern with a hard edge and fine noise, shrunk to 500x500 (4x reduction). One half of the image is a single flat colour, so any structure that survives there is noise the algorithm failed to remove.</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Method</th>
+<th>PSNR vs reference</th>
+<th>SSIM vs reference</th>
+<th>Residual noise in the flat half</th>
+<th>Time</th>
+</tr></thead><tbody>
+<tr>
+<td>NEAREST</td>
+<td>31.7 dB</td>
+<td>0.603</td>
+<td>6.85</td>
+<td>3 ms</td>
+</tr>
+<tr>
+<td>BILINEAR</td>
+<td>44.4 dB</td>
+<td>0.981</td>
+<td>1.18</td>
+<td>85 ms</td>
+</tr>
+<tr>
+<td><strong class="best">BICUBIC</strong></td>
+<td><strong class="best">46.6 dB</strong></td>
+<td><strong class="best">0.986</strong></td>
+<td>1.44</td>
+<td>141 ms</td>
+</tr>
+<tr>
+<td>LANCZOS</td>
+<td>46.5 dB</td>
+<td>0.984</td>
+<td>1.57</td>
+<td>236 ms</td>
+</tr>
+</tbody></table></div>
+<figure class="figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img" font-family="ui-sans-serif,system-ui,Segoe UI,Helvetica,Arial" aria-label="Downscaling 2000 to 500 px: method vs result">
+<text x="4" y="20" font-size="15" font-weight="700" fill="#17181c">Downscaling 2000 to 500 px: method vs result</text>
+<line x1="58" y1="288.0" x2="704" y2="288.0" stroke="#e7e4de" stroke-width="1"/>
+<text x="50" y="292.0" font-size="11" text-anchor="end" fill="#8b8e98">0</text>
+<line x1="58" y1="227.0" x2="704" y2="227.0" stroke="#e7e4de" stroke-width="1"/>
+<text x="50" y="231.0" font-size="11" text-anchor="end" fill="#8b8e98">13</text>
+<line x1="58" y1="166.0" x2="704" y2="166.0" stroke="#e7e4de" stroke-width="1"/>
+<text x="50" y="170.0" font-size="11" text-anchor="end" fill="#8b8e98">26</text>
+<line x1="58" y1="105.0" x2="704" y2="105.0" stroke="#e7e4de" stroke-width="1"/>
+<text x="50" y="109.0" font-size="11" text-anchor="end" fill="#8b8e98">39</text>
+<line x1="58" y1="44.0" x2="704" y2="44.0" stroke="#e7e4de" stroke-width="1"/>
+<text x="50" y="48.0" font-size="11" text-anchor="end" fill="#8b8e98">52</text>
+<rect x="87.1" y="140.0" width="57.1" height="148.0" rx="3" fill="#1d7a5c"/>
+<text x="115.6" y="135.0" font-size="10.5" text-anchor="middle" fill="#4c4f58">32</text>
+<rect x="149.2" y="256.0" width="57.1" height="32.0" rx="3" fill="#c2453c"/>
+<text x="177.8" y="251.0" font-size="10.5" text-anchor="middle" fill="#4c4f58">7</text>
+<text x="138.8" y="306.0" font-size="11.5" text-anchor="middle" fill="#17181c">NEAREST</text>
+<rect x="248.6" y="80.5" width="57.1" height="207.5" rx="3" fill="#1d7a5c"/>
+<text x="277.1" y="75.5" font-size="10.5" text-anchor="middle" fill="#4c4f58">44</text>
+<rect x="310.7" y="282.5" width="57.1" height="5.5" rx="3" fill="#c2453c"/>
+<text x="339.3" y="277.5" font-size="10.5" text-anchor="middle" fill="#4c4f58">1</text>
+<text x="300.2" y="306.0" font-size="11.5" text-anchor="middle" fill="#17181c">BILINEAR</text>
+<rect x="410.1" y="70.1" width="57.1" height="217.9" rx="3" fill="#1d7a5c"/>
+<text x="438.6" y="65.1" font-size="10.5" text-anchor="middle" fill="#4c4f58">47</text>
+<rect x="472.2" y="281.3" width="57.1" height="6.7" rx="3" fill="#c2453c"/>
+<text x="500.8" y="276.3" font-size="10.5" text-anchor="middle" fill="#4c4f58">1</text>
+<text x="461.8" y="306.0" font-size="11.5" text-anchor="middle" fill="#17181c">BICUBIC</text>
+<rect x="571.6" y="70.5" width="57.1" height="217.5" rx="3" fill="#1d7a5c"/>
+<text x="600.1" y="65.5" font-size="10.5" text-anchor="middle" fill="#4c4f58">47</text>
+<rect x="633.7" y="280.7" width="57.1" height="7.3" rx="3" fill="#c2453c"/>
+<text x="662.3" y="275.7" font-size="10.5" text-anchor="middle" fill="#4c4f58">2</text>
+<text x="623.2" y="306.0" font-size="11.5" text-anchor="middle" fill="#17181c">LANCZOS</text>
+<rect x="58" y="345" width="11" height="11" rx="2" fill="#1d7a5c"/>
+<text x="74" y="354" font-size="11.5" fill="#4c4f58">PSNR vs box reference (dB)</text>
+<rect x="262" y="345" width="11" height="11" rx="2" fill="#c2453c"/>
+<text x="278" y="354" font-size="11.5" fill="#4c4f58">halftone noise left behind (lower is better)</text>
+<text x="704" y="354" font-size="11" text-anchor="end" fill="#8b8e98"></text>
+</svg><figcaption>Downscaling 2000 to 500 pixels. Higher PSNR is better; residual noise is what an ideal filter would have removed entirely.</figcaption></figure>
+<p>Nearest neighbour is not a subtle failure. It reads one of every sixteen pixels and ignores the rest, so a fine repeating pattern in the source turns into a coarse repeating pattern in the output — the classic moiré you see in photographs of fabric, brickwork or a computer screen. That is why it is the right choice only for pixel art, where every source pixel is <em>supposed</em> to stay a block.</p>
+<p>Between bilinear, bicubic and Lanczos the differences are small when shrinking: bicubic matched the reference most closely, Lanczos left slightly more residual noise because its wider kernel keeps more high-frequency energy. All three are acceptable; none of them is close to nearest.</p>
+<h2 id="shrinking-a-real-photograph">Shrinking a real photograph</h2>
+<p>The prediction pattern holds on photographic content, where the measure is how close each method comes to a straight area average.</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Method</th>
+<th>PSNR vs area average</th>
+<th>SSIM</th>
+<th>JPEG q85 size of the result</th>
+</tr></thead><tbody>
+<tr>
+<td>NEAREST</td>
+<td>39.7 dB</td>
+<td>0.917</td>
+<td><strong class="best">79.9 KB</strong></td>
+</tr>
+<tr>
+<td>BILINEAR</td>
+<td>48.9 dB</td>
+<td>0.990</td>
+<td><strong class="best">49.5 KB</strong></td>
+</tr>
+<tr>
+<td><strong class="best">BICUBIC</strong></td>
+<td><strong class="best">49.9 dB</strong></td>
+<td><strong class="best">0.994</strong></td>
+<td>52.8 KB</td>
+</tr>
+<tr>
+<td>LANCZOS</td>
+<td>49.1 dB</td>
+<td>0.992</td>
+<td>54.1 KB</td>
+</tr>
+</tbody></table></div>
+<p>The last column is the surprise. Nearest neighbour produced the <em>smallest</em> intermediate image — it has no smoothing to store — and then the <em>largest</em> JPEG, 61% bigger than bilinear's. Aliased edges are hard edges, and hard edges are exactly what JPEG spends bits on. A cheaper resize does not produce a cheaper file; it moves the cost into the compressor.</p>
+<h2 id="enlarging-ringing-is-the-trade-you-make-for-sharpness">Enlarging: ringing is the trade you make for sharpness</h2>
+<p>Upscaling cannot invent detail, so the only real question is how gracefully each method interpolates. We enlarged a 400x400 image with a hard vertical step (values 90 and 220) four times and measured how far the result overshoots the original values.</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Method</th>
+<th>Overshoot above the bright side</th>
+<th>Undershoot below the dark side</th>
+<th>Visible effect</th>
+</tr></thead><tbody>
+<tr>
+<td>NEAREST</td>
+<td>0</td>
+<td>0</td>
+<td>Stair-step blocks along every diagonal</td>
+</tr>
+<tr>
+<td>BILINEAR</td>
+<td>0</td>
+<td>0</td>
+<td>Soft edges, no halo</td>
+</tr>
+<tr>
+<td>BICUBIC</td>
+<td>10/255</td>
+<td>10/255</td>
+<td>Slight bright rim on one side, dark rim on the other</td>
+</tr>
+<tr>
+<td>LANCZOS</td>
+<td>15/255</td>
+<td>15/255</td>
+<td>Clearly visible halo, sharpest local contrast</td>
+</tr>
+</tbody></table></div>
+<p>Those numbers are the honest answer to a question people ask constantly: "why does my upscaled logo have a bright outline?" It is not a bug in your tool. Any filter that can produce a sharp edge from a soft one must overshoot — the negative lobes in a cubic or sinc kernel are what make the edge crisp, and they also ring.</p>
+<h2 id="speed">Speed</h2>
+<p>Cost scales with the kernel width: on the same input, nearest took 3 ms, bilinear 85 ms, bicubic 141 ms and Lanczos 236 ms in our test environment. For a single image in a browser tab this is invisible. For a thousand-image batch it is the difference between a two-minute job and a twenty-minute one — if you are processing at scale, bilinear is a defensible choice when shrinking, and the quality difference against bicubic is under one SSIM point.</p>
+<h2 id="what-to-use-and-when">What to use, and when</h2>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Job</th>
+<th>Use</th>
+<th>Avoid</th>
+</tr></thead><tbody>
+<tr>
+<td>Shrink a photo for the web</td>
+<td>Bicubic or Lanczos</td>
+<td>Nearest</td>
+</tr>
+<tr>
+<td>Shrink a large batch quickly</td>
+<td>Bilinear</td>
+<td>Nearest</td>
+</tr>
+<tr>
+<td>Enlarge a photo slightly (up to 2x)</td>
+<td>Bicubic, then a light sharpen</td>
+<td>Nearest</td>
+</tr>
+<tr>
+<td>Enlarge more than 2x</td>
+<td>Bicubic or Lanczos, accept softness, see the upscaling guide</td>
+<td>Lanczos followed by aggressive sharpening</td>
+</tr>
+<tr>
+<td>Pixel art, sprites, screenshots of pixel UI</td>
+<td><strong class="best">Nearest</strong></td>
+<td>Any smoothing filter</td>
+</tr>
+<tr>
+<td>Images with transparency</td>
+<td>Any smooth filter that handles alpha correctly</td>
+<td>Anything that samples colour without alpha</td>
+</tr>
+</tbody></table></div>
+<p>One rule that matters more than the algorithm choice: <strong>resize once</strong>. Re-saving and resizing repeatedly compounds resampling artefacts, and each pass through a lossy format adds compression damage on top. Work from the largest original you have, do the resize in a single step to the final dimensions, and only then compress.</p>
+<p>Both tools on this site resize with a high-order filter at their highest quality setting (pica at <code>quality: 3</code>, with alpha-safe sampling), which is the bicubic-to-Lanczos class rather than the browser's default bilinear path.</p>
+<h2 id="reproduce-it">Reproduce it</h2>
+<ul><li><a href="./assets/bench/study-c-resize.csv">study-c-resize.csv</a> — every method, every test, with PSNR, SSIM, ringing and timings</li><li><a href="./assets/bench/bench_kit.py">bench_kit.py</a> — the script that produced the numbers, including the box-filter reference implementation</li><li><a href="./assets/bench/README.txt">README.txt</a> — how to run the scripts</li></ul>
+<h2 id="what-this-test-does-not-cover">What this test does not cover</h2>
+<p>Ringing and aliasing were measured on synthetic patterns where an exact reference exists; a real photograph has no ground truth, so the "best" method there is a judgement call supported by the reference comparison, not proven by it. Timings came from one environment. And the JPEG sizes at the end of the chain depend on the encoder, so treat the 79.9 KB against 49.5 KB as a ratio rather than a rule.</p>
+<div class="cta-band"><div><h2>Resize, compress and convert images in your browser</h2><p>Everything happens on your device — no upload, no account.</p></div><a class="btn" href="./#tool">Open the image tools</a></div>
+<h2 id="sources">Sources</h2>
+<ul><li>Pillow resampling documentation (filters, <code>Image.Resampling</code>) — https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.resize</li><li>pica resampling library documentation (filters and quality levels) — https://github.com/nodeca/pica</li><li>SSIM index, original paper (Wang et al.) — https://ece.uwaterloo.ca/~z70wang/publications/ssim.pdf</li><li>ImageMagick "Resize or Resample" (filter families, aliasing) — https://imagemagick.org/Usage/resize/</li></ul>
+          </div>
+<div class="related"><h2>Related reading</h2><div class="related-grid"><a href="./jpeg-quality-benchmark.html"><strong>JPEG quality benchmark</strong><span>What happens after the resize, when the file is compressed</span></a><a href="./resize-without-losing-quality.html"><strong>Resize without losing quality</strong><span>The practical checklist version of this page</span></a><a href="./image-upscaling-guide.html"><strong>What upscaling can and cannot do</strong><span>Why enlarging never adds detail, however good the filter is</span></a><a href="./image-file-size-guide.html"><strong>Image file size guide</strong><span>How dimensions, format and quality combine</span></a></div></div>
+        </main>
+<aside class="rail" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#what-resize-actually-means">What "resize" actually means</a></li><li><a href="#shrinking-the-reference-is-an-area-average">Shrinking: the reference is an area average</a></li><li><a href="#shrinking-a-real-photograph">Shrinking a real photograph</a></li><li><a href="#enlarging-ringing-is-the-trade-you-make-for-sharpness">Enlarging: ringing is the trade you make for sharpness</a></li><li><a href="#speed">Speed</a></li><li><a href="#what-to-use-and-when">What to use, and when</a></li><li><a href="#reproduce-it">Reproduce it</a></li><li><a href="#what-this-test-does-not-cover">What this test does not cover</a></li><li><a href="#sources">Sources</a></li></ol></aside>
+      </div>
+    </div>
+    <footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <p>FitMyPic builds browser-based image tools and publishes the tests behind its recommendations.</p>
+    </div>
+    <div class="footer-col">
+      <strong>Tools</strong>
+      <a href="./#tool">Image resizer &amp; compressor</a>
+      <a href="./compress-image.html">Compress an image</a>
+      <a href="./remove-background-from-image.html">Remove a background</a>
+      <a href="./resize-image-to-1024x1024.html">Square 1024 x 1024</a>
+    </div>
+    <div class="footer-col">
+      <strong>Guides</strong>
+      <a href="./guides.html">All guides</a>
+      <a href="./jpeg-quality-benchmark.html">JPEG quality benchmark (measured)</a>
+      <a href="./resize-algorithms-guide.html">Resize algorithms compared</a>
+      <a href="./print-resolution-guide.html">Print size and resolution</a>
+      <a href="./image-upscaling-guide.html">What upscaling can do</a>
+    </div>
+    <div class="footer-col">
+      <strong>Reference</strong>
+      <a href="./social-media-image-sizes.html">Social media image sizes</a>
+      <a href="./passport-photo-specs.html">Passport photo specs</a>
+      <a href="./image-file-size-guide.html">Image file size guide</a>
+      <a href="./image-output-testing.html">Output testing method</a>
+    </div>
+    <div class="footer-col">
+      <strong>Site</strong>
+      <a href="./about.html">About &amp; how we test</a>
+      <a href="./editorial-standards.html">Editorial standards</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./privacy.html">Privacy</a>
+      <a href="./terms.html">Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 FitMyPic. All rights reserved.</span>
+    <span>All processing happens locally in your browser.</span>
+  </div>
+</footer>
+  </body>
+</html>

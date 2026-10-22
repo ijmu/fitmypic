@@ -111,7 +111,56 @@
         <p>Next: <a href="./resize-image-for-instagram.html">resize your cutout for Instagram</a> or <a href="./image-output-testing.html">see how we test output</a>.</p>
       </section>
     
-      <section class="guide-cta-band">
+      <section class="guide-extra" aria-label="Additional guidance">
+<div class="prose">
+<h2 id="when-colour-based-removal-works-and-when-it-cannot">When colour-based removal works, and when it cannot</h2>
+<p>Removing a background by colour matching is a bet: the algorithm assumes the subject is separable from what surrounds it because the two differ in colour. That bet pays off in a predictable set of cases and fails in an equally predictable set.</p>
+<p><strong>It works well on:</strong> images photographed against a plain, evenly lit surface (product shots on white paper, a person against a painted wall), logos and flat illustrations on a single colour, scans of documents on clean backing, and screenshots of graphics where the background is one fill.</p>
+<p><strong>It fails, or needs manual work, on:</strong> gradient backgrounds and studio lighting with shadows, hair and fur, semi-transparent objects (glass, smoke, veils, tulle), reflective or shiny edges picking up the background colour, busy surroundings, and anything where the subject shares colour with the background.</p>
+<p>Half-transparent pixels are the boundary case worth understanding. An antialiased edge contains pixels that are genuinely mixed between subject and background. A hard threshold has to decide they are one or the other, and that decision is where the ugly border comes from.</p>
+<h2 id="why-the-edges-get-a-halo">Why the edges get a halo</h2>
+<p>The white fringe that appears around a cutout is almost always one of three things.</p>
+<p><strong>Trapped background pixels.</strong> The alpha mask stops one or two pixels short of the actual subject boundary, so a thin band of background colour survives at the edge. Against a different backdrop the band reads as a rim of the old background.</p>
+<p><strong>Colour bleed from a scaled image.</strong> If the source was resized or compressed with JPEG before the cutout, edge pixels carry colours blended toward the background. Those blends survive as a coloured halo even when the alpha is correct.</p>
+<p><strong>A matte colour that does not match the destination.</strong> When a transparent image is composited onto white, any subtle semi-transparent edge tint shows. The same file placed on a dark background may look perfectly clean.</p>
+<p>Fixes, in order of effort: reduce tolerance so fewer background pixels are kept; add a slight feather so the boundary is a gradient rather than a hard line; and inspect the result against both a white and a dark checkerboard before shipping.</p>
+<div class="callout"><strong>The preview background matters</strong><p>Check the cutout over two different backgrounds. An edge that looks perfect on white can show a dark halo on a dark surface, and vice versa. This is the failure mode that is easiest to miss and hardest to diagnose later.</p></div>
+<h2 id="removing-versus-choosing-the-right-source">Removing versus choosing the right source</h2>
+<p>The single largest quality gain usually comes before any tool touches the file: start from the uncompressed original. Edge pixels in a JPEG that has already been re-encoded at quality 60 have colour bleed built in that no tolerance setting can undo.</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Source</th>
+<th>Expected quality of a colour-based cutout</th>
+</tr></thead><tbody>
+<tr>
+<td>Original PNG or high-quality export, plain background</td>
+<td>Clean edges, minimal halo</td>
+</tr>
+<tr>
+<td>JPEG q80+ on a plain background</td>
+<td>Good at normal viewing sizes, some fringing at 100%</td>
+</tr>
+<tr>
+<td>Heavily recompressed JPEG, or a screenshot of a photo</td>
+<td>Visible fringing that survives every setting</td>
+</tr>
+<tr>
+<td>Photo with shadow or gradient background</td>
+<td>Requires manual masking, not colour matching</td>
+</tr>
+</tbody></table></div>
+<h2 id="scenarios-where-a-different-route-is-correct">Scenarios where a different route is correct</h2>
+<p>Some jobs look like background removal but are not:</p>
+<ul><li><strong>Ecommerce listings that require a white background.</strong> If the marketplace specifies pure white, keep the background and simply make sure it <em>is</em> pure white — a cutout on white is not the same thing as a properly exposed white sweep, and some platforms reject images with visible cutout artefacts.</li><li><strong>Official documents and identification photographs.</strong> Many authorities state the photo must not be digitally altered beyond cropping and compression. Producing a cutout and pasting it onto a white field can get a submission rejected even when it looks correct.</li><li><strong>Complex subjects with important edges.</strong> Hair, fur, glass and motion blur are the cases where a mask needs to be drawn by hand; the automated route produces halos that cannot be tuned away.</li><li><strong>Transparent objects.</strong> A colour-key cutout on glass removes the very gradients that make glass look like glass.</li></ul>
+<div class="specbox"><strong>A two-minute sanity test</strong><p>Zoom to 200% on the subject's edge and look for the old background's colour. If it is there, lower the tolerance and re-export. If it survives at the lowest setting that still removes the background, the image needs manual masking.</p></div>
+<h2 id="after-the-cutout">After the cutout</h2>
+<ol><li>Export as PNG. JPEG has no alpha channel at all, so a transparent result saved as JPEG gets flattened onto whatever matte colour the encoder chooses.</li><li>Check the file over a white background and a dark one.</li><li>Confirm the pixel dimensions still match the destination's requirement.</li><li>Keep the original. Background removal is destructive and re-running it from the original is faster than repairing an edge.</li></ol>
+<div class="stat-grid"><div class="stat"><b>plain, evenly lit background</b><span>Best case</span></div><div class="stat"><b>hair, glass, gradients</b><span>Hard cases</span></div><div class="stat"><b>PNG (alpha)</b><span>Export format</span></div><div class="stat"><b>white and dark</b><span>Check against</span></div></div>
+<p>The <a href="./">background remover on this page</a> reads pixels locally, applies tolerance and feathering settings you control, and produces a PNG without uploading anything — so you can test settings against the original file as many times as you like.</p>
+<p>Source: background separation described in the PNG specification's transparency model — https://www.w3.org/TR/png-3/</p>
+</div>
+</section>
+<section class="guide-cta-band">
         <h2>Ready to try it?</h2>
         <p>Everything in this guide runs locally in your browser — free, no account, no uploads.</p>
         <a class="primary-button" href="./#tool">Open the free tools</a>

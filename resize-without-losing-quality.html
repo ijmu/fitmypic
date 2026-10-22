@@ -3,88 +3,127 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f6f5f2" />
-    <title>Resize Images Without Losing Quality - FitMyPic</title>
-    <meta name="description" content="Practical tips for resizing images without stretching, blurring, over-compressing, or losing important details." />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="FitMyPic" />
-    <meta property="og:title" content="Resize Images Without Losing Quality - FitMyPic" />
-    <meta property="og:description" content="Practical tips for resizing images without stretching, blurring, over-compressing, or losing important details." />
-    <meta property="og:url" content="https://www.fitmypic.com/resize-without-losing-quality.html" />
-    <meta property="og:image" content="https://www.fitmypic.com/og-image.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Resize Images Without Losing Quality - FitMyPic" />
-    <meta name="twitter:description" content="Practical tips for resizing images without stretching, blurring, over-compressing, or losing important details." />
-    <meta name="twitter:image" content="https://www.fitmypic.com/og-image.png" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <title>Resizing without losing quality: the rules that hold up | FitMyPic</title>
+    <meta name="description" content="Some quality loss is unavoidable when you resize. These rules keep it out of the visible range: one resample, a good filter, no double compression, sane targets." />
+    <meta name="robots" content="index,follow" />
     <link rel="canonical" href="https://www.fitmypic.com/resize-without-losing-quality.html" />
     <link rel="alternate" hreflang="en" href="https://www.fitmypic.com/resize-without-losing-quality.html" />
     <link rel="alternate" hreflang="x-default" href="https://www.fitmypic.com/resize-without-losing-quality.html" />
-    <meta name="robots" content="noindex,follow" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="FitMyPic" />
+    <meta property="og:title" content="Resizing without losing quality: the rules that hold up" />
+    <meta property="og:description" content="Some quality loss is unavoidable when you resize. These rules keep it out of the visible range: one resample, a good filter, no double compression, sane targets." />
+    <meta property="og:url" content="https://www.fitmypic.com/resize-without-losing-quality.html" />
+    <meta property="og:image" content="https://www.fitmypic.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002" crossorigin="anonymous"></script>
     <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="./site.webmanifest" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./identity-fit.css" />
+    <script>(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;r.classList.add(d?"dark":"light");window.__setTheme=function(x){r.classList.remove("dark","light");r.classList.add(x);try{localStorage.setItem("theme",x)}catch(e){};var b=document.querySelectorAll(".theme-toggle");for(var i=0;i<b.length;i++)b[i].textContent=x==="dark"?"\u2600\uFE0F":"\uD83C\uDF19";};window.__setTheme(d?"dark":"light");}catch(e){}})();</script>
     <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "Article", "headline": "Resize Images Without Losing Quality - FitMyPic", "description": "Practical tips for resizing images without stretching, blurring, over-compressing, or losing important details.", "url": "https://www.fitmypic.com/resize-without-losing-quality.html", "inLanguage": "en", "author": {"@type": "Organization", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}, "publisher": {"@type": "Organization", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}, "dateModified": "2026-10-08", "datePublished": "2026-09-06"}
+      {"@context": "https://schema.org", "@type": "Article", "headline": "Resizing without losing quality: the rules that hold up", "description": "Some quality loss is unavoidable when you resize. These rules keep it out of the visible range: one resample, a good filter, no double compression, sane targets.", "url": "https://www.fitmypic.com/resize-without-losing-quality.html", "inLanguage": "en", "datePublished": "2026-10-22", "dateModified": "2026-10-22", "author": {"@type": "Organization", "name": "FitMyPic Editorial", "url": "https://www.fitmypic.com/editorial-standards.html"}, "publisher": {"@type": "Organization", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}, "isPartOf": {"@type": "WebSite", "name": "FitMyPic", "url": "https://www.fitmypic.com/"}}
     </script>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDE7CN1DH1"></script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fitmypic.com/"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://www.fitmypic.com/guides.html"}, {"@type": "ListItem", "position": 3, "name": "Method", "item": "https://www.fitmypic.com/resize-without-losing-quality.html"}]}
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDE7CN1DH1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
       gtag("config", "G-XDE7CN1DH1");
     </script>
-      <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002" crossorigin="anonymous"></script>
-</head>
+  </head>
   <body>
     <header class="topbar">
       <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
       <nav aria-label="Primary navigation"><a href="./#tool">Tools</a><a href="./guides.html">Guides</a><a href="./jpeg-quality-benchmark.html">JPEG benchmark</a><a href="./about.html">About</a></nav>
       <button class="theme-toggle" type="button" onclick="__setTheme(document.documentElement.classList.contains('dark')?'light':'dark')" aria-label="Toggle dark mode">🌙</button>
     </header>
-    <main class="page article-page">
-      <p class="eyebrow">Quality guide</p>
-      <h1>Resize Images Without Losing Quality</h1>
-      <p class="page-meta">Last reviewed: 8 October 2026</p>
-      <section>
-        <h2>Resizing always changes image data</h2>
-        <p>When an image is resized, pixels are recalculated. A smaller export can still look clean, but it cannot contain more detail than the original. The goal is to resize only as much as needed and avoid unnecessary stretching or compression.</p>
-      </section>
-      <section>
-        <h2>Keep the aspect ratio locked</h2>
-        <p>Most quality problems come from forcing an image into the wrong shape. Keep aspect ratio enabled unless the destination requires an exact width and height. If you need a different shape, crop the image first instead of stretching it.</p>
-      </section>
-      <section>
-        <h2>Do not upscale small images too far</h2>
-        <p>Upscaling a 400 x 400 image to 2000 x 2000 will not add real detail. It usually makes edges soft or blocky. Start with the highest-quality source file you have, then export the size required by the platform.</p>
-      </section>
-      <section>
-        <h2>Use the right format</h2>
-        <ul>
-          <li>Use JPG for ordinary photos when transparency is not needed.</li>
-          <li>Use PNG for transparent graphics, logos, screenshots, and sharp interface text.</li>
-          <li>Use WebP for smaller website images when the destination supports it.</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Quality checklist</h2>
-        <ol>
-          <li>Use the original image, not a repeatedly downloaded copy.</li>
-          <li>Keep aspect ratio locked while resizing.</li>
-          <li>Preview faces, text, product edges, and logos at the final size.</li>
-          <li>Avoid very low JPG or WebP quality settings unless file size is the main priority.</li>
-          <li>Save a fresh export from the original if you need another size later.</li>
-        </ol>
-      </section>
-      <section>
-        <h2>FAQ</h2>
-        <h3>Why does my resized image look blurry?</h3>
-        <p>The source image may be too small, the output may have been upscaled, or compression quality may be too low.</p>
-        <h3>Is PNG always higher quality?</h3>
-        <p>PNG is lossless, but it is not always the best choice. Photos often look good as smaller JPG or WebP files.</p>
-        <h3>Can FitMyPic restore lost detail?</h3>
-        <p>No. The tool can resize and export images, but it cannot recreate detail that is not present in the source file.</p>
-      </section>
-    </main>
+<nav class="crumb" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><a href="./guides.html">Guides</a><span aria-hidden="true">/</span><span>Method</span></nav>
+    <div class="wrap">
+      <div class="layout">
+        <main>
+          <p class="eyebrow">Method</p>
+          <h1 class="article-title">Resizing without losing quality: what is actually possible</h1>
+          <p class="deck">You cannot resize losslessly. You can keep the loss invisible, and the difference between the two is a short list of habits.</p>
+          <div class="authorline">
+            <span><strong>By FitMyPic Editorial</strong></span>
+            <span>Published 2026-10-22</span>
+            <span>Last reviewed 2026-10-22</span>
+            <span><a href="./editorial-standards.html">How we test</a></span>
+          </div>
+          <div class="prose">
+<div class="keyfacts"><h2>At a glance</h2><ul><li>Resizing is always a reconstruction: every output pixel is recomputed, so "lossless resize" does not exist — but visible loss is avoidable.</li><li>Resize once, from the largest original. Every additional resample or re-encode compounds the loss.</li><li>A quality-oriented filter is the single biggest lever: 44-46 dB against a reference versus 31 dB for nearest-neighbour on our 4x downscale test.</li><li>Downscaling removes detail permanently; upscaling cannot restore it, and mixes in halos of its own.</li></ul></div>
+<h2 id="why-lossless-resize-is-a-phrase-to-be-suspicious-of">Why "lossless resize" is a phrase to be suspicious of</h2>
+<p>A resize recomputes a new pixel grid from the old one. Unless the new grid is an exact integer multiple of the old one — and usually not even then — the values in the output are weighted averages of neighbouring input values. Averages do not round-trip: resize 1000 pixels down to 300 and back to 1000, and the result is a blurred approximation, not the original.</p>
+<p>So the goal is not zero loss. The goal is to keep the loss below the threshold where it becomes visible, and to avoid the three mistakes that push it over.</p>
+<h2 id="rule-1-start-from-the-biggest-best-source-you-have">Rule 1: start from the biggest, best source you have</h2>
+<p>Compression and resizing are both one-way. Each pass discards information, and starting from an already-processed file means starting part-way down the slope.</p>
+<p>Work from the camera original, the exported PNG, or the largest version you can obtain. Do not start from a chat app's copy, a screenshot of a photo, or a file that has already been sent through a compressor at quality 60. If the only copy you have is a small JPEG, accept that it constrains the result rather than "fixing" it with processing.</p>
+<h2 id="rule-2-resize-exactly-once">Rule 2: resize exactly once</h2>
+<p>The most common avoidable quality problem is a chain: resize to a large size, resize again to the final size, then let an upload form's tool resize a third time.</p>
+<p>Each interpolation step softens a little more. Instead, decide the final dimensions first, then interpolate once, directly from the source. This also means avoiding workflows where an editing app exports an intermediate at a different size than the destination needs.</p>
+<p>If you must chain — say the composition is edited after cropping — do the geometric work at full resolution and only then perform the single final resample.</p>
+<h2 id="rule-3-choose-the-filter-deliberately">Rule 3: choose the filter deliberately</h2>
+<p>Measured on a 4x downscale of a noisy test pattern, compared against an area-average reference:</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Filter</th>
+<th>PSNR</th>
+<th>SSIM</th>
+<th>What it leaves behind</th>
+</tr></thead><tbody>
+<tr>
+<td>Nearest neighbour</td>
+<td>31.66 dB</td>
+<td>0.6028</td>
+<td>Aliasing and moire (6.85 levels of halftone noise)</td>
+</tr>
+<tr>
+<td>Bilinear</td>
+<td>44.39 dB</td>
+<td>0.9813</td>
+<td>Mild softening, no ringing</td>
+</tr>
+<tr>
+<td>Bicubic</td>
+<td><strong class="best">46.60 dB</strong></td>
+<td><strong class="best">0.9856</strong></td>
+<td>Slight edge sharpening, mild halos when upscaling</td>
+</tr>
+<tr>
+<td>Lanczos</td>
+<td>46.52 dB</td>
+<td>0.9835</td>
+<td>Slightly more edge contrast, more halo when upscaling</td>
+</tr>
+</tbody></table></div>
+<p>For photographs being reduced in size, bicubic and Lanczos are the two defensible answers, and the difference between them is small. Nearest-neighbour should be reserved for pixel art. Bilinear is a fine compromise when a tool offers nothing better, and it has the useful property of never introducing ringing.</p>
+<p>Sharpness added after a downscale does not restore detail; it amplifies whatever survived. If the result looks soft, the fix is a smaller reduction — target fewer pixels less aggressively — not a sharpen pass.</p>
+<h2 id="rule-4-do-not-re-encode-what-you-already-encoded">Rule 4: do not re-encode what you already encoded</h2>
+<p>Compression artefacts are not random noise. Re-encoding a JPEG at the same or lower quality re-quantises blocks that already contain artefacts, so blocking and ringing compound instead of averaging out.</p>
+<p>Practical consequences:</p>
+<ul><li>Export from the editor directly at the final size and quality. Avoid the "save, then resize, then save again" loop.</li><li>When you must combine resize and compression, do them in one pass in one tool: the <a href="./">resizer and compressor</a> produces a single output rather than feeding one export into another.</li><li>If a destination accepts PNG and the image has text or flat colour, send PNG: it avoids the compounding problem entirely, at the cost of a larger file.</li></ul>
+<h2 id="rule-5-pick-dimensions-the-destination-can-actually-use">Rule 5: pick dimensions the destination can actually use</h2>
+<p>A common cause of "my resize looks bad" is resizing to a size that will be resampled again downstream — by a platform's own pipeline, by a template, or by a print shop. Reaching the destination's native size, or an exact multiple of it, gives its software nothing to do.</p>
+<p>For screens, that means the CSS pixel size multiplied by the display density you intend to support: 1080 wide for a typical feed image, 1500-2000 wide for a full-width hero on a high-density laptop, and no more than that unless the image is a zoomable detail. For print, multiply the physical size in inches by the pixels per inch you actually need — 300 is the conventional figure for close viewing, and 150 is often indistinguishable at arm's length.</p>
+<h2 id="rule-6-verify-at-100-then-stop-touching-it">Rule 6: verify at 100%, then stop touching it</h2>
+<p>Open the output at 100% zoom and look at the parts of the image with the most high-frequency detail: fabric, foliage, hair, small text. If those areas look acceptable at the size they will be viewed, the job is done.</p>
+<p>Do not keep iterating. Every additional export adds a generation of loss, and successive small improvements in one area usually cost more in another. Keep the source file, note the settings that worked, and stop.</p>
+<h2 id="what-this-looks-like-as-a-checklist">What this looks like as a checklist</h2>
+<ol><li>Locate the largest original.</li><li>Decide final pixel dimensions from the destination, not from the file.</li><li>Crop to the target aspect ratio at full resolution.</li><li>Resample once, with bicubic or Lanczos.</li><li>Compress in the same pass if a size limit applies, at quality 75-85 for photographs.</li><li>Inspect at 100% on the busiest part of the image.</li><li>Save, and keep the original untouched.</li></ol>
+<div class="cta-band"><div><h2>Resize, compress and convert images in your browser</h2><p>Everything happens on your device — no upload, no account.</p></div><a class="btn" href="./#tool">Open the image tools</a></div>
+          </div>
+<div class="related"><h2>Related reading</h2><div class="related-grid"><a href="./image-resizer.html"><strong>How to resize an image</strong><span>Dimensions, aspect ratio and filters explained</span></a><a href="./resize-algorithms-guide.html"><strong>Resize algorithms compared</strong><span>Measured aliasing and ringing per method</span></a><a href="./image-upscaling-guide.html"><strong>What upscaling can and cannot do</strong><span>The hard limit on enlarging</span></a><a href="./image-output-testing.html"><strong>How we test image output</strong><span>The checklist behind these claims</span></a></div></div>
+        </main>
+<aside class="rail" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#why-lossless-resize-is-a-phrase-to-be-suspicious-of">Why "lossless resize" is a phrase to be suspicious of</a></li><li><a href="#rule-1-start-from-the-biggest-best-source-you-have">Rule 1: start from the biggest, best source you have</a></li><li><a href="#rule-2-resize-exactly-once">Rule 2: resize exactly once</a></li><li><a href="#rule-3-choose-the-filter-deliberately">Rule 3: choose the filter deliberately</a></li><li><a href="#rule-4-do-not-re-encode-what-you-already-encoded">Rule 4: do not re-encode what you already encoded</a></li><li><a href="#rule-5-pick-dimensions-the-destination-can-actually-use">Rule 5: pick dimensions the destination can actually use</a></li><li><a href="#rule-6-verify-at-100-then-stop-touching-it">Rule 6: verify at 100%, then stop touching it</a></li><li><a href="#what-this-looks-like-as-a-checklist">What this looks like as a checklist</a></li></ol></aside>
+      </div>
+    </div>
     <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-brand">

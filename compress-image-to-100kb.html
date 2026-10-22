@@ -98,7 +98,120 @@
         <details><summary>Are my images uploaded?</summary><p>No. Compression runs locally in your browser with the canvas API — your files are never transmitted to a server.</p></details>
       </section>
     
-      <section class="guide-cta-band">
+      <section class="guide-extra" aria-label="Additional guidance">
+<div class="prose">
+<h2 id="why-the-quality-slider-is-the-wrong-first-move">Why the quality slider is the wrong first move</h2>
+<p>When a form demands "under 100 KB", the instinct is to drag the quality slider down until the number fits. On a large image that produces a file that meets the limit and looks like it was photographed through a window screen, because JPEG at very low quality removes detail from <em>every</em> pixel rather than removing pixels that were never going to be shown.</p>
+<p>The order that works is the reverse: reduce the pixel count until the file is close to the target, then use quality only for the last adjustment.</p>
+<h2 id="working-backwards-from-a-byte-target">Working backwards from a byte target</h2>
+<p>There is a useful arithmetic check available before you touch any slider. A file of a given byte size corresponds to a budget in bits per pixel:</p>
+<blockquote>bits per pixel = (target bytes x 8) / (width x height)</blockquote>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Canvas</th>
+<th>Pixels</th>
+<th>Target</th>
+<th>Bits per pixel</th>
+<th>What it implies</th>
+</tr></thead><tbody>
+<tr>
+<td>4000 x 3000</td>
+<td>12.0 M</td>
+<td>100 KB</td>
+<td>0.07</td>
+<td>Not achievable in JPEG without visible damage</td>
+</tr>
+<tr>
+<td>1600 x 1200</td>
+<td>1.92 M</td>
+<td>100 KB</td>
+<td>0.42</td>
+<td>Possible but visibly soft in detailed areas</td>
+</tr>
+<tr>
+<td>1000 x 750</td>
+<td>0.75 M</td>
+<td>100 KB</td>
+<td>1.07</td>
+<td>Comfortable for a photograph at moderate quality</td>
+</tr>
+<tr>
+<td>800 x 600</td>
+<td>0.48 M</td>
+<td>100 KB</td>
+<td>1.67</td>
+<td>Good quality with room to spare</td>
+</tr>
+<tr>
+<td>600 x 450</td>
+<td>0.27 M</td>
+<td>100 KB</td>
+<td>3.0</td>
+<td>Essentially transparent for most content</td>
+</tr>
+</tbody></table></div>
+<p>Anything below roughly 0.5 bits per pixel is a warning sign: the encoder is being asked to discard so much that blocking and smearing become visible. It does not matter which slider position produces it.</p>
+<h2 id="what-the-quality-setting-actually-buys">What the quality setting actually buys</h2>
+<p>Measured on a 1600 x 1200 photo-like test image with libjpeg-turbo:</p>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Quality</th>
+<th>Size</th>
+<th>vs q75</th>
+<th>SSIM</th>
+</tr></thead><tbody>
+<tr>
+<td>q60</td>
+<td>76.3 KB</td>
+<td>0.54x</td>
+<td>0.883</td>
+</tr>
+<tr>
+<td>q70</td>
+<td>112.3 KB</td>
+<td>0.80x</td>
+<td>0.886</td>
+</tr>
+<tr>
+<td>q75</td>
+<td>141.2 KB</td>
+<td>—</td>
+<td>0.888</td>
+</tr>
+<tr>
+<td>q80</td>
+<td>193.5 KB</td>
+<td>1.37x</td>
+<td>0.890</td>
+</tr>
+<tr>
+<td>q85</td>
+<td>270.2 KB</td>
+<td>1.91x</td>
+<td>0.892</td>
+</tr>
+<tr>
+<td>q90</td>
+<td>414.7 KB</td>
+<td>2.94x</td>
+<td>0.893</td>
+</tr>
+</tbody></table></div>
+<p>From q75 to q90 the file nearly triples while the structural similarity score moves 0.888 to 0.893 — a change most people cannot see. Chasing a target downward has the same shape in reverse: the last few kilobytes come at a disproportionate visual cost.</p>
+<div class="callout"><strong>Target sizes and text overlays</strong><p>If the image contains text — a document scan, a screenshot, a poster with a caption — JPEG is the wrong format for the job regardless of the quality setting. From q40 to q95 our UI screenshot grew 170.9 KB to 752 KB while PSNR stayed flat at 26.7 dB. Send PNG and accept a larger file, or reduce the dimensions further.</p></div>
+<h2 id="upload-forms-and-their-real-constraints">Upload forms and their real constraints</h2>
+<p>Requirement pages usually specify three things, and it is worth reading all of them:</p>
+<ul><li><strong>A maximum byte size.</strong> Often 100 KB, 200 KB or 2 MB; sometimes different limits apply to different fields on the same form.</li><li><strong>A pixel dimension range.</strong> Portrait forms commonly demand something like at least 600 x 750 pixels, and a lower bound is as binding as an upper one.</li><li><strong>A format list.</strong> Many portals accept JPG only, which rules out the PNG route for text-heavy images.</li></ul>
+<p>When a minimum dimension and a maximum byte size appear together, they define a window: the image must be big enough to be legible and small enough to be accepted. If no single quality setting fits inside that window, reduce the dimensions toward the minimum and try again, and avoid JPEG for anything with text.</p>
+<div class="specbox"><strong>Verify before you submit</strong><p>Open the exported file, confirm the dimensions and the byte size, and view it at 100% zoom. A form that rejects your submission after the fact costs more time than the thirty seconds this takes.</p></div>
+<h2 id="a-target-size-checklist">A target-size checklist</h2>
+<ol><li>Note all three constraints: bytes, pixels, format.</li><li>Compute the bits-per-pixel budget from the byte limit and the candidate dimensions.</li><li>If the budget is below about 0.5 bpp, reduce dimensions first.</li><li>Crop to the required aspect ratio if the form demands one — near-square portraits are common.</li><li>Set quality in the 75-85 band; only go below 70 if the format constraints leave no alternative.</li><li>Inspect the result at 100% on the most detailed area, then upload.</li></ol>
+<div class="stat-grid"><div class="stat"><b>1 bit per pixel and up</b><span>Comfortable budget</span></div><div class="stat"><b>under 0.5 bpp</b><span>Warning zone</span></div><div class="stat"><b>q75 to q85</b><span>Quality sweet spot</span></div><div class="stat"><b>4.4x</b><span>Screenshot growth q40 to q95</span></div></div>
+<p>The <a href="./">compressor on this page</a> reports the output size while you adjust dimensions and quality, so the budget arithmetic above is visible rather than estimated. Processing happens on your device.</p>
+<p>Source: JPEG quality values measured on 22 October 2026 with Pillow 11.0.0 (libjpeg-turbo); raw CSV published at ./assets/bench/study-b-jpeg-quality.csv.</p>
+</div>
+</section>
+<section class="guide-cta-band">
         <h2>Ready to try it?</h2>
         <p>Everything in this guide runs locally in your browser — free, no account, no uploads.</p>
         <a class="primary-button" href="./#tool">Open the free tools</a>

@@ -168,7 +168,68 @@
         </aside>
       </div>
     
-      <section class="guide-cta-band">
+      <section class="guide-extra" aria-label="Additional guidance">
+<div class="prose">
+<h2 id="what-instagram-does-to-the-file-you-upload">What Instagram does to the file you upload</h2>
+<p>Instagram's help centre is explicit about the pipeline: uploads are handled at a <strong>maximum width of 1080 pixels</strong>, photos between 320 and 1080 pixels wide keep their resolution <strong>only if</strong> the aspect ratio falls between 1.91:1 and 3:4, and anything outside that window is <strong>cropped</strong> to a supported ratio. Below 320 pixels wide, the platform enlarges the image to 320.</p>
+<p>Three practical consequences follow from that single paragraph.</p>
+<p><strong>Uploading a 4000-pixel photo buys nothing.</strong> It is downscaled to 1080 before anyone sees it. The bytes you spend above 1080 pixels wide serve the platform's pipeline, not your viewer.</p>
+<p><strong>The safest export is 1080 pixels on the long edge, inside the ratio window.</strong> At 1080 wide the window is a height between 566 and 1440 pixels, which covers square posts, 4:5 tall posts and the widest acceptable landscape.</p>
+<p><strong>Ratios outside the window are cropped, not distorted.</strong> The composition does not stretch; it loses edges. If something important sits near the border — a caption, a logo, a face — it may not survive.</p>
+<div class="callout"><strong>Check the ratio before the pixel count</strong><p>Changing ratio is a crop decision and it is free; changing pixel count after the fact is a second resample. Decide the ratio first, then the dimensions.</p></div>
+<h2 id="aspect-ratios-for-feed-stories-and-reels">Aspect ratios for feed, Stories and Reels</h2>
+<div class="table-scroll"><table class="data">
+<thead><tr>
+<th>Surface</th>
+<th>Ratio to aim for</th>
+<th>Export size</th>
+<th>Why</th>
+</tr></thead><tbody>
+<tr>
+<td>Square feed post</td>
+<td>1:1</td>
+<td>1080 x 1080</td>
+<td>Fills the square grid with no crop</td>
+</tr>
+<tr>
+<td>Tall feed post</td>
+<td>4:5</td>
+<td>1080 x 1350</td>
+<td>Uses the full feed height the app displays</td>
+</tr>
+<tr>
+<td>Tallest kept uncropped</td>
+<td>3:4</td>
+<td>1080 x 1440</td>
+<td>The limit of Instagram's supported range</td>
+</tr>
+<tr>
+<td>Stories and Reels</td>
+<td>9:16</td>
+<td>1080 x 1920</td>
+<td>Vertical full-screen surfaces</td>
+</tr>
+<tr>
+<td>Widest kept uncropped</td>
+<td>1.91:1</td>
+<td>1080 x 566</td>
+<td>The other end of Instagram's supported range</td>
+</tr>
+</tbody></table></div>
+<p>The 9:16 figure sits outside the feed window quoted above; feed posts and vertical full-screen surfaces are handled differently, so treat the table as per-surface rather than one universal size.</p>
+<div class="specbox"><strong>Margins, not accuracy, save a crop</strong><p>Rather than matching a ratio to three decimal places, keep the subject inside the centre square and treat the outer tenth of the frame as expendable. Any surface that re-crops takes from the edges first.</p></div>
+<h2 id="why-a-re-exported-photo-looks-worse-on-instagram">Why a re-exported photo looks worse on Instagram</h2>
+<p>If you take a photo, resize it, save it as JPEG, then open the export and resize it again, you have run two interpolations and two encodings. Each pass removes information that the next one cannot recover.</p>
+<p>The measured version of that claim: on a 4x downscale, a quality-oriented filter (bicubic) scored 46.60 dB against an area-average reference with SSIM 0.9856, while nearest-neighbour scored 31.66 dB and SSIM 0.6028 and left 6.85 levels of halftone noise. Run that twice and the second pass starts from already-degraded input.</p>
+<p>The fix is procedural: work from the original file, resize once, export once.</p>
+<h2 id="a-workflow-that-survives-the-pipeline">A workflow that survives the pipeline</h2>
+<ol><li>Start from the largest original you have — the camera file or a full-resolution export.</li><li>Crop to the target ratio at full resolution.</li><li>Resize to 1080 on the long edge with a quality-oriented filter. Avoid nearest-neighbour unless the image is pixel art.</li><li>Only compress if the file needs to be smaller; for most photos, a single JPEG export in the 75-85 quality band from a 1080-pixel canvas lands comfortably under typical limits.</li><li>Inspect the export at 100% zoom on the busiest area before uploading.</li></ol>
+<div class="stat-grid"><div class="stat"><b>1080 px</b><span>Instagram upload width</span></div><div class="stat"><b>1.91:1 to 3:4</b><span>Supported feed ratio</span></div><div class="stat"><b>320 px</b><span>Narrowest upload kept</span></div><div class="stat"><b>46.6 dB</b><span>Our 4x downscale score</span></div></div>
+<p>If you would rather not install anything, the <a href="./">resizer on this page</a> runs the same steps in your browser: pick the target ratio, set the long edge to 1080, compare against the original, and download. Nothing is uploaded, so there is no queue and no copy of your file on a server.</p>
+<p>Source: Instagram Help Centre, "Photo resolution when sharing to Instagram" — https://help.instagram.com/1631821640426723 (read 22 October 2026).</p>
+</div>
+</section>
+<section class="guide-cta-band">
         <h2>Ready to try it?</h2>
         <p>Everything in this guide runs locally in your browser — free, no account, no uploads.</p>
         <a class="primary-button" href="./#tool">Open the free tools</a>

@@ -1,4 +1,5 @@
 import picaFactory from "pica";
+import { readImageMeta, stripJpegMetadata } from "./exif";
 
 const pica = picaFactory({ features: ["js", "wasm", "ww"] });
 
@@ -50,6 +51,11 @@ const outputMeta = get<HTMLElement>("#outputMeta");
 const previewEmpty = get<HTMLElement>("#previewEmpty");
 const sampleImageBtn = get<HTMLButtonElement>("#sampleImageBtn");
 const presetButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".preset"));
+const metaPanel = get<HTMLElement>("#metaPanel");
+const metaSummary = get<HTMLElement>("#metaSummary");
+const metaFields = get<HTMLUListElement>("#metaFields");
+const metaNote = get<HTMLElement>("#metaNote");
+const metaStripBtn = get<HTMLButtonElement>("#metaStripBtn");
 
 const originalContext = originalCanvas.getContext("2d")!;
 
@@ -271,6 +277,62 @@ function downloadBlob(blob: Blob, label = "", width = previewCanvas.width, heigh
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
+let metaFile: File | null = null;
+
+async function updateMetaPanel(file: File): Promise<void> {
+  metaFile = file;
+  metaStripBtn.hidden = true;
+  metaPanel.hidden = false;
+  metaSummary.textContent = "Inspecting metadata...";
+  metaFields.replaceChildren();
+  metaFields.hidden = true;
+  metaNote.textContent = "";
+  try {
+    const meta = await readImageMeta(file);
+    if (metaFile !== file) return; // a newer file was chosen while inspecting
+    metaSummary.textContent = meta.hasExif
+      ? `${meta.format}: EXIF metadata found${meta.hasGps ? " (includes GPS)" : ""}`
+      : `${meta.format}: no EXIF metadata`;
+    if (meta.fields.length) {
+      metaFields.replaceChildren(...meta.fields.map((field) => {
+        const item = document.createElement("li");
+        const label = document.createElement("b");
+        label.textContent = `${field.label}: `;
+        item.append(label, document.createTextNode(field.value));
+        return item;
+      }));
+      metaFields.hidden = false;
+    }
+    metaNote.textContent = meta.note;
+    metaStripBtn.hidden = !(meta.format === "JPEG" && meta.hasExif);
+  } catch {
+    metaSummary.textContent = "Metadata could not be inspected for this file.";
+  }
+}
+
+metaStripBtn.addEventListener("click", async () => {
+  if (!metaFile) return;
+  const file = metaFile;
+  metaStripBtn.disabled = true;
+  setStatus("Removing metadata from the original...");
+  try {
+    const blob = await stripJpegMetadata(file);
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${baseName(file.name)}-no-metadata.jpg`;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    setStatus(`Downloaded a metadata-free copy of the original (${formatBytes(blob.size)}).`);
+  } catch (error) {
+    setStatus(error instanceof Error ? error.message : "Metadata removal failed.");
+  } finally {
+    metaStripBtn.disabled = false;
+  }
+});
+
 async function exportNearTarget(canvas: HTMLCanvasElement, targetBytes: number, token: number): Promise<{ blob: Blob; quality: number }> {
   let low = 0.35;
   let high = 1;
@@ -309,6 +371,7 @@ async function loadFile(file: File | undefined): Promise<void> {
   originalContext.clearRect(0, 0, originalCanvas.width, originalCanvas.height);
   originalContext.drawImage(sourceImage, 0, 0);
   originalMeta.textContent = `${sourceImage.naturalWidth} x ${sourceImage.naturalHeight}, ${formatBytes(file.size)}`;
+  void updateMetaPanel(file);
   previewEmpty.hidden = true;
   formatSelect.value = file.type === "image/jpeg" ? "image/jpeg" : file.type;
   enableControls(true);
@@ -344,6 +407,8 @@ function resetAll(): void {
   outputMeta.textContent = "-";
   previewMeasure.textContent = "Measured after processing";
   targetSizeInput.value = "";
+  metaPanel.hidden = true;
+  metaFile = null;
   enableControls(false);
   setBusy(false);
   setStatus("Choose an image to start.");

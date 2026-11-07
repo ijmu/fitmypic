@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "jszip": "^3.10.1",
     "pica": "^9.0.1"
   },
   "devDependencies": {

@@ -522,5 +522,23 @@ window.addEventListener("paste", (event) => {
   if (file) { event.preventDefault(); void loadFile(file).catch((error) => setStatus(error.message)); }
 });
 
+// Deep-link presets for dedicated pages such as compress-image-to-50kb.html:
+// ?target=50 sets the target-size field, ?format=jpeg|png|webp the output format.
+// The values pass through the same controls a user would set by hand.
+function applyQueryPreset(): void {
+  const params = new URLSearchParams(window.location.search);
+  const target = Number(params.get("target"));
+  if (Number.isFinite(target) && target >= 10 && target <= 10_000) {
+    targetSizeInput.value = String(Math.round(target));
+  }
+  const format = params.get("format");
+  const mime = format === "jpeg" || format === "jpg" ? "image/jpeg" : format === "png" ? "image/png" : format === "webp" ? "image/webp" : null;
+  if (mime) {
+    formatSelect.value = mime;
+  }
+  if (target >= 10 || mime) syncTargetControls();
+}
+
 bindDropzone();
 enableControls(false);
+applyQueryPreset();

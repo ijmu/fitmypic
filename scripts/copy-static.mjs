@@ -8,6 +8,8 @@ const rootFiles = await readdir(root, { withFileTypes: true });
 const excluded = new Set([
   "index.html",
   "batch-compress.html",
+  "image-metadata-viewer.html",
+  "image-size-checker.html",
   "resize-image-to-1024x1024.html",
   // Internal docs and build tooling: producing these into dist/ publishes
   // DESIGN.md, PRODUCT.md and the build scripts to the live site.

@@ -2,6 +2,15 @@ import picaFactory from "pica";
 
 const pica = picaFactory({ features: ["js", "wasm", "ww"] });
 
+const deviceMemoryGb = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 4;
+const MAX_EDGE = 12_000;
+const MAX_SOURCE_PIXELS = deviceMemoryGb <= 4 ? 24_000_000 : 48_000_000;
+const MAX_OUTPUT_PIXELS = deviceMemoryGb <= 4 ? 16_000_000 : 32_000_000;
+
+function canvasLimitMessage(width: number, height: number, limit: number): string {
+  return `${width} × ${height} is too large for safe processing on this device (${(width * height / 1_000_000).toFixed(1)} MP; limit ${(limit / 1_000_000).toFixed(0)} MP). Reduce the dimensions and try again.`;
+}
+
 function get<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
   if (!element) throw new Error(`Missing interface element: ${selector}`);
@@ -138,6 +147,9 @@ async function renderResult(token: number): Promise<HTMLCanvasElement> {
   if (!sourceImage || token !== renderToken) throw new DOMException("Cancelled", "AbortError");
   const width = Math.max(1, Math.round(Number(widthInput.value) || sourceImage.naturalWidth));
   const height = Math.max(1, Math.round(Number(heightInput.value) || sourceImage.naturalHeight));
+  if (width > MAX_EDGE || height > MAX_EDGE || width * height > MAX_OUTPUT_PIXELS) {
+    throw new Error(canvasLimitMessage(width, height, MAX_OUTPUT_PIXELS));
+  }
   const transformed = transformedSource();
   const output = document.createElement("canvas");
   output.width = width;
@@ -282,7 +294,13 @@ async function loadFile(file: File | undefined): Promise<void> {
     return;
   }
   sourceFile = file;
-  sourceImage = await fileToImage(file);
+  const image = await fileToImage(file);
+  const sourcePixels = image.naturalWidth * image.naturalHeight;
+  if (image.naturalWidth > MAX_EDGE || image.naturalHeight > MAX_EDGE || sourcePixels > MAX_SOURCE_PIXELS) {
+    sourceFile = null;
+    throw new Error(canvasLimitMessage(image.naturalWidth, image.naturalHeight, MAX_SOURCE_PIXELS));
+  }
+  sourceImage = image;
   sourceRatio = sourceImage.naturalWidth / sourceImage.naturalHeight;
   widthInput.value = String(sourceImage.naturalWidth);
   heightInput.value = String(sourceImage.naturalHeight);
@@ -423,13 +441,16 @@ targetDownloadBtn.addEventListener("click", async () => {
     qualityInput.value = result.quality.toFixed(2);
     qualityOutput.textContent = `${Math.round(result.quality * 100)}%`;
     downloadBlob(result.blob, `target-${targetKb}kb`, canvas.width, canvas.height);
-    setStatus(`Downloaded ${formatBytes(result.blob.size)}, the closest browser result to ${targetKb} KB.`);
+    const deviation = ((result.blob.size - targetKb * 1024) / (targetKb * 1024)) * 100;
+    const direction = deviation >= 0 ? "over" : "under";
+    const advice = Math.abs(deviation) > 10 ? " Reduce the pixel dimensions if you need a closer, smaller result." : "";
+    setStatus(`Downloaded ${formatBytes(result.blob.size)} — ${Math.abs(deviation).toFixed(1)}% ${direction} the ${targetKb} KB target.${advice}`);
   } catch (error) {
     if (!(error instanceof DOMException && error.name === "AbortError")) setStatus(error instanceof Error ? error.message : "Target export failed.");
   } finally { setBusy(false); }
 });
 
-cancelBtn.addEventListener("click", () => { renderToken += 1; setBusy(false); setStatus("Processing cancelled."); });
+cancelBtn.addEventListener("click", () => { renderToken += 1; setBusy(false); setStatus("Stop requested. The current resize step may finish, but its result will be discarded."); });
 window.addEventListener("paste", (event) => {
   const item = Array.from(event.clipboardData?.items ?? []).find((entry) => entry.type.startsWith("image/"));
   const file = item?.getAsFile();

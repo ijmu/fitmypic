@@ -6,6 +6,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
+        batch: resolve(__dirname, "batch-compress.html"),
         resize1024: resolve(__dirname, "resize-image-to-1024x1024.html"),
         instagram: resolve(__dirname, "resize-image-for-instagram.html"),
         youtube: resolve(__dirname, "resize-image-for-youtube.html"),

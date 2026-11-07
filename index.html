@@ -54,7 +54,7 @@
   <body>
     <header class="topbar">
       <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
-      <nav aria-label="Primary navigation"><a href="./#tool">Tools</a><a href="./guides.html">Guides</a><a href="./jpeg-quality-benchmark.html">JPEG benchmark</a><a href="./about.html">About</a></nav>
+      <nav aria-label="Primary navigation"><a href="./#tool">Tools</a><a href="./batch-compress.html">Batch compress</a><a href="./guides.html">Guides</a><a href="./jpeg-quality-benchmark.html">JPEG benchmark</a><a href="./about.html">About</a></nav>
       <button class="theme-toggle" type="button" onclick="__setTheme(document.documentElement.classList.contains('dark')?'light':'dark')" aria-label="Toggle dark mode">🌙</button>
     </header>
 
@@ -190,6 +190,14 @@
                       <label>Quality<input id="qualityInput" type="range" min="0.35" max="1" step="0.05" value="0.82" disabled /><output id="qualityOutput">82%</output></label>
                       <label class="target-field">Target size (KB)<input id="targetSizeInput" type="number" min="10" step="10" placeholder="Optional" disabled /><span class="field-help">For JPG and WebP output</span></label>
                     </div>
+                  </div>
+
+                  <div class="control-section source-controls" id="metaPanel" hidden>
+                    <strong class="control-section-title">Metadata (EXIF)</strong>
+                    <p id="metaSummary" class="meta-summary">-</p>
+                    <ul id="metaFields" class="meta-fields" hidden></ul>
+                    <p id="metaNote" class="field-help">-</p>
+                    <button id="metaStripBtn" type="button" class="text-action" hidden>Download original without metadata (JPG, lossless)</button>
                   </div>
 
                   <p class="control-label source-controls">Quick sizes</p>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1f" />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script>(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;r.classList.add(d?"dark":"light");window.__setTheme=function(x){r.classList.remove("dark","light");r.classList.add(x);try{localStorage.setItem("theme",x)}catch(e){};var b=document.querySelectorAll(".theme-toggle");for(var i=0;i<b.length;i++)b[i].textContent=x==="dark"?"\u2600\uFE0F":"\uD83C\uDF19";};window.__setTheme(d?"dark":"light");}catch(e){}})();</script>
+    <title>Batch Image Compressor & Resizer — Free & Private | FitMyPic</title>
+    <meta
+      name="description"
+      content="Compress or resize a whole batch of JPG, PNG, and WebP images in one pass. Files are processed one by one in your browser and downloaded as a ZIP — no upload, no account, no watermarks."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://www.fitmypic.com/batch-compress.html" />
+    <link rel="alternate" hreflang="en" href="https://www.fitmypic.com/batch-compress.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.fitmypic.com/batch-compress.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FitMyPic" />
+    <meta property="og:title" content="Batch Image Compressor & Resizer — Free & Private | FitMyPic" />
+    <meta property="og:description" content="Batch-compress or resize JPG, PNG, and WebP files locally in your browser and download everything as one ZIP. No upload, no account." />
+    <meta property="og:url" content="https://www.fitmypic.com/batch-compress.html" />
+    <meta property="og:image" content="https://www.fitmypic.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Batch Image Compressor & Resizer — Free & Private | FitMyPic" />
+    <meta name="twitter:description" content="Batch-compress or resize JPG, PNG, and WebP files locally in your browser and download everything as one ZIP. No upload, no account." />
+    <meta name="twitter:image" content="https://www.fitmypic.com/og-image.png" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./identity-fit.css" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "WebApplication", "name": "FitMyPic Batch Compressor", "url": "https://www.fitmypic.com/batch-compress.html", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any modern web browser", "description": "A free browser-based batch compressor and resizer for JPG, PNG, and WebP files with ZIP download and fully local processing.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "featureList": ["Batch compression", "Batch resizing with ratio lock", "JPG, PNG, and WebP output", "ZIP download", "Sequential processing to protect device memory", "Local browser processing"], "dateModified": "2026-11-07"}
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDE7CN1DH1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-XDE7CN1DH1");
+    </script>
+    <style>
+      .batch-page { max-width: 1180px; margin: 0 auto; padding: 32px 5vw 64px; }
+      .batch-intro { max-width: 760px; margin-bottom: 28px; }
+      .batch-intro h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -0.01em; margin-bottom: 10px; }
+      .batch-intro p { color: var(--ink-2); font-size: 0.98rem; }
+      .batch-queue { display: grid; gap: 8px; font-size: 0.88rem; }
+      .batch-queue-row { display: flex; align-items: center; gap: 10px; justify-content: space-between; border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; background: var(--surface); }
+      .batch-queue-row .file-info { display: grid; min-width: 0; }
+      .batch-queue-row strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .batch-queue-row span { color: var(--ink-2); font-size: 0.8rem; }
+      .batch-queue-row.is-processing { border-color: var(--accent); }
+      .batch-queue-row.is-done { opacity: 0.72; }
+      .file-remove { background: none; border: none; color: var(--ink-2); cursor: pointer; font-size: 1rem; line-height: 1; padding: 4px; }
+      .file-remove:hover { color: var(--ink); }
+      .batch-results { display: grid; gap: 10px; }
+      .batch-result-row { display: flex; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; background: var(--surface); flex-wrap: wrap; }
+      .batch-result-row .file-info { display: grid; min-width: 0; flex: 1; }
+      .batch-result-row strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .batch-result-row span { color: var(--ink-2); font-size: 0.84rem; }
+      .batch-result-row .secondary-button { margin-left: auto; }
+      .secondary-button { background: none; border: 1px solid var(--line-strong); color: var(--ink); border-radius: 999px; padding: 8px 16px; font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
+      .secondary-button:hover { border-color: var(--accent); }
+      @media (max-width: 900px) { .tool-grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <nav aria-label="Primary navigation"><a href="./#tool">Tools</a><a href="./batch-compress.html" aria-current="page">Batch compress</a><a href="./guides.html">Guides</a><a href="./jpeg-quality-benchmark.html">JPEG benchmark</a><a href="./about.html">About</a></nav>
+      <button class="theme-toggle" type="button" onclick="__setTheme(document.documentElement.classList.contains('dark')?'light':'dark')" aria-label="Toggle dark mode">🌙</button>
+    </header>
+
+    <main class="batch-page">
+      <section class="batch-intro" aria-labelledby="batch-title">
+        <p class="eyebrow">Batch tool</p>
+        <h1 id="batch-title">Compress or resize a whole batch — privately, in your browser</h1>
+        <p>Choose one folder's worth of JPG, PNG, or WebP files. Each image is processed one at a time so your device never runs out of memory, every result is measured, and the whole set downloads as a single ZIP. Nothing is uploaded.</p>
+      </section>
+
+      <div class="tool-grid" id="tool">
+        <aside class="control-panel">
+          <div id="batchDropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose or drop images">
+            <input id="batchFile" type="file" accept="image/jpeg,image/png,image/webp" multiple />
+            <div class="drop-icon">+</div>
+            <p>Choose images</p>
+            <span>JPG, PNG, or WebP · drop files here · multiple files welcome</span>
+          </div>
+
+          <div class="control-section">
+            <strong class="control-section-title">Output settings</strong>
+            <div class="settings-grid" aria-label="Batch output settings">
+              <label>Format<select id="batchFormat"><option value="image/jpeg" selected>JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></label>
+              <label>Quality<input id="batchQuality" type="range" min="0.35" max="1" step="0.05" value="0.82" /><output id="batchQualityValue">82%</output></label>
+              <label>Max width (px)<input id="batchMaxWidth" type="number" min="1" step="1" placeholder="Original" /><span class="field-help">Larger images are scaled down, height follows the ratio</span></label>
+            </div>
+            <p class="field-help">PNG is lossless, so the quality slider does not apply to it.</p>
+          </div>
+
+          <div class="actions">
+            <button id="batchConvert" type="button" class="primary-button" disabled>Convert batch</button>
+            <button id="batchCancel" type="button" class="secondary-button" hidden>Cancel</button>
+            <button id="batchClear" type="button" class="secondary-button" disabled>Clear queue</button>
+            <button id="batchZip" type="button" class="primary-button" hidden>Download all as ZIP</button>
+          </div>
+          <progress id="batchProgress" class="progress-bar" max="100" value="0" hidden>0%</progress>
+          <div id="batchStatus" class="status" role="status">Choose images to start.</div>
+        </aside>
+
+        <section aria-label="Queue and results">
+          <div class="control-section">
+            <strong class="control-section-title">Queue <span id="batchCount" style="font-weight: 400; color: var(--ink-2);">0 files</span></strong>
+            <div id="batchEmpty" class="status">Your queue is empty. Add images to see them listed here.</div>
+            <div id="batchList" class="batch-queue"></div>
+          </div>
+          <div class="control-section">
+            <strong class="control-section-title">Measured results</strong>
+            <div id="batchResults" class="batch-results"></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="batch-intro" style="margin-top: 40px;" aria-labelledby="batch-how">
+        <h2 id="batch-how">How the batch runs</h2>
+        <p>Files are decoded, resized, and re-encoded strictly one at a time, and the same device-memory pixel limits as the single-image tool apply. Intermediate canvases are released after each file. Because output is re-encoded from pixels, exported files never contain EXIF metadata. ZIP archives are stored without extra compression — JPG, PNG, and WebP are already compressed.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <p>FitMyPic builds browser-based image tools and publishes the tests behind its recommendations.</p>
+    </div>
+    <div class="footer-col">
+      <strong>Tools</strong>
+      <a href="./#tool">Image resizer &amp; compressor</a>
+      <a href="./batch-compress.html">Batch compress &amp; resize</a>
+      <a href="./compress-image.html">Compress an image</a>
+      <a href="./remove-background-from-image.html">Remove a background</a>
+    </div>
+    <div class="footer-col">
+      <strong>Guides</strong>
+      <a href="./guides.html">All guides</a>
+      <a href="./jpeg-quality-benchmark.html">JPEG quality benchmark (measured)</a>
+      <a href="./resize-algorithms-guide.html">Resize algorithms compared</a>
+      <a href="./print-resolution-guide.html">Print size and resolution</a>
+    </div>
+    <div class="footer-col">
+      <strong>Reference</strong>
+      <a href="./social-media-image-sizes.html">Social media image sizes</a>
+      <a href="./passport-photo-specs.html">Passport photo specs</a>
+      <a href="./image-file-size-guide.html">Image file size guide</a>
+    </div>
+    <div class="footer-col">
+      <strong>Site</strong>
+      <a href="./about.html">About &amp; how we test</a>
+      <a href="./editorial-standards.html">Editorial standards</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./privacy.html">Privacy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 FitMyPic. All rights reserved.</span>
+    <span>All processing happens locally in your browser.</span>
+  </div>
+</footer>
+
+    <script type="module" src="./src/batch-tool.ts"></script>
+    <script>
+      if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {})); }
+    </script>
+  </body>
+</html>

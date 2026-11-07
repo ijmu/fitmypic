@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};window.gtag("consent","default",{ad_storage:"denied",analytics_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",functionality_storage:"granted",security_storage:"granted",wait_for_update:2000});window.gtag("set","ads_data_redaction",true);</script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1f" />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script>(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;r.classList.add(d?"dark":"light");window.__setTheme=function(x){r.classList.remove("dark","light");r.classList.add(x);try{localStorage.setItem("theme",x)}catch(e){};var b=document.querySelectorAll(".theme-toggle");for(var i=0;i<b.length;i++)b[i].textContent=x==="dark"?"\u2600\uFE0F":"\uD83C\uDF19";};window.__setTheme(d?"dark":"light");}catch(e){}})();</script>
+    <title>Image Size Checker — Dimensions, Format &amp; File Size, Measured | FitMyPic</title>
+    <meta
+      name="description"
+      content="Drop any image to measure its true pixel dimensions, format, file size, aspect ratio, and metadata in one pass — decoded in your browser, not read from a filename. No upload, no account."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://www.fitmypic.com/image-size-checker.html" />
+    <link rel="alternate" hreflang="en" href="https://www.fitmypic.com/image-size-checker.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.fitmypic.com/image-size-checker.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FitMyPic" />
+    <meta property="og:title" content="Image Size Checker — Dimensions, Format &amp; File Size, Measured" />
+    <meta property="og:description" content="Measure true pixel dimensions, format, and file size by decoding the image in your browser. Nothing is uploaded." />
+    <meta property="og:url" content="https://www.fitmypic.com/image-size-checker.html" />
+    <meta property="og:image" content="https://www.fitmypic.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5633189368787002"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" href="./site-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./identity-fit.css" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "WebApplication", "name": "FitMyPic Image Size Checker", "url": "https://www.fitmypic.com/image-size-checker.html", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any modern web browser", "description": "A free browser tool that reports the measured pixel dimensions, format, file size, aspect ratio, and metadata presence of any JPG, PNG, or WebP file. Local processing.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "featureList": ["Measured pixel dimensions and megapixels", "Format detection from file bytes", "Bytes-per-pixel efficiency", "EXIF presence check", "Local browser processing"], "dateModified": "2026-11-07"}
+    </script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.fitmypic.com/"},{"@type":"ListItem","position":2,"name":"Image Size Checker","item":"https://www.fitmypic.com/image-size-checker.html"}]}
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XDE7CN1DH1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-XDE7CN1DH1");
+    </script>
+    <style>
+      .checker-page { max-width: 1180px; margin: 0 auto; padding: 32px 5vw 64px; }
+      .checker-grid { display: grid; grid-template-columns: 340px 1fr; gap: 20px; align-items: start; margin-top: 20px; }
+      .checker-fields strong { color: var(--ink); font-weight: 600; margin-right: 8px; }
+      .checker-fields li { list-style: none; border-bottom: 1px solid var(--line); padding: 6px 0; display: flex; justify-content: space-between; gap: 12px; }
+      .checker-fields span { color: var(--ink-2); text-align: right; }
+      .checker-guide { max-width: 760px; margin-top: 48px; }
+      .checker-guide h2 { margin-top: 28px; }
+      @media (max-width: 900px) { .checker-grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <nav aria-label="Primary navigation"><a href="./#tool">Tools</a><a href="./batch-compress.html">Batch compress</a><a href="./guides.html">Guides</a><a href="./jpeg-quality-benchmark.html">JPEG benchmark</a><a href="./about.html">About</a></nav>
+      <button class="theme-toggle" type="button" onclick="__setTheme(document.documentElement.classList.contains('dark')?'light':'dark')" aria-label="Toggle dark mode">🌙</button>
+    </header>
+
+    <main class="checker-page">
+      <section aria-labelledby="page-title">
+        <p class="eyebrow">Inspection tool</p>
+        <h1 id="page-title">Image size checker — the real numbers, straight from the file</h1>
+        <p>File managers guess: they report dimensions from a metadata field that is often stale, and formats from the file extension, which anyone can rename. This tool decodes the image in your browser and reports what is actually inside — dimensions, pixel count, true format, measured size, and how efficiently those bytes are spent.</p>
+      </section>
+
+      <div class="checker-grid" id="tool">
+        <aside class="control-panel">
+          <div id="scDropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose or drop an image">
+            <input id="scFile" type="file" accept="image/jpeg,image/png,image/webp" />
+            <div class="drop-icon">+</div>
+            <p>Choose an image</p>
+            <span>JPG, PNG, or WebP · drop it here · nothing is uploaded</span>
+          </div>
+          <div id="scStatus" class="status" role="status">Drop an image to measure it.</div>
+        </aside>
+
+        <section id="scReport" aria-label="Measurement report" hidden>
+          <p id="scSummary" class="meta-summary"></p>
+          <ul id="scFields" class="checker-fields"></ul>
+        </section>
+      </div>
+
+      <section class="checker-guide" aria-labelledby="why-title">
+        <div class="section-head">
+          <p class="eyebrow">Why measure</p>
+          <h2 id="why-title">Reported values lie in specific, predictable ways</h2>
+        </div>
+        <div class="evidence-grid">
+          <article><span class="evidence-number">01</span><h3>Extensions are decorative</h3><p>Renaming <em>photo.webp</em> to <em>photo.jpg</em> changes nothing inside the file, yet every file manager now displays the wrong format. Byte-level sniffing — checking the file's magic numbers — reports what the container really is.</p></article>
+          <article><span class="evidence-number">02</span><h3>Stale metadata</h3><p>Some tools write the original dimensions into the image header and never update it after a crop. Decoding the pixels gives the dimensions the image actually has now, not the ones it was born with.</p></article>
+          <article><span class="evidence-number">03</span><h3>Bytes per pixel is the honest size score</h3><p>A 2 MB photo is not "big" in itself. Divided by its pixels, 2 MB across 12 megapixels is 1.39 bytes per pixel — a modest spend. The same 2 MB across 0.3 megapixels would mean an unusually heavy file worth investigating before you upload it anywhere.</p></article>
+        </div>
+        <p>Every value in the report above is measured the same way our <a href="./image-output-testing.html">output testing method</a> measures conversions: from the file bytes themselves, in your browser. When a form or platform quotes limits — "at least 600 × 750", "under 2 MB" — check the file here first, then adjust it with the compressor and confirm the result here before you submit.</p>
+      </section>
+
+      <section class="checker-guide" aria-labelledby="faq-title">
+        <div class="section-head">
+          <p class="eyebrow">Questions</p>
+          <h2 id="faq-title">Checker FAQ</h2>
+        </div>
+        <details><summary>Are my images uploaded?</summary><p>No. The file is decoded with browser APIs on your device; every reported number is computed locally and nothing is transmitted anywhere.</p></details>
+        <details><summary>Why does the format differ from the file extension?</summary><p>Because the extension is a name and the format is a fact. The checker reads the leading bytes — JPEG starts with FF D8, PNG with a fixed 8-byte signature, WebP with RIFF…WEBP — so a renamed file is reported as what it truly is.</p></details>
+        <details><summary>What is a good bytes-per-pixel value?</summary><p>It depends on content. Photographs typically land between 0.1 and 2 bytes per pixel; screenshots and flat graphics are often far lower as PNG; anything well above that range usually means the image stores something extra, such as a large colour profile or unstripped metadata.</p></details>
+        <details><summary>Can it tell me why my file is too large?</summary><p>Indirectly. Compare the bytes-per-pixel value against the content: a screenshot or flat-art file showing photo-like numbers is carrying inefficiency, and converting it to the right format (or resizing) is the fix. The <a href="./image-file-size-guide.html">image file size guide</a> explains the mechanics.</p></details>
+      </section>
+</main>
+
+    <footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="./" aria-label="FitMyPic home"><img class="brand-icon" src="./site-icon.svg" alt="" aria-hidden="true" /><span>FitMyPic</span></a>
+      <p>FitMyPic builds browser-based image tools and publishes the tests behind its recommendations.</p>
+    </div>
+    <div class="footer-col">
+      <strong>Tools</strong>
+      <a href="./#tool">Image resizer &amp; compressor</a>
+      <a href="./compress-image.html">Compress an image</a>
+      <a href="./batch-compress.html">Batch compress &amp; resize</a>
+      <a href="./compress-image-to-50kb.html">Compress to 50KB</a>
+      <a href="./image-metadata-viewer.html">Image metadata viewer</a>
+      <a href="./image-size-checker.html">Image size checker</a>
+      <a href="./remove-background-from-image.html">Remove a background</a>
+      <a href="./resize-image-to-1024x1024.html">Square 1024 x 1024</a>
+    </div>
+    <div class="footer-col">
+      <strong>Guides</strong>
+      <a href="./guides.html">All guides</a>
+      <a href="./jpeg-quality-benchmark.html">JPEG quality benchmark (measured)</a>
+      <a href="./resize-algorithms-guide.html">Resize algorithms compared</a>
+      <a href="./print-resolution-guide.html">Print size and resolution</a>
+      <a href="./image-upscaling-guide.html">What upscaling can do</a>
+    </div>
+    <div class="footer-col">
+      <strong>Reference</strong>
+      <a href="./social-media-image-sizes.html">Social media image sizes</a>
+      <a href="./passport-photo-specs.html">Passport photo specs</a>
+      <a href="./image-file-size-guide.html">Image file size guide</a>
+      <a href="./image-output-testing.html">Output testing method</a>
+    </div>
+    <div class="footer-col">
+      <strong>Site</strong>
+      <a href="./about.html">About &amp; how we test</a>
+      <a href="./editorial-standards.html">Editorial standards</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./privacy.html">Privacy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 FitMyPic. All rights reserved.</span>
+    <span>All processing happens locally in your browser.</span>
+  </div>
+</footer>
+    <script type="module" src="./src/size-checker.ts"></script>
+  </body>
+</html>

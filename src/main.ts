@@ -28,6 +28,7 @@ const fitModeSelect = get<HTMLSelectElement>("#fitModeSelect");
 const formatSelect = get<HTMLSelectElement>("#formatSelect");
 const qualityInput = get<HTMLInputElement>("#qualityInput");
 const qualityOutput = get<HTMLOutputElement>("#qualityOutput");
+const qualityField = qualityInput.closest<HTMLElement>("label");
 const targetSizeInput = get<HTMLInputElement>("#targetSizeInput");
 const targetField = get<HTMLElement>(".target-field");
 const downloadBtn = get<HTMLButtonElement>("#downloadBtn");
@@ -100,10 +101,13 @@ function enableControls(enabled: boolean): void {
 }
 
 function syncTargetControls(): void {
-  const available = Boolean(sourceImage) && formatSelect.value !== "image/png";
+  const lossyFormat = formatSelect.value !== "image/png";
+  const available = Boolean(sourceImage) && lossyFormat;
+  if (qualityField) qualityField.hidden = !lossyFormat;
   targetSizeInput.disabled = !available;
   targetField.hidden = !available;
   const hasTarget = available && Number(targetSizeInput.value) >= 10;
+  downloadBtn.hidden = hasTarget;
   targetDownloadBtn.hidden = !hasTarget;
   targetDownloadBtn.disabled = !hasTarget;
 }
@@ -355,6 +359,7 @@ async function loadFile(file: File | undefined): Promise<void> {
     setStatus("Please choose a JPG, PNG, or WebP image.");
     return;
   }
+  setStatus("Reading your image on this device...");
   sourceFile = file;
   const image = await fileToImage(file);
   const sourcePixels = image.naturalWidth * image.naturalHeight;
@@ -509,7 +514,7 @@ targetDownloadBtn.addEventListener("click", async () => {
     const deviation = ((result.blob.size - targetKb * 1024) / (targetKb * 1024)) * 100;
     const direction = deviation >= 0 ? "over" : "under";
     const advice = Math.abs(deviation) > 10 ? " Reduce the pixel dimensions if you need a closer, smaller result." : "";
-    setStatus(`Downloaded ${formatBytes(result.blob.size)} — ${Math.abs(deviation).toFixed(1)}% ${direction} the ${targetKb} KB target.${advice}`);
+    setStatus(`Created ${formatBytes(result.blob.size)} — ${Math.abs(deviation).toFixed(1)}% ${direction} the ${targetKb} KB target.${advice}`);
   } catch (error) {
     if (!(error instanceof DOMException && error.name === "AbortError")) setStatus(error instanceof Error ? error.message : "Target export failed.");
   } finally { setBusy(false); }

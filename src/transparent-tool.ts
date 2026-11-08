@@ -103,6 +103,7 @@ function canvasBlob(canvas: HTMLCanvasElement): Promise<Blob> {
 async function process(): Promise<void> {
   if (!originalData) return;
   const version = ++measureVersion;
+  status.textContent = "Updating the background preview...";
   const tolerance = Number(toleranceInput.value);
   const feather = Number(featherInput.value);
   const target = hexToRgb(colorInput.value);
@@ -144,8 +145,8 @@ async function process(): Promise<void> {
     ? `${output.width} x ${output.height}, ${transparentPercent.toFixed(1)}% fully transparent, ${formatBytes(outputBlob.size)}`
     : `${output.width} x ${output.height}, background replaced with ${fillMode === "custom" ? fillColorInput?.value || "a custom color" : fillMode}, ${formatBytes(outputBlob.size)}`;
   status.textContent = fillMode === "none"
-    ? "Result measured. Click the preview to sample another background color or download the PNG."
-    : "Result measured with the new background. Download the PNG or switch back to transparent.";
+    ? "Result measured. Sample another color or download the PNG."
+    : "Background replaced. Review the result, then download the PNG.";
   downloadButton.disabled = false;
 }
 
@@ -164,6 +165,7 @@ async function loadFile(file: File): Promise<void> {
     status.textContent = "Choose a JPG, PNG, or WebP image.";
     return;
   }
+  status.textContent = "Reading your image on this device...";
   const url = URL.createObjectURL(file);
   const image = new Image();
   await new Promise<void>((resolve, reject) => {
@@ -172,6 +174,7 @@ async function loadFile(file: File): Promise<void> {
     image.src = url;
   });
   sourceFile = file;
+  document.body.classList.add("has-transparent-source");
   originalCanvas.width = image.naturalWidth;
   originalCanvas.height = image.naturalHeight;
   const context = originalCanvas.getContext("2d", { willReadFrequently: true });
@@ -228,6 +231,7 @@ function sampleColor(event: MouseEvent, canvas: HTMLCanvasElement): void {
 function reset(): void {
   measureVersion += 1;
   sourceFile = null;
+  document.body.classList.remove("has-transparent-source");
   originalData = null;
   outputBlob = null;
   fileInput.value = "";

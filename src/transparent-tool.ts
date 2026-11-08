@@ -247,7 +247,7 @@ function reset(): void {
   originalMetric.textContent = "No image selected";
   outputMetric.textContent = "Measured after processing";
   downloadButton.disabled = true;
-  status.textContent = "Choose an image or try the sample to begin.";
+  status.textContent = "Choose an image, then click the background color in the preview.";
   show("result");
 }
 
@@ -306,7 +306,7 @@ downloadButton.addEventListener("click", () => {
 fillSelect?.addEventListener("input", () => {
   const filled = fillSelect.value !== "none";
   if (fillColorInput) fillColorInput.disabled = fillSelect.value !== "custom";
-  downloadButton.textContent = filled ? "Download PNG with new background" : "Download transparent PNG";
+  downloadButton.textContent = "Download PNG";
   if (originalData) void process();
 });
 fillColorInput?.addEventListener("input", () => { if (originalData) void process(); });

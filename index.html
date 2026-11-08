@@ -108,7 +108,7 @@
                   <div class="transparent-settings">
                     <div class="setting-row">
                       <label>Removal mode<select id="transparentMode"><option value="edges">Connected to edges</option><option value="global">Every matching pixel</option></select></label>
-                      <label>Background color<input id="transparentColor" type="color" value="#ffffff" /></label>
+                      <label>Sampled background color<input id="transparentColor" type="color" value="#ffffff" /></label>
                     </div>
                     <div class="setting-row">
                       <label>Replace with<select id="transparentFill"><option value="none" selected>Keep transparent</option><option value="white">Solid white</option><option value="black">Solid black</option><option value="custom">Custom color…</option></select></label>
@@ -121,7 +121,7 @@
                     <button id="transparentDownload" type="button" disabled>Download transparent PNG</button>
                     <button id="transparentReset" type="button">Reset</button>
                   </div>
-                  <p id="transparentStatus" class="transparent-status" role="status">Choose an image or try the sample to begin.</p>
+                  <p id="transparentStatus" class="transparent-status" role="status">Choose an image, then click the background color in the preview.</p>
                 </div>
 
                 <div class="transparent-preview">
@@ -130,7 +130,7 @@
                       <button id="transparentResultTab" class="is-active" type="button" aria-pressed="true">Result</button>
                       <button id="transparentOriginalTab" type="button" aria-pressed="false">Original</button>
                     </div>
-                    <span class="preview-instruction">Click the image to sample a color</span>
+                    <span class="preview-instruction">Click the preview to sample a color</span>
                   </div>
                   <div class="transparent-stage">
                     <canvas id="transparentResult" width="900" height="600" aria-label="Transparent PNG result preview"></canvas>
@@ -188,7 +188,7 @@
                     <div class="settings-grid export-settings" aria-label="Export settings">
                       <label>Output format<select id="formatSelect" disabled><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></label>
                       <label>Quality<input id="qualityInput" type="range" min="0.35" max="1" step="0.05" value="0.82" disabled /><output id="qualityOutput">82%</output></label>
-                      <label class="target-field">Target size (KB)<input id="targetSizeInput" type="number" min="10" step="10" placeholder="Optional" disabled /><span class="field-help">For JPG and WebP output</span></label>
+                      <label class="target-field">Target size (KB)<input id="targetSizeInput" type="number" min="10" step="10" placeholder="Optional" disabled /><span class="field-help">For JPG and WebP; measured, not guaranteed exact</span></label>
                     </div>
                   </div>
 
@@ -232,7 +232,7 @@
                     <canvas id="previewCanvas" width="800" height="520" aria-label="Image preview"></canvas>
                     <canvas id="originalCanvas" class="is-hidden" width="800" height="520" aria-label="Original image preview"></canvas>
                     <div id="previewEmpty" class="preview-empty empty-dashboard" aria-hidden="true">
-                      <div class="empty-heading"><span class="preview-symbol">F</span><div><strong>Everything you need for a clean export</strong><small>Choose a file and the workspace becomes your live preview.</small></div></div>
+                      <div class="empty-heading"><span class="preview-symbol">F</span><div><strong>Choose an image to start editing</strong><small>Choose a file and the workspace becomes your live preview.</small></div></div>
                       <div class="empty-capabilities">
                         <div><span>01</span><strong>Resize precisely</strong><small>Enter exact pixels or start with a social preset.</small></div>
                         <div><span>02</span><strong>Crop without stretching</strong><small>Use square, portrait, or landscape framing.</small></div>

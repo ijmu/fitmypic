@@ -767,8 +767,10 @@ body { overflow-x: clip; }
 }
 
 @media (max-width: 620px) {
-  .topbar { flex-direction: column; align-items: flex-start; gap: 8px; padding-top: 12px; padding-bottom: 12px; }
-  nav { gap: 16px; }
+  .topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px 12px; padding-top: 10px; padding-bottom: 10px; }
+  .topbar .brand { grid-column: 1; grid-row: 1; }
+  .topbar .theme-toggle { grid-column: 2; grid-row: 1; }
+  .topbar nav { grid-column: 1 / -1; grid-row: 2; width: 100%; gap: 16px; }
   .evidence-grid, .content-grid, .preset-grid, .setting-row, .field-row { grid-template-columns: 1fr; }
   .decision-row { grid-template-columns: 1fr; gap: 4px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }

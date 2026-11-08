@@ -746,6 +746,9 @@ details p { margin: 12px 0 0; color: var(--ink-2); font-size: 0.95rem; }
   color: var(--ink-3); font-size: 0.82rem;
 }
 
+.topbar nav { max-width: 100%; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
+.topbar nav a { flex: 0 0 auto; }
+
 /* ---------- Responsive ---------- */
 .webp-workspace-grid > *, .webp-controls, .webp-results, .webp-size-controls, .webp-size-controls label { min-width: 0; }
 .webp-controls, .webp-results { max-width: 100%; }
